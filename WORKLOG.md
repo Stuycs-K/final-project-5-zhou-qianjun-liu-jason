@@ -1,21 +1,21 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Jason Liu
 
-### date x
+### May 22, 2024
 
-info
+Added base files and put in methods and variables(no code).
 
 ### date y
 
 info
 
 
-## GROUP MEMBER 2
+## Qianjun Zhou
 
-### date x
+### May 22, 2024
 
-info
+Added base files and put in methods and variables(no code).
 
 ### date y
 
