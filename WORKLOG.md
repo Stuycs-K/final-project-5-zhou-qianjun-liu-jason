@@ -6,9 +6,9 @@
 
 Added base files and put in methods and variables(no code).
 
-### date y
+### May 23, 2024
 
-info
+Made a subclass of Skill to get base code down as well as worked and tested display method in Processing
 
 
 ## Qianjun Zhou
