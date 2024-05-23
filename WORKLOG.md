@@ -10,6 +10,8 @@ Added base files and put in methods and variables(no code).
 
 Made a subclass of Skill to get base code down as well as worked and tested display method in Processing
 
+Optimized Skill display as well as made display method for minimap
+
 
 ## Qianjun Zhou
 
