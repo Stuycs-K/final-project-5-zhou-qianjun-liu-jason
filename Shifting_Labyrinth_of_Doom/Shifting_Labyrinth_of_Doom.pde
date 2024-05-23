@@ -12,5 +12,5 @@ void setup(){
 
 void draw(){
   Skill test = new SkillTest();
-  test.displayRange(3,3,"down");
+  test.displayRange(3,3,"right");
 }
