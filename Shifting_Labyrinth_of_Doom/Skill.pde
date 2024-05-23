@@ -4,6 +4,6 @@ abstract class Skill{
   private int Cooldown;
   private int MaxCooldown;
   abstract void voidcooldown();
-  abstract void useSkill(BattleMap map, int a, int b);
-  abstract void displayRange(BattleMap map);
+  abstract void useSkill(BattleMap map, int a, int b, String direction);
+  abstract void displayRange(int a, int b, String direction);
 }
