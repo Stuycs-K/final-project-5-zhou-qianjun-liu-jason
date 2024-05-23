@@ -42,6 +42,7 @@ class SkillTest extends Skill{
   };
   
   void displayRange(int a, int b, String direction){
+    stroke(0,0,0);
       for(int i = 0; i < Range.length; i++){
         for(int j = 0; j < Range[i].length; j++){
           if(Range[i][j] == 1){
@@ -72,6 +73,7 @@ class SkillTest extends Skill{
           }
         }
       }
+      noStroke();
   };
   
 }
