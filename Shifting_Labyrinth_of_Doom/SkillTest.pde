@@ -6,7 +6,7 @@ class SkillTest extends Skill{
   
   public SkillTest(){
     Range = new int[][]{
-      {0,1,0,0,1,0,0,1,0},
+      {0,1,0,0,1,0,0,1,0}, // range center is person location you can change and try
       {0,0,1,0,1,0,1,0,0},
       {0,0,0,1,1,1,0,0,0},
       {0,0,0,0,1,0,0,0,0},
@@ -38,10 +38,10 @@ class SkillTest extends Skill{
     }
   };
   
-  void useSkill(BattleMap map, int a, int b, String direction){
+  void useSkill(BattleMap map, int a, int b, String direction){ // didnt finish as map wasnt done
   };
   
-  void displayRange(int a, int b, String direction){
+  void displayRange(int a, int b, String direction){  // a and b is x-cord y-cord of array beginning with 1
     stroke(0,0,0);
       for(int i = 0; i < Range.length; i++){
         for(int j = 0; j < Range[i].length; j++){

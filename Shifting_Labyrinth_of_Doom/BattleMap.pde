@@ -11,6 +11,8 @@ class BattleMap{
       {null,"en","co",null,null},
       {null,null,"co",null,null},
       {null,null,"ex",null,null}
+      
+      // need to add identifier likely based in string of ,Two-Letter Acronym + Direction, in order to map map more functional
     };
     Combat = new String[16][16];
   }

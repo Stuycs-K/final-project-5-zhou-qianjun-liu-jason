@@ -7,4 +7,7 @@ void draw(){
   test.displayRange(3,3,"left");
   BattleMap test2 = new BattleMap();
   test2.display();
+  if (mousePressed == true) {
+    background(255,255,255); // would be a clear if not continuous
+  }
 }
