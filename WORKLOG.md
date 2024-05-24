@@ -19,6 +19,10 @@ Optimized Skill display as well as made display method for minimap
 
 Added abstract classes enemy and skill and implemented abstract variables (no actual program).
 
+### May 23, 2024
+
+Made a subclass of skill to help myself understand how the code works and then worked a lot on the character class to link it with the skill class.
+
 ### date y
 
 info
