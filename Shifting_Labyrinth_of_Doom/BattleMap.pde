@@ -2,6 +2,8 @@ class BattleMap{
   PImage[][] Appearance;
   String[][] MiniMap;
   String[][] Combat;
+  public int sizeOfSidebar = 400;
+  public int sizePerSquare = 50;
   
   public BattleMap(){
     Appearance = new PImage[16][16];
@@ -108,19 +110,52 @@ class BattleMap{
     }
   }
   
-  void displayMovement(int a, int b, int movement){  // a and b is x-cord y-cord of array beginning with 1
+  void displayMovement(int movement){  // a and b is x-cord y-cord of array beginning with 1
     stroke(0,0,0);
-      for(int i = 0; i < Range.length; i++){
-        for(int j = 0; j < Range[i].length; j++){
-          if(Range[i][j] == 1){
-            int squareAtY = a + (4 - i);
-            int squareAtX = b + (4 - j);
-            fill(124,252,0);
+    int[][] possibleMoves = possiblemovement(Combat, movement);
+    for(int i = 0; i < possibleMoves.length; i++){
+      for(int k = 0; k < possibleMoves[i].length; k++){
+        //if(possibleMoves[i][j] == 1){
+        //    int squareAtY = a + (4 - i);
+        //    int squareAtX = b + (4 - j);
+        //    fill(124,252,0);
             square(sizeOfSidebar + squareAtX * sizePerSquare, squareAtY * sizePerSquare, sizePerSquare);
             noFill();
           }
+      }
+    }
+    noStroke();
+  }
+  
+  int[][] possiblemovement(String[][] currentMap, int numMoves){
+    int[][] returnable = new int[currentMap.length][currentMap[0].length];
+    int x = 0;
+    int y = 0;
+    for(int i = 0; i < currentMap.length; i++){
+      for(int k = 0; k < currentMap[i].length; k++){
+        if(currentMap[i][k].equals("PC")){
+          x = i;
+          y = k;
+          returnable[i][k] = 1;
+        }
+        else{
+          returnable[i][k] = 0;
         }
       }
-      noStroke();
+    }
+    return recursiveMovement(returnable, x, y, numMoves, 0); 
+  }
+  int[][] recursiveMovement(int[][] current, int x, int y, int numMoves, int MovesAt){
+    if(MovesAt < numMoves){
+      if(x >= 0 && x < current.length && y >= 0 && y < current[0].length && MovesAt < numMoves){
+        current[x][y] = 1;
+      }
+      recursiveMovement(current, x + 1, y, numMoves, MovesAt++);
+      recursiveMovement(current, x - 1, y, numMoves, MovesAt++);
+      recursiveMovement(current, x, y + 1, numMoves, MovesAt++);
+      recursiveMovement(current, x, y - 1, numMoves, MovesAt++);
+      return current;
+    }
+    return current;
   }
 }
