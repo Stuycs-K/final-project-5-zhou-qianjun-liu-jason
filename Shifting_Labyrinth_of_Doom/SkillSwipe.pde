@@ -1,17 +1,18 @@
-class SkillTest extends Skill{
+class SkillSwipe extends Skill{
   private int[][] Range;
   private int Dmg;
   private int Cooldown;
   private int MaxCooldown;
-  
-  public SkillTest(){
+  public int sizeOfSidebar = 400;
+  public int sizePerSquare = 50;
+  public SkillSwipe(){
     Range = new int[][]{
-      {0,1,0,0,1,0,0,1,0}, // range center is person location you can change and try
-      {0,0,1,0,1,0,1,0,0},
+      {0,0,0,0,0,0,0,0,0}, // range center is person location you can change and try
+      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,1,0,0,0,0},
       {0,0,0,1,1,1,0,0,0},
       {0,0,0,0,1,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
@@ -36,40 +37,22 @@ class SkillTest extends Skill{
     }else{
       Cooldown--;
     }
-  };
+  }
   
   void useSkill(BattleMap map, int a, int b, String direction){ // didnt finish as map wasnt done
-  };
+  
+  }
   
   void displayRange(int a, int b, String direction){  // a and b is x-cord y-cord of array beginning with 1
     stroke(0,0,0);
       for(int i = 0; i < Range.length; i++){
         for(int j = 0; j < Range[i].length; j++){
           if(Range[i][j] == 1){
-            int c = 0;
-            int d = 0;
-            if(direction.equals("up")){
-              c = a - (4 - i);
-              d = b - (4 - j);
-            }
-            if(direction.equals("down")){
-              c = a + (4 - i);
-              d = b - (4 - j);
-            }
-            if(direction.equals("right")){
-              d = a + (4 - i);
-              c = b - (4 - j);
-            }
-            if(direction.equals("left")){
-              d = a - (4 - i);
-              c = b - (4 - j);
-            }
-            if(c<0||c>15||d<0||d>15){
-            }else{
-                fill(124,252,0);
-                square(400+d*50,c*50,50);
-                noFill();
-            }
+            int squareAtY = a + (4 - i);
+            int squareAtX = b + (4 - j);
+            fill(124,252,0);
+            square(sizeOfSidebar + squareAtX * sizePerSquare, squareAtY * sizePerSquare, sizePerSquare);
+            noFill();
           }
         }
       }
