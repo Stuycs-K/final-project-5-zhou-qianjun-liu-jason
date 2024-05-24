@@ -3,8 +3,6 @@ void setup(){
 }
 
 void draw(){
-  //Skill test = new SkillSwipe();
-  //test.displayRange(5,5,"left");
   //BattleMap test2 = new BattleMap();
   //test2.display();
   PlayerCharacter newPerson = new PlayerCharacter();
@@ -14,4 +12,6 @@ void draw(){
   if (mousePressed == true) {
     background(255,255,255); // would be a clear if not continuous
   }
+  //Skill test = new SkillTest();
+  //test.displayRange(5,5,"down");
 }

@@ -6,14 +6,14 @@ class SkillTest extends Skill{
   
   public SkillTest(){
     Range = new int[][]{
-      {0,1,0,0,1,0,0,1,0}, // range center is person location you can change and try
-      {0,0,1,0,1,0,1,0,0},
-      {0,0,0,1,1,1,0,0,0},
+      {0,0,0,0,0,0,0,0,0}, // range center is person location you can change and try
       {0,0,0,0,1,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,1,0,0,0,0},
+      {0,0,0,0,1,0,0,0,0},
+      {0,0,0,0,1,0,0,0,0},
+      {0,0,0,0,1,0,0,0,0},
+      {0,0,0,0,1,0,0,0,0},
+      {0,0,0,0,1,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
     };
     Dmg = 1;
@@ -49,20 +49,20 @@ class SkillTest extends Skill{
             int c = 0;
             int d = 0;
             if(direction.equals("up")){
-              c = a - (4 - i);
-              d = b - (4 - j);
+              c = a - (Range.length/2 - i);
+              d = b - (Range[i].length/2 - j);
             }
             if(direction.equals("down")){
-              c = a + (4 - i);
-              d = b - (4 - j);
+              c = a + (Range.length/2 - i);
+              d = b - (Range[i].length/2 - j);
             }
             if(direction.equals("right")){
-              d = a + (4 - i);
-              c = b - (4 - j);
+              d = a + (Range.length/2 - i);
+              c = b - (Range[i].length/2 - j);
             }
             if(direction.equals("left")){
-              d = a - (4 - i);
-              c = b - (4 - j);
+              d = a - (Range.length/2 - i);
+              c = b - (Range[i].length/2 - j);
             }
             if(c<0||c>15||d<0||d>15){
             }else{

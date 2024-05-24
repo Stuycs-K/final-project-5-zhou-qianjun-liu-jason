@@ -57,6 +57,6 @@ class SkillSwipe extends Skill{
         }
       }
       noStroke();
-  };
+  }
   
 }
