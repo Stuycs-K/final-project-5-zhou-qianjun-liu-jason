@@ -45,18 +45,37 @@ class SkillSwipe extends Skill{
   
   void displayRange(int a, int b, String direction){  // a and b is x-cord y-cord of array beginning with 1
     stroke(0,0,0);
-      for(int i = 0; i < Range.length; i++){
-        for(int j = 0; j < Range[i].length; j++){
-          if(Range[i][j] == 1){
-            int squareAtY = a + (4 - i);
-            int squareAtX = b + (4 - j);
-            fill(124,252,0);
-            square(sizeOfSidebar + squareAtX * sizePerSquare, squareAtY * sizePerSquare, sizePerSquare);
-            noFill();
+      for(int rowRange = 0; rowRange < Range.length; rowRange++){
+        for(int colRange = 0; colRange < Range[rowRange].length; colRange++){
+          if(Range[rowRange][colRange] == 1){
+            int squareAtY= 0;
+            int squareAtX= 0;
+            if(direction.equals("up")){
+              squareAtY= a - (Range.length/2 - rowRange);
+              squareAtX= b - (Range[rowRange].length/2 - colRange);
+            }
+            if(direction.equals("down")){
+              squareAtY= a + (Range.length/2 - rowRange);
+              squareAtX= b - (Range[rowRange].length/2 - colRange);
+            }
+            if(direction.equals("right")){
+              squareAtX= a + (Range.length/2 - rowRange);
+              squareAtY= b - (Range[rowRange].length/2 - colRange);
+            }
+            if(direction.equals("left")){
+              squareAtX= a - (Range.length/2 - rowRange);
+              squareAtY= b - (Range[rowRange].length/2 - colRange);
+            }
+            if(squareAtX<0||squareAtX>15||squareAtY<0||squareAtY>15){
+            }else{
+                fill(124,252,0);
+                square(sizeOfSidebar+squareAtY*sizePerSquare,squareAtX*sizePerSquare,sizePerSquare);
+                noFill();
+            }
           }
         }
       }
       noStroke();
-  }
+  };
   
 }

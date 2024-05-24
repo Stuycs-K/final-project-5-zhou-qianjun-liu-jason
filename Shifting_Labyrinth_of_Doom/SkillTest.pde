@@ -3,6 +3,8 @@ class SkillTest extends Skill{
   private int Dmg;
   private int Cooldown;
   private int MaxCooldown;
+  public int sizeOfSidebar = 400;
+  public int sizePerSquare = 50;
   
   public SkillTest(){
     Range = new int[][]{
@@ -11,9 +13,9 @@ class SkillTest extends Skill{
       {0,0,0,0,1,0,0,0,0},
       {0,0,0,0,1,0,0,0,0},
       {0,0,0,0,1,0,0,0,0},
-      {0,0,0,0,1,0,0,0,0},
-      {0,0,0,0,1,0,0,0,0},
-      {0,0,0,0,1,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
     };
     Dmg = 1;
@@ -43,26 +45,26 @@ class SkillTest extends Skill{
   
   void displayRange(int a, int b, String direction){  // a and b is x-cord y-cord of array beginning with 1
     stroke(0,0,0);
-      for(int i = 0; i < Range.length; i++){
-        for(int j = 0; j < Range[i].length; j++){
-          if(Range[i][j] == 1){
+      for(int rowRange = 0; rowRange < Range.length; rowRange++){
+        for(int colRange = 0; colRange < Range[rowRange].length; colRange++){
+          if(Range[rowRange][colRange] == 1){
             int c = 0;
             int d = 0;
             if(direction.equals("up")){
-              c = a - (Range.length/2 - i);
-              d = b - (Range[i].length/2 - j);
+              c = a - (Range.length/2 - rowRange);
+              d = b - (Range[rowRange].length/2 - colRange);
             }
             if(direction.equals("down")){
-              c = a + (Range.length/2 - i);
-              d = b - (Range[i].length/2 - j);
+              c = a + (Range.length/2 - rowRange);
+              d = b - (Range[rowRange].length/2 - colRange);
             }
             if(direction.equals("right")){
-              d = a + (Range.length/2 - i);
-              c = b - (Range[i].length/2 - j);
+              d = a + (Range.length/2 - rowRange);
+              c = b - (Range[rowRange].length/2 - colRange);
             }
             if(direction.equals("left")){
-              d = a - (Range.length/2 - i);
-              c = b - (Range[i].length/2 - j);
+              d = a - (Range.length/2 - rowRange);
+              c = b - (Range[rowRange].length/2 - colRange);
             }
             if(c<0||c>15||d<0||d>15){
             }else{

@@ -13,5 +13,5 @@ void draw(){
     background(255,255,255); // would be a clear if not continuous
   }
   //Skill test = new SkillTest();
-  //test.displayRange(5,5,"down");
+  //test.displayRange(5,5,"left");
 }
