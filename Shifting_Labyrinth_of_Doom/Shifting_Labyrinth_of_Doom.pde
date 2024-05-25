@@ -12,6 +12,7 @@ void draw(){
   if (mousePressed == true) {
     background(255,255,255); // would be a clear if not continuous
   }
+  test2.displayMovement(2);
   //Skill test = new SkillTest();
   //test.displayRange(5,5,"left");
 }

@@ -115,11 +115,9 @@ class BattleMap{
     int[][] possibleMoves = possiblemovement(Combat, movement);
     for(int i = 0; i < possibleMoves.length; i++){
       for(int k = 0; k < possibleMoves[i].length; k++){
-        //if(possibleMoves[i][j] == 1){
-        //    int squareAtY = a + (4 - i);
-        //    int squareAtX = b + (4 - j);
-        //    fill(124,252,0);
-            square(sizeOfSidebar + squareAtX * sizePerSquare, squareAtY * sizePerSquare, sizePerSquare);
+        if(possibleMoves[i][k] == 1){
+            fill(124,252,0);
+            square(sizeOfSidebar + i * sizePerSquare, k * sizePerSquare, sizePerSquare);
             noFill();
           }
       }
