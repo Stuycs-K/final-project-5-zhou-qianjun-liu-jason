@@ -12,6 +12,10 @@ Made a subclass of Skill to get base code down as well as worked and tested disp
 
 Optimized Skill display as well as made display method for minimap
 
+### May 24, 2024
+
+Worked on Skill Display as well as did some work on BattleMap Class
+
 
 ## Qianjun Zhou
 
