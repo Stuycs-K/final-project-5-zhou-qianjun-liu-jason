@@ -37,6 +37,10 @@ class BattleMap{
     };
   }
   
+  String[][] getCombat(){
+    return Combat;
+  }
+  
   public void generateRoom(String type){
   }
   

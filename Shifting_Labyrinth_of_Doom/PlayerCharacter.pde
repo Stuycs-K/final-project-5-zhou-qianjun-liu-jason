@@ -18,8 +18,24 @@ class PlayerCharacter{
     numSkill = 3;
     Movement = 10;
   }
-  public void useSkill(Skill choice){
-    choice.displayRange(5,5,"left");
+  public void useSkill(BattleMap map, Skill choice){
+    int x = 0;
+    int y = 0;
+    boolean found = false;
+    for(int i = 0; i < map.getCombat().length; i++){
+      for(int k = 0; k < map.getCombat()[i].length; k++){
+        if(map.getCombat()[i][k] != null && map.getCombat()[i][k].equals("PC")){
+          x = i;
+          y = k;
+          found = true;
+          break;
+        }
+      }
+      if(found == true){
+          break;
+      }
+    }
+    choice.displayRange(x,y,"left");
   }
   public Skill getSkill(int choice){
     return Skills[choice];

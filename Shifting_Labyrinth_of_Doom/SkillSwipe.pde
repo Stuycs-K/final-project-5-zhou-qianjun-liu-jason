@@ -68,7 +68,7 @@ class SkillSwipe extends Skill{
             }
             if(squareAtX<0||squareAtX>15||squareAtY<0||squareAtY>15){
             }else{
-                fill(124,252,0);
+                fill(185, 110, 251);
                 square(sizeOfSidebar+squareAtY*sizePerSquare,squareAtX*sizePerSquare,sizePerSquare);
                 noFill();
             }
