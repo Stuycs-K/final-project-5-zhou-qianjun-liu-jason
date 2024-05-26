@@ -16,6 +16,10 @@ Optimized Skill display as well as made display method for minimap
 
 Worked on Skill Display as well as did some work on BattleMap Class
 
+### May 25, 2024
+
+Worked on Skill and BattleMap with Ryan through group coding(my account)
+
 
 ## Qianjun Zhou
 
@@ -27,6 +31,8 @@ Added abstract classes enemy and skill and implemented abstract variables (no ac
 
 Made a subclass of skill to help myself understand how the code works and then worked a lot on the character class to link it with the skill class.
 
-### date y
+### May 25, 2024
+
+Worked on Skill and BattleMap with Jason through group coding(Jason's account)
 
 info
