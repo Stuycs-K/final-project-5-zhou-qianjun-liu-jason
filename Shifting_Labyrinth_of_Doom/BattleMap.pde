@@ -131,7 +131,7 @@ class BattleMap{
     int y = 0;
     for(int i = 0; i < currentMap.length; i++){
       for(int k = 0; k < currentMap[i].length; k++){
-        if(currentMap[i][k].equals("PC")){
+        if(currentMap[i][k] != null && currentMap[i][k].equals("PC")){
           x = i;
           y = k;
           returnable[i][k] = 1;
@@ -141,19 +141,19 @@ class BattleMap{
         }
       }
     }
-    return recursiveMovement(returnable, x, y, numMoves, 0); 
+    return recursiveMovement(returnable, x, y, numMoves); 
   }
-  int[][] recursiveMovement(int[][] current, int x, int y, int numMoves, int MovesAt){
-    if(MovesAt < numMoves){
-      if(x >= 0 && x < current.length && y >= 0 && y < current[0].length && MovesAt < numMoves){
-        current[x][y] = 1;
+  int[][] recursiveMovement(int[][] current, int x, int y, int numMoves){
+    int[][] returnable = new int[current.length][current[0].length];
+    for(int i = 0; i < current.length; i++){
+      for(int k = 0; k < current[i].length; k++){
+        if(Math.abs(i-x)+Math.abs(k-y) <= numMoves){
+          returnable[i][k] = 1;
+        }else{
+          returnable[i][k] = 0;
+        }
       }
-      recursiveMovement(current, x + 1, y, numMoves, MovesAt++);
-      recursiveMovement(current, x - 1, y, numMoves, MovesAt++);
-      recursiveMovement(current, x, y + 1, numMoves, MovesAt++);
-      recursiveMovement(current, x, y - 1, numMoves, MovesAt++);
-      return current;
     }
-    return current;
+    return returnable;
   }
 }
