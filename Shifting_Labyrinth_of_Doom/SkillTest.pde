@@ -41,6 +41,7 @@ class SkillTest extends Skill{
   };
   
   void useSkill(BattleMap map, int a, int b, String direction){ // didnt finish as map wasnt done
+    
   };
   
   void displayRange(int a, int b, String direction){  // a and b is x-cord y-cord of array beginning with 1
