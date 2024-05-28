@@ -9,13 +9,14 @@ class BattleMap{
   public BattleMap(){
     Appearance = new PImage[16][16];
     MiniMap = new String[][]{
-      {null,null,"tr",null,null},
-      {"e","co","en",null,null},
-      {null,"en","co",null,null},
-      {null,null,"co",null,null},
-      {null,null,"ex",null,null}
+      {null,null,"tru",null,null},
+      {"etl","col","enu","cor",null},
+      {null,"end","cou",null,null},
+      {null,null,"cou",null,null},
+      {null,null,"exn",null,null}
       
       // need to add identifier likely based in string of ,Two-Letter Acronym + Direction, in order to map map more functional
+      // direction is set to which way to enter so u is go up to get in room
     };
     Combat = new String[][]{
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
@@ -117,35 +118,40 @@ class BattleMap{
         String a = MiniMap[i][j];
         stroke(255,255,255);
         if(a == null){
-          fill(0,0,0);
-          square(j*80+10,i*80+10,60);
-          noFill();
         }else{
-          if(a.equals("e")){
-            fill(0,191,255);
-            square(j*80+10,i*80+10,60);
-            noFill();
+          a = a.substring(0,2);
+          String b = MiniMap[i][j].substring(2,3);
+          if(a.equals("et")){
+            fill(0,191,255); 
           }
           if(a.equals("co")){
             fill(255,0,0);
-            square(j*80+10,i*80+10,60);
-            noFill();
           }
           if(a.equals("en")){
             fill(0,255,127);
-            square(j*80+10,i*80+10,60);
-            noFill();
           }
           if(a.equals("ex")){
             fill(0,191,255);
-            square(j*80+10,i*80+10,60);
-            noFill();
           }
           if(a.equals("tr")){
             fill(255,235,205);
-            square(j*80+10,i*80+10,60);
-            noFill();
           }
+          square(j*80+10,i*80+10,60);
+          fill(220,220,220);
+          if(b.equals("u")){
+            square(j*80+30,i*80+70,20);
+          }
+          if(b.equals("d")){
+            square(j*80+30,i*80-10,20);
+          }
+          if(b.equals("l")){
+            square(j*80+70,i*80+30,20);
+          }
+          if(b.equals("r")){
+            square(j*80-10,i*80+30,20);
+          }
+          noFill();
+          
         }
         noStroke();
       }
