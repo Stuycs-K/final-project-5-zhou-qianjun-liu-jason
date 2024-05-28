@@ -2,6 +2,7 @@ class BattleMap{
   PImage[][] Appearance;
   String[][] MiniMap;
   String[][] Combat;
+  int[][] possibleMove;
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
   
@@ -49,11 +50,38 @@ class BattleMap{
   
   public void combatEncounter(int diff){
   }
-  
-  public void display(){
+
+  boolean swap(int x, int y){
+    int updateableX = 0;
+    int updateableY = 0;
+    boolean found = false;
+    for(int i = 0; i < Combat.length; i++){
+      for(int k = 0; k < Combat[i].length; k++){
+        if(Combat[i][k].equals("PC")){
+          updateableX = i;
+          updateableY = k;
+          found = true;
+          break;
+        }
+      }
+      if(found){
+        break;
+      }
+    }
+    if(possibleMove[x-updateableX][y - updateableY] == 1){
+      Combat[updateableX][updateableY] = null;
+      Combat[x][y] = "PC";
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  void display(){
     stroke(0,0,0);
     for(int i = 400; i < 1200; i += 50){
       for(int j = 0; j < 800; j += 50){
+        fill(255,255,255);
         square(i,j,50);
         if(Combat[(i-400)/50][j/50] != null){
           if(Combat[(i-400)/50][j/50].equals("PC")){
@@ -67,6 +95,7 @@ class BattleMap{
             noFill();
           }
         }
+        noFill();
       }
     }
     stroke(255,255,255);
@@ -117,6 +146,7 @@ class BattleMap{
   void displayMovement(int movement){  // a and b is x-cord y-cord of array beginning with 1
     stroke(0,0,0);
     int[][] possibleMoves = possiblemovement(Combat, movement);
+    possibleMove = possibleMove;
     for(int i = 0; i < possibleMoves.length; i++){
       for(int k = 0; k < possibleMoves[i].length; k++){
         if(possibleMoves[i][k] == 1){
