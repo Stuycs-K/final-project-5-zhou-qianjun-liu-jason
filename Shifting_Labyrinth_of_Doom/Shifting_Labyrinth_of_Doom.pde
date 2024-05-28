@@ -19,8 +19,9 @@ void draw(){
     
   }
   if(phase == 1){
-    test.displayRange(10,10,"down");
-    test.useSkill(test2,10,10,"down");
+    newPerson.useSkill(test2,newPerson.getSkill(0));
+    //test.displayRange(10,10,"down");
+    //test.useSkill(test2,10,10,"down");
   }
   textSize(128);
   text(phase, 40, 120); 

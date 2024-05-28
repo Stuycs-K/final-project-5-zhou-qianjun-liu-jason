@@ -4,10 +4,11 @@ class PlayerCharacter{
   private ArrayList<Skill> UnlockedSkills;
   private int Movement;
   private int numSkill = 0;
+  private String direction;
   
   public PlayerCharacter(){
     HP = 0;
-    Skill A = new SkillSwipe();
+    Skill A = new SkillTest();
     Skill B = new SkillSwipe();
     Skill C = new SkillSwipe();
     Skills = new Skill[] {A, B, C};
@@ -17,6 +18,7 @@ class PlayerCharacter{
     UnlockedSkills.add(C);
     numSkill = 3;
     Movement = 2;
+    direction = "down";
   }
   public void useSkill(BattleMap map, Skill choice){
     int x = 0;
@@ -35,7 +37,7 @@ class PlayerCharacter{
           break;
       }
     }
-    choice.displayRange(x,y,"left");
+    choice.displayRange(y,x,direction);
   }
   public Skill getSkill(int choice){
     return Skills[choice];
