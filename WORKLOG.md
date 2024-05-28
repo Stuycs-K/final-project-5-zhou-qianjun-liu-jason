@@ -39,4 +39,7 @@ Worked on Skill and BattleMap with Jason through group coding(Jason's account)
 
 Made the movement method work within the character class and firgured out how that will look on the main screen.
 
+### May 28, 2024
+
+I made the swapping function for the main character work in conjunction with the map and possible movement.
 info
