@@ -35,4 +35,8 @@ Made a subclass of skill to help myself understand how the code works and then w
 
 Worked on Skill and BattleMap with Jason through group coding(Jason's account)
 
+### May 27, 2024
+
+Made the movement method work within the character class and firgured out how that will look on the main screen.
+
 info
