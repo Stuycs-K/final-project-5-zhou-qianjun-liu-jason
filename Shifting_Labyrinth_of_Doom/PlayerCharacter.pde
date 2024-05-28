@@ -16,7 +16,7 @@ class PlayerCharacter{
     UnlockedSkills.add(B);
     UnlockedSkills.add(C);
     numSkill = 3;
-    Movement = 10;
+    Movement = 2;
   }
   public void useSkill(BattleMap map, Skill choice){
     int x = 0;
@@ -65,7 +65,7 @@ class PlayerCharacter{
     }
   }
   public void displayMovement(BattleMap map){
-    
+    map.displayMovement(Movement);
   }
   public void movement(BattleMap map){
     
