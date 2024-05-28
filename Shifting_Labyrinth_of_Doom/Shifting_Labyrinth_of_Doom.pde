@@ -4,34 +4,40 @@ int x;
 int y;
 BattleMap test2 = new BattleMap();
 PlayerCharacter newPerson = new PlayerCharacter();
+Skill test = new SkillTest();
+int phase = 0;
 
 void setup(){
   size(1201,800);
-  
+  test2.display();
 }
 
 void draw(){
-  //BattleMap test2 = new BattleMap();
-  //test2.display();
-
-  //test2.displayMovement(2);
-  
-  if (mousePressed == true) {
-    background(255,255,255); // would be a clear if not continuous
+  if(phase == 0){
+    newPerson.displayMovement(test2);
+    test2.displayCombat();
+    
   }
-  
-  newPerson.displayMovement(test2);
-  //newPerson.useSkill(test2, newPerson.getSkill(0));
-  //fill(125,26,73);
-  square(x*sizePerSquare+sizeOfSidebar, y*sizePerSquare, sizePerSquare);
-  newPerson.movement(test2, x, y);
-  Skill test = new SkillTest();
-  //test.displayRange(10,10,"down");
-  test.useSkill(test2,10,10,"down");
+  if(phase == 1){
+    test.displayRange(10,10,"down");
+    test.useSkill(test2,10,10,"down");
+  }
+  textSize(128);
+  text(phase, 40, 120); 
 }
 
 void mouseClicked(){
   x = (mouseX-sizeOfSidebar)/sizePerSquare;
   y = (mouseY)/sizePerSquare;
+  if(newPerson.movement(test2, x, y)){
+    phase ++;
+  }else{
+    if(phase != 0){
+      phase ++;
+    }
+  }
   test2.display();
+  test2.displayCombat();
+  phase = phase % 4;
+  
 }

@@ -78,12 +78,10 @@ class BattleMap{
     }
   }
   
-  void display(){
+  void displayCombat(){
     stroke(0,0,0);
     for(int i = 400; i < 1200; i += 50){
       for(int j = 0; j < 800; j += 50){
-        fill(255,255,255);
-        square(i,j,50);
         if(Combat[(i-400)/50][j/50] != null){
           if(Combat[(i-400)/50][j/50].equals("PC")){
             fill(1,50,32);
@@ -96,6 +94,16 @@ class BattleMap{
             noFill();
           }
         }
+      }
+    }
+  }
+  
+  void display(){
+    stroke(0,0,0);
+    for(int i = 400; i < 1200; i += 50){
+      for(int j = 0; j < 800; j += 50){
+        fill(255,255,255);
+        square(i,j,50);
         noFill();
       }
     }

@@ -68,7 +68,8 @@ class PlayerCharacter{
     map.displayMovement(Movement);
   }
   
-  public void movement(BattleMap map, int x, int y){
-    map.swap(x, y);
+  public boolean movement(BattleMap map, int x, int y){
+    boolean a = map.swap(x, y);
+    return a;
   }
 }
