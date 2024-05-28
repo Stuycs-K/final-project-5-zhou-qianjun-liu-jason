@@ -8,10 +8,10 @@ class SkillTest extends Skill{
   
   public SkillTest(){
     Range = new int[][]{
-      {0,0,0,0,0,0,0,0,0}, // range center is person location you can change and try
-      {0,0,0,0,1,0,0,0,0},
-      {0,0,0,0,1,0,0,0,0},
-      {0,0,0,0,1,0,0,0,0},
+      {0,0,1,0,1,0,1,0,0}, // range center is person location you can change and try
+      {0,0,1,0,1,0,1,0,0},
+      {0,0,0,1,1,1,0,0,0},
+      {0,0,1,0,1,0,1,0,0},
       {0,0,0,0,1,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
@@ -38,11 +38,42 @@ class SkillTest extends Skill{
     }else{
       Cooldown--;
     }
-  };
+  }
   
   void useSkill(BattleMap map, int a, int b, String direction){ // didnt finish as map wasnt done
-    
-  };
+    for(int rowRange = 0; rowRange < Range.length; rowRange++){
+        for(int colRange = 0; colRange < Range[rowRange].length; colRange++){
+          if(Range[rowRange][colRange] == 1){
+            int c = 0;
+            int d = 0;
+            if(direction.equals("up")){
+              c = a - (Range.length/2 - rowRange);
+              d = b - (Range[rowRange].length/2 - colRange);
+            }
+            if(direction.equals("down")){
+              c = a + (Range.length/2 - rowRange);
+              d = b - (Range[rowRange].length/2 - colRange);
+            }
+            if(direction.equals("right")){
+              d = a + (Range.length/2 - rowRange);
+              c = b - (Range[rowRange].length/2 - colRange);
+            }
+            if(direction.equals("left")){
+              d = a - (Range.length/2 - rowRange);
+              c = b - (Range[rowRange].length/2 - colRange);
+            }
+            if(c<0||c>15||d<0||d>15){
+            }else{
+                if(map.getCombat()[d][c] != null && map.getCombat()[d][c].equals("EC")){
+                  fill(69,72,96);
+                  square(400+d*50,c*50,50);
+                  noFill();
+                }
+            }
+          }
+        }
+      }
+  }
   
   void displayRange(int a, int b, String direction){  // a and b is x-cord y-cord of array beginning with 1
     stroke(0,0,0);
@@ -77,6 +108,6 @@ class SkillTest extends Skill{
         }
       }
       noStroke();
-  };
+  }
   
 }

@@ -25,8 +25,9 @@ void draw(){
   //fill(125,26,73);
   square(x*sizePerSquare+sizeOfSidebar, y*sizePerSquare, sizePerSquare);
   newPerson.movement(test2, x, y);
-  //Skill test = new SkillTest();
-  //test.displayRange(5,5,"left");
+  Skill test = new SkillTest();
+  //test.displayRange(10,10,"down");
+  test.useSkill(test2,10,10,"down");
 }
 
 void mouseClicked(){
