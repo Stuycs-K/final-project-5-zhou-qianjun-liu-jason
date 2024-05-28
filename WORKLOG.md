@@ -20,6 +20,11 @@ Worked on Skill Display as well as did some work on BattleMap Class
 
 Worked on Skill and BattleMap with Ryan through group coding(my account)
 
+### May 28, 2024
+
+Worked on useSkill and battleMap coordinates access system
+
+
 
 ## Qianjun Zhou
 
