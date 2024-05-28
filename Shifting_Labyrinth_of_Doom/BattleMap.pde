@@ -57,7 +57,7 @@ class BattleMap{
     boolean found = false;
     for(int i = 0; i < Combat.length; i++){
       for(int k = 0; k < Combat[i].length; k++){
-        if(Combat[i][k].equals("PC")){
+        if(Combat[i][k] != null && Combat[i][k].equals("PC")){
           updateableX = i;
           updateableY = k;
           found = true;
@@ -68,7 +68,7 @@ class BattleMap{
         break;
       }
     }
-    if(possibleMove[x-updateableX][y - updateableY] == 1){
+    if(possibleMove[x][y] == 1){
       Combat[updateableX][updateableY] = null;
       Combat[x][y] = "PC";
       return true;
@@ -77,6 +77,7 @@ class BattleMap{
       return false;
     }
   }
+  
   void display(){
     stroke(0,0,0);
     for(int i = 400; i < 1200; i += 50){
@@ -146,7 +147,7 @@ class BattleMap{
   void displayMovement(int movement){  // a and b is x-cord y-cord of array beginning with 1
     stroke(0,0,0);
     int[][] possibleMoves = possiblemovement(Combat, movement);
-    possibleMove = possibleMove;
+    possibleMove = possibleMoves;
     for(int i = 0; i < possibleMoves.length; i++){
       for(int k = 0; k < possibleMoves[i].length; k++){
         if(possibleMoves[i][k] == 1){
