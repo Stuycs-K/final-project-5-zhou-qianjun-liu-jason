@@ -5,7 +5,7 @@ class BattleMap{
   int[][] possibleMove;
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
-  
+  Enemy[] enemies;
   public BattleMap(){
     Appearance = new PImage[16][16];
     MiniMap = new String[][]{
@@ -29,7 +29,7 @@ class BattleMap{
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,"EC",null,null,null},
+      {null,null,null,null,null,null,null,null,null,null,null,null,"EC1",null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
@@ -70,7 +70,7 @@ class BattleMap{
       }
     }
     if(possibleMove[x][y] == 1){
-      if(Combat[x][y] != null && Combat[x][y].equals("EC")){
+      if(Combat[x][y] != null && Combat[x][y].substring(0, 2).equals("EC")){
         return false;
       }
       Combat[updateableX][updateableY] = null;
@@ -92,7 +92,7 @@ class BattleMap{
             circle(i+25,j+25,25);
             noFill();
           }
-          if(Combat[(i-400)/50][j/50].equals("EC")){
+          if(Combat[(i-400)/50][j/50].substring(0,2).equals("EC")){
             fill(255,127,127);
             circle(i+25,j+25,25);
             noFill();
