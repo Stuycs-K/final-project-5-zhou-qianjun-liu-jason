@@ -58,7 +58,7 @@ class BattleMap{
     boolean found = false;
     for(int i = 0; i < Combat.length; i++){
       for(int k = 0; k < Combat[i].length; k++){
-        if(Combat[i][k] != null && !Combat[i][k].equals("EC") && Combat[i][k].equals("PC")){
+        if(Combat[i][k] != null && Combat[i][k].equals("PC")){
           updateableX = i;
           updateableY = k;
           found = true;
@@ -70,6 +70,9 @@ class BattleMap{
       }
     }
     if(possibleMove[x][y] == 1){
+      if(Combat[x][y] != null && Combat[x][y].equals("EC")){
+        return false;
+      }
       Combat[updateableX][updateableY] = null;
       Combat[x][y] = "PC";
       return true;
