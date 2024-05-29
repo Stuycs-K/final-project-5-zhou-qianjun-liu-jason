@@ -24,6 +24,8 @@ Worked on Skill and BattleMap with Ryan through group coding(my account)
 
 Worked on useSkill and battleMap coordinates access system
 
+Modified Display methods and set up basic game structure
+
 
 
 ## Qianjun Zhou
