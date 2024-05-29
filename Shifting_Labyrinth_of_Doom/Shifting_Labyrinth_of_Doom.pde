@@ -82,6 +82,9 @@ void keyPressed(){
       selection = 1;
       phase = 3;
     }
+    if(keyCode == ENTER){
+      phase = 4;
+    }
   }
   if(phase == 3){
     if(key == 'x'){
