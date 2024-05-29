@@ -1,3 +1,4 @@
+
 class PlayerCharacter{
   private int HP;
   private Skill[] Skills;
@@ -8,9 +9,9 @@ class PlayerCharacter{
   
   public PlayerCharacter(){
     HP = 0;
-    Skill A = new SkillTest();
-    Skill B = new SkillSwipe();
-    Skill C = new SkillSwipe();
+    Skill A = new BasicSkill1();
+    Skill B = new BasicSkill2();
+    Skill C = new BasicSkill3();
     Skills = new Skill[] {A, B, C};
     UnlockedSkills = new ArrayList<Skill> ();
     UnlockedSkills.add(A);

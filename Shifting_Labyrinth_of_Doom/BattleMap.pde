@@ -30,7 +30,7 @@ class BattleMap{
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,"EC1",null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+      {null,null,null,null,null,null,null,null,null,null,"EC2",null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
