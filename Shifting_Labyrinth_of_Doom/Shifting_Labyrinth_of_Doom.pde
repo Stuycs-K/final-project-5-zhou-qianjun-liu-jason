@@ -85,6 +85,9 @@ void keyPressed(){
     if(keyCode == ENTER){
       phase = 4;
     }
+    if(key == 'x'){
+      phase = 1;
+    }
   }
   if(phase == 3){
     if(key == 'x'){
