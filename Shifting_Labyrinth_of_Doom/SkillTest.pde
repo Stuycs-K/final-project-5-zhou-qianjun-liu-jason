@@ -55,12 +55,12 @@ class SkillTest extends Skill{
               d = b - (Range[rowRange].length/2 - colRange);
             }
             if(direction.equals("right")){
-              d = a + (Range.length/2 - rowRange);
-              c = b - (Range[rowRange].length/2 - colRange);
+              c = a - (Range.length/2 - colRange);
+              d = b + (Range[rowRange].length/2 - rowRange);
             }
             if(direction.equals("left")){
-              d = a - (Range.length/2 - rowRange);
-              c = b - (Range[rowRange].length/2 - colRange);
+              c = a + (Range.length/2 - colRange);
+              d = b - (Range[rowRange].length/2 - rowRange);
             }
             if(c<0||c>15||d<0||d>15){
             }else{
@@ -91,12 +91,12 @@ class SkillTest extends Skill{
               d = b - (Range[rowRange].length/2 - colRange);
             }
             if(direction.equals("right")){
-              d = a + (Range.length/2 - rowRange);
-              c = b - (Range[rowRange].length/2 - colRange);
+              c = a - (Range.length/2 - colRange);
+              d = b + (Range[rowRange].length/2 - rowRange);
             }
             if(direction.equals("left")){
-              d = a - (Range.length/2 - rowRange);
-              c = b - (Range[rowRange].length/2 - colRange);
+              c = a + (Range.length/2 - colRange);
+              d = b - (Range[rowRange].length/2 - rowRange);
             }
             if(c<0||c>15||d<0||d>15){
             }else{

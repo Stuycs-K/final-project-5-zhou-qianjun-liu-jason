@@ -20,15 +20,15 @@ class PlayerCharacter{
     Movement = 2;
     direction = "down";
   }
-  public void useSkill(BattleMap map, Skill choice){
+  public void displaySkill(BattleMap map, Skill choice){
     int x = 0;
     int y = 0;
     boolean found = false;
     for(int i = 0; i < map.getCombat().length; i++){
       for(int k = 0; k < map.getCombat()[i].length; k++){
         if(map.getCombat()[i][k] != null && map.getCombat()[i][k].equals("PC")){
-          x = i;
-          y = k;
+          y = i;
+          x = k;
           found = true;
           break;
         }
@@ -37,7 +37,26 @@ class PlayerCharacter{
           break;
       }
     }
-    choice.displayRange(y,x,direction);
+    choice.displayRange(x,y,direction);
+  }
+  public void useSkill(BattleMap map, Skill choice){
+    int x = 0;
+    int y = 0;
+    boolean found = false;
+    for(int i = 0; i < map.getCombat().length; i++){
+      for(int k = 0; k < map.getCombat()[i].length; k++){
+        if(map.getCombat()[i][k] != null && map.getCombat()[i][k].equals("PC")){
+          y = i;
+          x = k;
+          found = true;
+          break;
+        }
+      }
+      if(found == true){
+          break;
+      }
+    }
+    choice.useSkill(map,x,y,direction);
   }
   public Skill getSkill(int choice){
     return Skills[choice];
@@ -73,5 +92,8 @@ class PlayerCharacter{
   public boolean movement(BattleMap map, int x, int y){
     boolean a = map.swap(x, y);
     return a;
+  }
+  public void setOrientation(String face){
+    direction = face;
   }
 }
