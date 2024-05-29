@@ -13,7 +13,7 @@ class BattleMap{
       {"etl","col","enu","cor",null},
       {null,"end","cou",null,null},
       {null,null,"cou",null,null},
-      {null,null,"exn",null,null}
+      {null,null,"exnp",null,null}
       
       // need to add identifier likely based in string of ,Two-Letter Acronym + Direction, in order to map map more functional
       // direction is set to which way to enter so u is go up to get in room
@@ -154,6 +154,11 @@ class BattleMap{
             square(j*80-10,i*80+30,20);
           }
           noFill();
+          if(MiniMap[i][j].length() == 4){
+            fill(17,26,98);
+            circle(j*80+40,i*80+40,20);
+            noFill();
+          }
           
         }
         noStroke();
