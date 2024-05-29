@@ -1,22 +1,52 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Jason Liu
 
-### date x
+### May 22, 2024
 
-info
+Added base files and put in methods and variables(no code).
 
-### date y
+### May 23, 2024
 
-info
+Made a subclass of Skill to get base code down as well as worked and tested display method in Processing
+
+Optimized Skill display as well as made display method for minimap
+
+### May 24, 2024
+
+Worked on Skill Display as well as did some work on BattleMap Class
+
+### May 25, 2024
+
+Worked on Skill and BattleMap with Ryan through group coding(my account)
+
+### May 28, 2024
+
+Worked on useSkill and battleMap coordinates access system
+
+Modified Display methods and set up basic game structure
 
 
-## GROUP MEMBER 2
 
-### date x
+## Qianjun Zhou
 
-info
+### May 22, 2024
 
-### date y
+Added abstract classes enemy and skill and implemented abstract variables (no actual program).
 
+### May 23, 2024
+
+Made a subclass of skill to help myself understand how the code works and then worked a lot on the character class to link it with the skill class.
+
+### May 25, 2024
+
+Worked on Skill and BattleMap with Jason through group coding(Jason's account)
+
+### May 27, 2024
+
+Made the movement method work within the character class and firgured out how that will look on the main screen.
+
+### May 28, 2024
+
+I made the swapping function for the main character work in conjunction with the map and possible movement.
 info
