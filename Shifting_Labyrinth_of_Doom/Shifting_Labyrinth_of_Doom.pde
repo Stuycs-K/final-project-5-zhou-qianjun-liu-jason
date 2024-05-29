@@ -26,7 +26,7 @@ void draw(){
   }
   textSize(100);
   text(phase, 10, 70);
-  if(phase == 4){
+  if(phase == 5){
     phase = 0;
   }
 }
@@ -83,7 +83,7 @@ void keyPressed(){
       phase = 3;
     }
     if(keyCode == ENTER){
-      phase = 4;
+      phase = 5;
     }
     if(key == 'x'){
       phase = 1;
