@@ -26,6 +26,9 @@ Worked on useSkill and battleMap coordinates access system
 
 Modified Display methods and set up basic game structure
 
+### May 29, 2024
+
+Worked on new skill classes and display for battlemap
 
 
 ## Qianjun Zhou
