@@ -9,9 +9,9 @@ class BasicSkill1 extends Skill{
   public BasicSkill1(){
     Range = new int[][]{
       {0,0,0,0,0},
-      {0,0,1,0,0},
+      {0,1,1,1,0},
       {0,1,0,1,0},
-      {0,0,1,0,0},
+      {0,1,1,1,0},
       {0,0,0,0,0}
     };
     Dmg = 1;

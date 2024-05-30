@@ -1,10 +1,11 @@
 class Goblin extends Enemy{
   private int HP = 10;
   private Skill Skills;
-  private int Movement = 10;
+  private int Movement = 3;
   private int number;
   public Goblin(int num){
     number = num;
+    Skills = new BasicSkill1();
   }
   void useSkill(BattleMap map){
     int x = 0;
@@ -28,6 +29,7 @@ class Goblin extends Enemy{
   void hpChange(int Extent){
     HP = HP - Extent;
   }
-  void movement(){
+  void movement(BattleMap map){
+    map.enemySwap(number,Movement);
   }
 }
