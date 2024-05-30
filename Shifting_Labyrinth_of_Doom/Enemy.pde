@@ -4,5 +4,5 @@ abstract class Enemy{
   private int Movement;
   abstract void useSkill(BattleMap map);
   abstract void hpChange(int Extent);
-  abstract void movement();
+  abstract void movement(BattleMap map);
 }

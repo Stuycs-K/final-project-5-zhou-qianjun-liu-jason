@@ -29,18 +29,26 @@ class BattleMap{
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,"EC1",null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,"EC2",null,null,null,null,null},
+      {null,null,null,null,null,null,null,null,null,null,null,null,"EC0",null,null,null},
+      {null,null,null,null,null,null,null,null,null,null,"EC1",null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
     };
+    
+    enemies = new Enemy[2];
+    enemies[0] = new Goblin(0);
+    enemies[1] = new Goblin(1);
   }
   
   String[][] getCombat(){
     return Combat;
+  }
+  
+  Enemy[] getEnemy(){
+    return enemies;
   }
   
   public void generateRoom(String type){
@@ -80,6 +88,63 @@ class BattleMap{
     else{
       return false;
     }
+  }
+  
+  void enemySwap(int num, int movement){
+    int pcX = 0;
+    int pcY = 0;
+    int ecX = 0;
+    int ecY = 0;
+    boolean foundPC = false;
+    boolean foundEC = false;
+    for(int i = 0; i < Combat.length; i++){
+      for(int k = 0; k < Combat[i].length; k++){
+        if(Combat[i][k] != null && Combat[i][k].equals("PC")){
+          pcX = i;
+          pcY = k;
+          foundPC = true;
+        }
+        if(Combat[i][k] != null && Combat[i][k].equals("EC" + num)){
+          ecX = i;
+          ecY = k;
+          foundEC = true;
+        }
+        if(foundPC && foundEC){
+          break;
+        }
+      }
+      if(foundPC && foundEC){
+        break;
+      }
+    }
+    int ecXprev = ecX;
+    int ecYprev = ecY;
+    while(movement != 0){
+      if(Math.abs(pcX-ecX)>Math.abs(pcX-ecX)){
+        if(pcX-ecX>0){
+          if(ecX+1!=pcX){
+            ecX++;
+          }  
+        }else{
+          if(ecX-1!=pcX){
+            ecX--;
+          }  
+        }
+      }else{
+        if(pcY-ecY>0){
+          if(ecY+1!=pcY){
+            ecY++;
+          }  
+        }else{
+          if(ecY-1!=pcY){
+            ecY--;
+          } 
+        }
+      }
+      movement--;
+    }
+    Combat[ecXprev][ecYprev] = null;
+    Combat[ecX][ecY] = "EC" + num;
   }
   
   void displayCombat(){
