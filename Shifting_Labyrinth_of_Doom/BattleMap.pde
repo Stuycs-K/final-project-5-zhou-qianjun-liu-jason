@@ -111,6 +111,9 @@ class BattleMap{
         noFill();
       }
     }
+    fill(255,255,255);
+    square(0, 400, 400);
+    noFill();
     stroke(255,255,255);
     fill(0,0,0);
     square(0,0,400);
