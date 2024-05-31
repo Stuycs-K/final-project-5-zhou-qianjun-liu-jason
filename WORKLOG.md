@@ -30,6 +30,10 @@ Modified Display methods and set up basic game structure
 
 Worked on new skill classes and display for battlemap
 
+### May 29, 2024
+
+Implemented UI elements as well as implemented enemy movement
+
 
 ## Qianjun Zhou
 
