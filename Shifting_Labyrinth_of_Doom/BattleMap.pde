@@ -21,12 +21,12 @@ class BattleMap{
     Combat = new String[][]{
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,"PC",null,null,null,null,null,null,null,null,null,null,"EC3",null,null},
+      {null,null,null,null,null,null,null,null,null,null,null,null,null,"EC3",null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+      {null,null,null,null,null,null,null,null,"PC",null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,"EC0",null,null,null},
@@ -122,7 +122,7 @@ class BattleMap{
       boolean right = false;
       while(step){
         if(randomized == 0){//up
-          if(characters[1][1]-characters[0][1]<0){
+          if(characters[1][1]-characters[0][1]<-(dist-1)){
             if(confirmation(characters, characters[0][0], characters[0][1]-1)){
               characters[0][1]-=1;
               step = false;
@@ -134,7 +134,7 @@ class BattleMap{
           }
         }
         if(randomized == 1){// down
-          if(characters[1][1]-characters[0][1]>0){
+          if(characters[1][1]-characters[0][1]>dist-1){
             if(confirmation(characters, characters[0][0], characters[0][1]+1)){
               characters[0][1]+=1;
               step = false;
@@ -146,7 +146,7 @@ class BattleMap{
           }
         }
         if(randomized == 2){//left
-          if(characters[1][0]-characters[0][0]<0){
+          if(characters[1][0]-characters[0][0]<dist-1){
             if(confirmation(characters, characters[0][0]-1, characters[0][1])){
               characters[0][0]-=1;
               step = false;
@@ -158,7 +158,7 @@ class BattleMap{
           }
         }
         if(randomized == 3){//right
-          if(characters[1][0]-characters[0][0]>0){
+          if(characters[1][0]-characters[0][0]>-(dist-1)){
             if(confirmation(characters, characters[0][0]+1, characters[0][1])){
               characters[0][0]+=1;
               step = false;

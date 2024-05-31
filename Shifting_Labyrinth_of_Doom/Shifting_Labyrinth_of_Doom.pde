@@ -32,6 +32,7 @@ void draw(){
   if(phase == 5){
     phase = 0;
   }
+  //test2.displayCombat();
   //textSize(20);
   //String a = returnPhaseString(phase);
   //if(phaseAt != phase){
@@ -62,7 +63,7 @@ void mouseClicked(){
   test2.getEnemy()[1].movement(test2);
   test2.getEnemy()[2].movement(test2);
   test2.getEnemy()[3].movement(test2);
-  //test2.display();
+  //test2.displayCombat();
 }
 
 void keyPressed(){
