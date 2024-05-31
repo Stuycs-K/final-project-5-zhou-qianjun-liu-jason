@@ -1,4 +1,4 @@
-class Sniper extends Skill{
+class Ogrebash extends Skill{
   private int[][] Range;
   private int Dmg;
   private int Cooldown;
@@ -6,19 +6,17 @@ class Sniper extends Skill{
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
   
-  public Sniper(){
+  public Ogrebash(){
     Range = new int[][]{
-      {0,0,0,0,0,1,0,0,0,0,0}, // range center is person location you can change and try
-      {0,0,0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0}, // range center is person location you can change and try
+      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,1,0,0,0,0},
+      {0,0,0,1,1,1,0,0,0},
+      {0,0,1,1,0,1,1,0,0},
+      {0,0,0,1,1,1,0,0,0},
+      {0,0,0,0,1,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0},
     };
     Dmg = 1;
     Cooldown = 0;
