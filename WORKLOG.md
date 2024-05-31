@@ -57,3 +57,7 @@ Made the movement method work within the character class and firgured out how th
 
 I made the swapping function for the main character work in conjunction with the map and possible movement.
 info
+
+### May 29, 2024
+
+Added more skills and coded some of the small chatbox on the side that teaches you what you do.
