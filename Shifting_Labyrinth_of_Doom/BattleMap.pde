@@ -53,12 +53,17 @@ class BattleMap{
   }
   
   public void generateRoom(String type){
+    
   }
   
   public void generateFloor(){
   }
   
   public void combatEncounter(int diff){
+    String[][] combat = new String[16][16];
+    while(diff>0){
+      int x = (int)(Math.random()*14);
+    }
   }
 
   boolean swap(int x, int y){

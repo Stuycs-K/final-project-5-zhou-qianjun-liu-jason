@@ -154,7 +154,11 @@ void keyPressed(){
       text(returnPhaseString(phase), 5, 420); 
     }
     if(keyCode == ENTER){
-      phase = 5;
+      phase = 4;
+      test2.display();
+      test2.displayCombat();
+      textSize(20);
+      text(returnPhaseString(phase), 5, 420); 
     }
     if(key == 'x'){
       phase = 1;
