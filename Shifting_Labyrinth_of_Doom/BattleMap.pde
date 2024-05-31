@@ -137,7 +137,7 @@ class BattleMap{
           //}else{
           //  up = true;
           //}
-          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)<Math.abs(Math.abs(characters[1][1]-characters[0][1]-1)+Math.abs(characters[1][0]-characters[0][0])-dist)){
+          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-(characters[0][1]-1))+Math.abs(characters[1][0]-characters[0][0])-dist)){
             if(confirmation(characters, characters[0][0], characters[0][1]-1)){
               characters[0][1]-=1;
               step = false;
@@ -149,7 +149,7 @@ class BattleMap{
           }
         }
         if(randomized == 1){// down
-          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)<Math.abs(Math.abs(characters[1][1]-characters[0][1]+1)+Math.abs(characters[1][0]-characters[0][0])-dist)){
+          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-(characters[0][1]+1))+Math.abs(characters[1][0]-characters[0][0])-dist)){
             if(confirmation(characters, characters[0][0], characters[0][1]+1)){
               characters[0][1]+=1;
               step = false;
@@ -161,7 +161,7 @@ class BattleMap{
           }
         }
         if(randomized == 2){//left
-          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)<Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0]-1)-dist)){
+          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-(characters[0][0]-1))-dist)){
             if(confirmation(characters, characters[0][0]-1, characters[0][1])){
               characters[0][0]-=1;
               step = false;
@@ -173,7 +173,7 @@ class BattleMap{
           }
         }
         if(randomized == 3){//right
-          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)<Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0]+1)-dist)){
+          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-(characters[0][0]+1))-dist)){
             if(confirmation(characters, characters[0][0]+1, characters[0][1])){
               characters[0][0]+=1;
               step = false;
