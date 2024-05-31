@@ -38,10 +38,10 @@ class BattleMap{
     };
     
     enemies = new Enemy[4];
-    enemies[0] = new Goblin(0);
-    enemies[1] = new Goblin(1);
-    enemies[2] = new Goblin(2);
-    enemies[3] = new Goblin(3);
+    enemies[0] = new Dartgoblin(0);
+    enemies[1] = new Dartgoblin(1);
+    enemies[2] = new Dartgoblin(2);
+    enemies[3] = new Dartgoblin(3);
   }
   
   String[][] getCombat(){
