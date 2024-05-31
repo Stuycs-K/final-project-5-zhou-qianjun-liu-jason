@@ -44,6 +44,13 @@ void draw(){
   //    test2.displayCombat();
   //  phaseAt = phase;
   //}
+  //if(phase == 4){
+  //  test2.getEnemy()[0].movement(test2);
+  //  test2.getEnemy()[1].movement(test2);
+  //  test2.getEnemy()[2].movement(test2);
+  //  test2.getEnemy()[3].movement(test2);
+  //  phase++;
+  //}
 } 
 
 void mouseClicked(){
@@ -59,14 +66,28 @@ void mouseClicked(){
       phaseStart = true;
     }
   }
-  test2.getEnemy()[0].movement(test2);
-  test2.getEnemy()[1].movement(test2);
-  test2.getEnemy()[2].movement(test2);
-  test2.getEnemy()[3].movement(test2);
+  
+  //test2.getEnemy()[0].movement(test2);
+  //test2.getEnemy()[1].movement(test2);
+  //test2.getEnemy()[2].movement(test2);
+  //test2.getEnemy()[3].movement(test2);
   //test2.displayCombat();
 }
 
 void keyPressed(){
+  if(phase == 4){
+    test2.getEnemy()[0].movement(test2);
+    test2.getEnemy()[1].movement(test2);
+    test2.getEnemy()[2].movement(test2);
+    test2.getEnemy()[3].movement(test2);
+    if(key == ENTER){
+      phase++;
+      test2.display();
+      test2.displayCombat();
+      textSize(20);
+      text(returnPhaseString(phase), 5, 420); 
+    }
+  }
   if(phase == 1){
     if(keyCode == UP){
       newPerson.setOrientation("up");
@@ -156,6 +177,10 @@ void keyPressed(){
     if(keyCode == ENTER){
       newPerson.useSkill(test2,newPerson.getSkill(selection));
       phase = 4;
+      test2.display();
+      test2.displayCombat();
+      textSize(20);
+      text(returnPhaseString(phase), 5, 420); 
     }
   }
   if(key == 'p'){
@@ -180,8 +205,8 @@ String returnPhaseString(int phase){
   if(phase == 3){
     return "Comfirmation Phase: Click enter to continue. \nOr click x to go back to Skill Phase.";
   }
-  //if(phase == 4){
-  //  return "Enemies turn.";
-  //}
+  if(phase == 4){
+    return "Enemies Phase: Click enter to continue.";
+  }
   return "";
 }
