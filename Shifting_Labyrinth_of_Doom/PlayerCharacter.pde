@@ -9,9 +9,9 @@ class PlayerCharacter{
   
   public PlayerCharacter(){
     HP = 0;
-    Skill A = new BasicSkill1();
-    Skill B = new BasicSkill2();
-    Skill C = new BasicSkill3();
+    Skill A = new Forcefeild();
+    Skill B = new Swipe();
+    Skill C = new Sniper();
     Skills = new Skill[] {A, B, C};
     UnlockedSkills = new ArrayList<Skill> ();
     UnlockedSkills.add(A);
