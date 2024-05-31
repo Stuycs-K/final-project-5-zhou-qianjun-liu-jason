@@ -30,6 +30,6 @@ class Goblin extends Enemy{
     HP = HP - Extent;
   }
   void movement(BattleMap map){
-    map.enemySwap(number,Movement);
+    map.enemySwap(number,Movement,1);
   }
 }

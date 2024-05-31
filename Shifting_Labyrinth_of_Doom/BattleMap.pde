@@ -21,7 +21,7 @@ class BattleMap{
     Combat = new String[][]{
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,"PC",null,null,null,null,null,null,null,null,null,null,null,null,null},
+      {null,null,"PC",null,null,null,null,null,null,null,null,null,null,"EC3",null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
@@ -33,14 +33,15 @@ class BattleMap{
       {null,null,null,null,null,null,null,null,null,null,"EC1",null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+      {null,null,null,null,"EC2",null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
     };
     
-    enemies = new Enemy[2];
+    enemies = new Enemy[4];
     enemies[0] = new Goblin(0);
     enemies[1] = new Goblin(1);
+    enemies[2] = new Goblin(2);
+    enemies[3] = new Goblin(3);
   }
   
   String[][] getCombat(){
@@ -90,61 +91,101 @@ class BattleMap{
     }
   }
   
-  void enemySwap(int num, int movement){
-    int pcX = 0;
-    int pcY = 0;
-    int ecX = 0;
-    int ecY = 0;
-    boolean foundPC = false;
-    boolean foundEC = false;
+  void enemySwap(int num, int movement, int dist){
+    int spotEnemies = 2;
+    int[][] characters = new int[enemies.length+1][2];
     for(int i = 0; i < Combat.length; i++){
       for(int k = 0; k < Combat[i].length; k++){
         if(Combat[i][k] != null && Combat[i][k].equals("PC")){
-          pcX = i;
-          pcY = k;
-          foundPC = true;
+          characters[1][0] = i;
+          characters[1][1] = k;
         }
-        if(Combat[i][k] != null && Combat[i][k].equals("EC" + num)){
-          ecX = i;
-          ecY = k;
-          foundEC = true;
+        if(Combat[i][k] != null && Combat[i][k].substring(0,2).equals("EC" )){
+          if(Combat[i][k].equals("EC" + num)){
+            characters[0][0] = i;
+            characters[0][1] = k;
+          }else{
+            characters[spotEnemies][0] = i;
+            characters[spotEnemies][1] = k;
+            spotEnemies++;
+          }
         }
-        if(foundPC && foundEC){
-          break;
-        }
-      }
-      if(foundPC && foundEC){
-        break;
       }
     }
-    int ecXprev = ecX;
-    int ecYprev = ecY;
+    Combat[characters[0][0]][characters[0][1]] = null;
     while(movement != 0){
-      if(Math.abs(pcX-ecX)>Math.abs(pcX-ecX)){
-        if(pcX-ecX>0){
-          if(ecX+1!=pcX){
-            ecX++;
-          }  
-        }else{
-          if(ecX-1!=pcX){
-            ecX--;
-          }  
+      boolean step = true;
+      int randomized = (int)(Math.random()*4);
+      boolean up = false;
+      boolean down = false;
+      boolean left = false;
+      boolean right = false;
+      while(step){
+        if(randomized == 0){//up
+          if(characters[1][1]-characters[0][1]<0){
+            if(confirmation(characters, characters[0][0], characters[0][1]-1)){
+              characters[0][1]-=1;
+              step = false;
+            }else{
+              up = true;
+            }
+          }else{
+            up = true;
+          }
         }
-      }else{
-        if(pcY-ecY>0){
-          if(ecY+1!=pcY){
-            ecY++;
-          }  
-        }else{
-          if(ecY-1!=pcY){
-            ecY--;
-          } 
+        if(randomized == 1){// down
+          if(characters[1][1]-characters[0][1]>0){
+            if(confirmation(characters, characters[0][0], characters[0][1]+1)){
+              characters[0][1]+=1;
+              step = false;
+            }else{
+              down = true;
+            }
+          }else{
+            down = true;
+          }
         }
+        if(randomized == 2){//left
+          if(characters[1][0]-characters[0][0]<0){
+            if(confirmation(characters, characters[0][0]-1, characters[0][1])){
+              characters[0][0]-=1;
+              step = false;
+            }else{
+              left = true;
+            }
+          }else{
+            left = true;
+          }
+        }
+        if(randomized == 3){//right
+          if(characters[1][0]-characters[0][0]>0){
+            if(confirmation(characters, characters[0][0]+1, characters[0][1])){
+              characters[0][0]+=1;
+              step = false;
+            }else{
+              right = true;
+            }
+          }else{
+            right = true;
+          }
+        }
+        if(up && down && left && right){
+          step = false;
+        }
+        randomized = (randomized+1)%4;
       }
       movement--;
     }
-    Combat[ecXprev][ecYprev] = null;
-    Combat[ecX][ecY] = "EC" + num;
+    Combat[characters[0][0]][characters[0][1]] = "EC" + num;
+  }
+  
+  boolean confirmation(int[][] list, int x, int y){
+    for(int i = 1; i < list.length; i++){
+      if(list[i][0] == x && list[i][1] == y){
+        return false;
+      }
+    }
+    return true;
   }
   
   void displayCombat(){
@@ -160,6 +201,9 @@ class BattleMap{
           if(Combat[(i-400)/50][j/50].substring(0,2).equals("EC")){
             fill(255,127,127);
             circle(i+25,j+25,25);
+            fill(0,0,0);
+            textSize(20);
+            text(Combat[(i-400)/50][j/50].substring(2,3),i+20,j+30);
             noFill();
           }
         }
