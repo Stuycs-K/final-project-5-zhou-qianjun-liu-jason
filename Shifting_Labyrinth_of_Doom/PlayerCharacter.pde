@@ -68,6 +68,9 @@ class PlayerCharacter{
     }
     numSkill++;
   }
+  public ArrayList<Skill> getSkillArray(){
+    return UnlockedSkills;
+  }
   public void gainSkill(Skill choice){
     UnlockedSkills.add(choice);
   }

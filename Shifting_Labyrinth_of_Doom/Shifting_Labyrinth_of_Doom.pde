@@ -17,6 +17,24 @@ void setup(){
 }
 
 void draw(){
+  if(phase == -1){
+    test2.display();
+    test2.displayCombat();
+    textSize(20);
+    ArrayList<Skill> possibleSkill = newPerson.getSkillArray();
+    for(int i = 0; i < possibleSkill.size(); i++){
+      text(newPerson.get(i).getName(), 5, 420 + i * (10));
+    }
+    int prevX = x;
+    int prevY = y;
+    int count = 3;
+    if((prevX != x || prevY != 0) && count > 0){
+      if(prevY > 420 && prevY < 800){
+        newPerson.addSkill(possibleSkill.get((y - 420) / 10));
+        count--;
+      }
+    }
+  }
   if(phase == 0){
     if(phaseStart){
       test2.display();
