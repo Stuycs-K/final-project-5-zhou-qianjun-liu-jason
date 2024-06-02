@@ -89,7 +89,7 @@ class BattleMap{
         break;
       }
     }
-    if(possibleMove[x][y] == 1){
+    if(x > 0 && y > 0 && possibleMove[x][y] == 1){
       if(Combat[x][y] != null && Combat[x][y].substring(0, 2).equals("EC")){
         return false;
       }
