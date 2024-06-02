@@ -34,6 +34,13 @@ Worked on new skill classes and display for battlemap
 
 Implemented UI elements as well as implemented enemy movement
 
+### May 30, 2024
+
+Made enemy movement hover functional.
+
+### June 1, 2024
+
+Added combatGeneration and helped ryan bug fix also fixed enemies leaving to the great beyond.
 
 ## Qianjun Zhou
 
@@ -68,5 +75,5 @@ Added a bunch of new skill classes and new enemies with their respective skills.
 
 ### June 1, 2024
 
-Coded the beginnings of the side bar to swap out skills and made is half work, jason bug fixed everything else with me in a call.
+Coded the beginnings of the side bar to swap out skills and made it half work, jason bug fixed everything else with me in a call.
 
