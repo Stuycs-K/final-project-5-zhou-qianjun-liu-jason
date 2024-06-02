@@ -25,6 +25,10 @@ class Sniper extends Skill{
     MaxCooldown = 10;
   }
   
+  String getName(){
+    return "Sniper";
+  }
+  
   int getCooldown(){
     return Cooldown;
   }

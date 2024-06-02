@@ -7,6 +7,11 @@ class Dartgoblin extends Enemy{
     number = num;
     Skills = new Darts();
   }
+  
+  String getName(){
+    return "Dartgoblin";
+  }
+  
   void useSkill(BattleMap map){
     int x = 0;
     int y = 0;

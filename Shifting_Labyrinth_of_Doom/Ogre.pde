@@ -7,6 +7,11 @@ class Ogre extends Enemy{
     number = num;
     Skills = new Ogrebash();
   }
+  
+  String getName(){
+    return "Ogre";
+  }
+  
   void useSkill(BattleMap map){
     int x = 0;
     int y = 0;

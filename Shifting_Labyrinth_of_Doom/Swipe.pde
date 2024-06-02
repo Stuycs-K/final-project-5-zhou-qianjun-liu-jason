@@ -23,6 +23,10 @@ class Swipe extends Skill{
     MaxCooldown = 10;
   }
   
+  String getName(){
+    return "Swipe";
+  }
+  
   int getCooldown(){
     return Cooldown;
   }

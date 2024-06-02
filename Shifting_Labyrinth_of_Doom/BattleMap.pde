@@ -5,7 +5,7 @@ class BattleMap{
   int[][] possibleMove;
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
-  Enemy[] enemies;
+  ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   public BattleMap(){
     Appearance = new PImage[16][16];
     MiniMap = new String[][]{
@@ -37,18 +37,17 @@ class BattleMap{
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
     };
     
-    enemies = new Enemy[4];
-    enemies[0] = new Dartgoblin(0);
-    enemies[1] = new Dartgoblin(1);
-    enemies[2] = new Dartgoblin(2);
-    enemies[3] = new Dartgoblin(3);
+    enemies.add(new Goblin(0));
+    enemies.add(new Goblin(1));
+    enemies.add(new Dartgoblin(2));
+    enemies.add(new Dartgoblin(3));
   }
   
   String[][] getCombat(){
     return Combat;
   }
   
-  Enemy[] getEnemy(){
+  ArrayList<Enemy> getEnemy(){
     return enemies;
   }
   
@@ -61,9 +60,41 @@ class BattleMap{
   
   public void combatEncounter(int diff){
     String[][] combat = new String[16][16];
+    int a = 0;
+    ArrayList<Enemy> enemys = new ArrayList<Enemy>();
     while(diff>0){
       int x = (int)(Math.random()*14);
+      int y = (int)(Math.random()*14);
+      if(combat[x][y] != null){
+         int select = (int)(Math.random()*3);
+         if(select == 0){
+           if(diff - 1 >= 0){
+             combat[x][y] = "E" + a;
+             enemys.add(new Goblin(a));
+             a++;
+             diff--;
+           }
+         }
+         if(select == 1){
+           if(diff - 1 >= 0){
+             combat[x][y] = "E" + a;
+             enemys.add(new Dartgoblin(a));
+             a++;
+             diff--;
+           }
+         }
+         if(select == 2){
+           if(diff - 2 >= 0){
+             combat[x][y] = "E" + a;
+             enemys.add(new Ogre(a));
+             a++;
+             diff -= 2;
+           }
+         }
+      }
     }
+    enemies = enemys;
+    Combat = combat;
   }
 
   boolean swap(int x, int y){
@@ -98,7 +129,7 @@ class BattleMap{
   
   void enemySwap(int num, int movement, int dist){
     int spotEnemies = 2;
-    int[][] characters = new int[enemies.length+1][2];
+    int[][] characters = new int[enemies.size()+1][2];
     for(int i = 0; i < Combat.length; i++){
       for(int k = 0; k < Combat[i].length; k++){
         if(Combat[i][k] != null && Combat[i][k].equals("PC")){
@@ -139,8 +170,12 @@ class BattleMap{
           //}
           if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-(characters[0][1]-1))+Math.abs(characters[1][0]-characters[0][0])-dist)){
             if(confirmation(characters, characters[0][0], characters[0][1]-1)){
-              characters[0][1]-=1;
-              step = false;
+              if(characters[0][1]-1 < 0){
+                up = true;
+              }else{
+                characters[0][1]-=1;
+                step = false;
+              }
             }else{
               up = true;
             }
@@ -151,8 +186,12 @@ class BattleMap{
         if(randomized == 1){// down
           if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-(characters[0][1]+1))+Math.abs(characters[1][0]-characters[0][0])-dist)){
             if(confirmation(characters, characters[0][0], characters[0][1]+1)){
-              characters[0][1]+=1;
-              step = false;
+              if(characters[0][1]+1 > 15){
+                down = true;
+              }else{
+                characters[0][1]+=1;
+                step = false;
+              }
             }else{
               down = true;
             }
@@ -163,8 +202,12 @@ class BattleMap{
         if(randomized == 2){//left
           if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-(characters[0][0]-1))-dist)){
             if(confirmation(characters, characters[0][0]-1, characters[0][1])){
-              characters[0][0]-=1;
-              step = false;
+              if(characters[0][0]-1 < 0){
+                left = true;
+              }else{
+                characters[0][0]-=1;
+                step = false;
+              }
             }else{
               left = true;
             }
@@ -175,8 +218,12 @@ class BattleMap{
         if(randomized == 3){//right
           if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-(characters[0][0]+1))-dist)){
             if(confirmation(characters, characters[0][0]+1, characters[0][1])){
-              characters[0][0]+=1;
-              step = false;
+              if(characters[0][0]+1 > 15){
+                right = true;
+              }else{
+                characters[0][0]+=1;
+                step = false;
+              }
             }else{
               right = true;
             }
@@ -191,6 +238,7 @@ class BattleMap{
       }
       movement--;
     }
+    
     Combat[characters[0][0]][characters[0][1]] = "EC" + num;
   }
   
