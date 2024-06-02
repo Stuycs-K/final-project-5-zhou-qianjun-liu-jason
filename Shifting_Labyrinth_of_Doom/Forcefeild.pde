@@ -23,6 +23,10 @@ class Forcefeild extends Skill{
     MaxCooldown = 10;
   }
   
+  String getName(){
+    return "Forcefield";
+  }
+  
   int getCooldown(){
     return Cooldown;
   }

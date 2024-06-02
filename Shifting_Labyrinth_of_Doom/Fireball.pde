@@ -23,6 +23,10 @@ class Fireball extends Skill{
     MaxCooldown = 10;
   }
   
+  String getName(){
+    return "Fireball";
+  }
+  
   int getCooldown(){
     return Cooldown;
   }

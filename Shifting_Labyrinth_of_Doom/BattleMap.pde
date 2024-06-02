@@ -66,10 +66,35 @@ class BattleMap{
       int x = (int)(Math.random()*14);
       int y = (int)(Math.random()*14);
       if(combat[x][y] != null){
-         combat[x][y] = "E" + a;
-          a++;
+         int select = (int)(Math.random()*3);
+         if(select == 0){
+           if(diff - 1 >= 0){
+             combat[x][y] = "E" + a;
+             enemys.add(new Goblin(a));
+             a++;
+             diff--;
+           }
+         }
+         if(select == 1){
+           if(diff - 1 >= 0){
+             combat[x][y] = "E" + a;
+             enemys.add(new Dartgoblin(a));
+             a++;
+             diff--;
+           }
+         }
+         if(select == 2){
+           if(diff - 2 >= 0){
+             combat[x][y] = "E" + a;
+             enemys.add(new Ogre(a));
+             a++;
+             diff -= 2;
+           }
+         }
       }
     }
+    enemies = enemys;
+    Combat = combat;
   }
 
   boolean swap(int x, int y){

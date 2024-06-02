@@ -7,6 +7,11 @@ class Goblin extends Enemy{
     number = num;
     Skills = new Goblinswipe();
   }
+  
+  String getName(){
+    return "Goblin";
+  }
+  
   void useSkill(BattleMap map){
     int x = 0;
     int y = 0;

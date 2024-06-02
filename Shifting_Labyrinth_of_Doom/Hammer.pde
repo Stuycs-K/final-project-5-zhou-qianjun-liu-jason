@@ -6,6 +6,10 @@ class Hammer extends Skill{
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
   
+  String getName(){
+    return "Hammer";
+  }
+  
   public Hammer(){
     Range = new int[][]{
       {0,0,0,0,0,0,0,0,0}, // range center is person location you can change and try

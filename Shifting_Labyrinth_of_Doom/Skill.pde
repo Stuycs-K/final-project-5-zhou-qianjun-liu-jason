@@ -4,6 +4,7 @@ abstract class Skill{
   private int Cooldown;
   private int MaxCooldown;
   
+  abstract String getName();
   abstract int getCooldown();
   abstract int getMaxCooldown();
   abstract int getDmg();

@@ -23,6 +23,10 @@ class Darts extends Skill{
     MaxCooldown = 10;
   }
   
+  String getName(){
+    return "Darts";
+  }
+  
   int getCooldown(){
     return Cooldown;
   }
