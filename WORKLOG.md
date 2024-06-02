@@ -61,3 +61,12 @@ info
 ### May 29, 2024
 
 Added more skills and coded some of the small chatbox on the side that teaches you what you do.
+
+### May 30, 2024
+
+Added a bunch of new skill classes and new enemies with their respective skills.
+
+### June 1, 2024
+
+Coded the beginnings of the side bar to swap out skills and made is half work, jason bug fixed everything else with me in a call.
+
