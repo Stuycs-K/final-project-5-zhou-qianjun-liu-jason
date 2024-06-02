@@ -76,10 +76,10 @@ void mouseClicked(){
 
 void keyPressed(){
   if(phase == 4){
-    test2.getEnemy()[0].movement(test2);
-    test2.getEnemy()[1].movement(test2);
-    test2.getEnemy()[2].movement(test2);
-    test2.getEnemy()[3].movement(test2);
+    test2.getEnemy().get(0).movement(test2);
+    test2.getEnemy().get(1).movement(test2);
+    test2.getEnemy().get(2).movement(test2);
+    test2.getEnemy().get(3).movement(test2);
     if(key == ENTER){
       phase++;
       test2.display();
