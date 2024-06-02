@@ -5,10 +5,9 @@ int y;
 BattleMap test2 = new BattleMap();
 PlayerCharacter newPerson = new PlayerCharacter();
 Skill test = new SkillTest();
-int phase = 0;
+int phase = -1;
 boolean phaseStart = true;
 int selection;
-int phaseAt = 0;
 
 void setup(){
   size(1201,800);
@@ -23,14 +22,14 @@ void draw(){
     textSize(20);
     ArrayList<Skill> possibleSkill = newPerson.getSkillArray();
     for(int i = 0; i < possibleSkill.size(); i++){
-      text(newPerson.get(i).getName(), 5, 420 + i * (10));
+      text(possibleSkill.get(i).getName(), 5, 420 + i * (20));
     }
     int prevX = x;
     int prevY = y;
     int count = 3;
     if((prevX != x || prevY != 0) && count > 0){
       if(prevY > 420 && prevY < 800){
-        newPerson.addSkill(possibleSkill.get((y - 420) / 10));
+        newPerson.addSkill(possibleSkill.get((y - 420) / 20));
         count--;
       }
     }
