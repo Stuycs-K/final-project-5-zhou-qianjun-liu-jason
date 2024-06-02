@@ -89,18 +89,24 @@ class BattleMap{
     return newMap;
   }
   
-  public void combatEncounter(int diff){
+  void combatEncounter(int diff){
     String[][] combat = new String[16][16];
+    for(int i = 0; i < combat.length; i++){
+      for(int k = 0; k < combat[i].length; k++){
+        combat[i][k] = null;
+      }
+    }
+    //combat[0][0] = "PC";
     int a = 0;
     ArrayList<Enemy> enemys = new ArrayList<Enemy>();
     while(diff>0){
-      int x = (int)(Math.random()*14);
-      int y = (int)(Math.random()*14);
-      if(combat[x][y] != null){
+      int x = (int)(Math.random()*14)+1;
+      int y = (int)(Math.random()*14)+1;
+      if(combat[x][y] == null){
          int select = (int)(Math.random()*3);
          if(select == 0){
            if(diff - 1 >= 0){
-             combat[x][y] = "E" + a;
+             combat[x][y] = "EC" + a;
              enemys.add(new Goblin(a));
              a++;
              diff--;
@@ -108,7 +114,7 @@ class BattleMap{
          }
          if(select == 1){
            if(diff - 1 >= 0){
-             combat[x][y] = "E" + a;
+             combat[x][y] = "EC" + a;
              enemys.add(new Dartgoblin(a));
              a++;
              diff--;
@@ -116,7 +122,7 @@ class BattleMap{
          }
          if(select == 2){
            if(diff - 2 >= 0){
-             combat[x][y] = "E" + a;
+             combat[x][y] = "EC" + a;
              enemys.add(new Ogre(a));
              a++;
              diff -= 2;

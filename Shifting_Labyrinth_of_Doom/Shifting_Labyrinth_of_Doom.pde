@@ -17,10 +17,18 @@ int prevY = 0;
 void setup(){
   size(1201,800);
   test2.display();
+  test2.combatEncounter(4);
   test2.displayCombat();
 }
 
 void draw(){
+  textSize(20);
+  Skill[] SkillHave = newPerson.getSkills();
+  for(int i = 0; i < SkillHave.length; i++){
+    if(SkillHave[i] != null){
+      text(SkillHave[i].getName(), 5, 600 + i * (20));
+    }
+  }
   if(phase == -1){
     ArrayList<Skill> possibleSkill = newPerson.getSkillArray();
     if(phaseStart){
@@ -46,13 +54,6 @@ void draw(){
         count--;
         prevX = drawx;
         prevY = drawy;
-        textSize(20);
-        //Skill[] SkillHave = newPerson.getSkills();
-        //for(int i = 0; i < SkillHave.length; i++){
-        //  if(SkillHave[i] != null){
-        //    text(SkillHave[i].getName(), 5, 600 + i * (20));
-        //  }
-        //}
       }
     }
     if(count <= 0){
