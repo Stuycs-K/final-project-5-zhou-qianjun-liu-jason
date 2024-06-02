@@ -59,6 +59,11 @@ class PlayerCharacter{
     }
     choice.useSkill(map,x,y,direction);
   }
+  
+  public Skill[] getSkills(){
+    return Skills;
+  }
+  
   public Skill getSkill(int choice){
     return Skills[choice];
   }

@@ -59,6 +59,34 @@ class BattleMap{
     String[][] newMap = new String[5][5];
     int entrance = (int)(Math.random()*5);
     int exit = (int)(Math.random()*5);
+    generatePathway(0, entrance, exit, newMap, 8);
+  }
+  
+  public String[][] generatePathway(int x, int y, int exit, String[][] newMap, int size){
+    String[][] empty = new String[1][1];
+    if(size == -1){
+      return new String[1][1];
+    }
+    if(x == 4 && y == exit){
+      return newMap;
+    }
+    newMap[x][y] = "etu";
+    if(generatePathway(x+1, y, exit, newMap, size-1).length!=1){
+      return generatePathway(x+1, y, exit, newMap, size-1);
+    }
+    newMap[x][y] = "etd";
+    if(generatePathway(x-1, y, exit, newMap, size-1).length!=1){
+      return generatePathway(x-1, y, exit, newMap, size-1);
+    }
+    newMap[x][y] = "etl";
+    if(generatePathway(x, y-1, exit, newMap, size-1).length!=1){
+      return generatePathway(x, y-1, exit, newMap, size-1);
+    }
+    newMap[x][y] = "etr";
+    if(generatePathway(x, y+1, exit, newMap, size).length!=1){
+      return generatePathway(x, y+1, exit, newMap, size-1);
+    }
+    return newMap;
   }
   
   public void combatEncounter(int diff){

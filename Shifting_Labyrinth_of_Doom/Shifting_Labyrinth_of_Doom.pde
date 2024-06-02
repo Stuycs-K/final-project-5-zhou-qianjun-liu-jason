@@ -7,9 +7,12 @@ int drawy;
 BattleMap test2 = new BattleMap();
 PlayerCharacter newPerson = new PlayerCharacter();
 Skill test = new SkillTest();
-int phase = 0;
+int phase = -1;
 boolean phaseStart = true;
 int selection;
+int count;
+int prevX = 0;
+int prevY = 0;
 
 void setup(){
   size(1201,800);
@@ -19,24 +22,43 @@ void setup(){
 
 void draw(){
   if(phase == -1){
-    test2.display();
-    test2.displayCombat();
-    textSize(20);
     ArrayList<Skill> possibleSkill = newPerson.getSkillArray();
-    for(int i = 0; i < possibleSkill.size(); i++){
-      text(possibleSkill.get(i).getName(), 5, 420 + i * (20));
+    if(phaseStart){
+      count = 3;
+      prevX = 0;
+      prevY = 0;
+      newPerson.clearSkill();
+      test2.display();
+      test2.displayCombat();
+      textSize(20);
+      for(int i = 0; i < possibleSkill.size(); i++){
+        text(possibleSkill.get(i).getName(), 5, 420 + i * (20));
+      }
+      phaseStart = false;
     }
-    int prevX = drawx;
-    int prevY = drawy;
-    int count = 3;
-    if((prevX != x || prevY != 0) && count > 0){
-      if(prevY > 420 && prevY < 420 + possibleSkill.size() * 20){
-        newPerson.addSkill(possibleSkill.get((y - 420) / 20));
+    
+    
+    //textSize(20);
+    //text(count,5,700);
+    if((prevX != drawx || prevY != drawy) && count > 0){
+      if(drawy > 400 && drawy < 400 + (possibleSkill.size() * 20)){
+        newPerson.addSkill(possibleSkill.get((drawy - 400) / 20));
         count--;
+        prevX = drawx;
+        prevY = drawy;
+        textSize(20);
+        //Skill[] SkillHave = newPerson.getSkills();
+        //for(int i = 0; i < SkillHave.length; i++){
+        //  if(SkillHave[i] != null){
+        //    text(SkillHave[i].getName(), 5, 600 + i * (20));
+        //  }
+        //}
       }
     }
-    if(count == 0){
-      phase = 1;
+    if(count <= 0){
+      phaseStart = true;
+      //text(count,5,700);
+      phase = 0;
     }
   }
   if(phase == 0){
