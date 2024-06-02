@@ -6,6 +6,10 @@ class BasicSkill2 extends Skill{
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
   
+  String getName(){
+    return "BasicSkill2";
+  }
+  
   public BasicSkill2(){
     Range = new int[][]{
       {0,0,0,0,1,0,0,0,0}, // range center is person location you can change and try

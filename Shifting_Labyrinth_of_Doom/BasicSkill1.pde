@@ -6,6 +6,10 @@ class BasicSkill1 extends Skill{
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
   
+  String getName(){
+    return "BasicSkill1";
+  }
+  
   public BasicSkill1(){
     Range = new int[][]{
       {0,0,0,0,0},
