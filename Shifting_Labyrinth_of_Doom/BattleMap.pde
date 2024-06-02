@@ -56,6 +56,9 @@ class BattleMap{
   }
   
   public void generateFloor(){
+    String[][] newMap = new String[5][5];
+    int entrance = (int)(Math.random()*5);
+    int exit = (int)(Math.random()*5);
   }
   
   public void combatEncounter(int diff){
