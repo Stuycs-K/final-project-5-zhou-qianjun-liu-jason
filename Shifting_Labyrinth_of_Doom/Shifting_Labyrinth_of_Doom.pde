@@ -2,10 +2,12 @@ public int sizeOfSidebar = 400;
 public int sizePerSquare = 50;
 int x;
 int y;
+int drawx;
+int drawy;
 BattleMap test2 = new BattleMap();
 PlayerCharacter newPerson = new PlayerCharacter();
 Skill test = new SkillTest();
-int phase = -1;
+int phase = 0;
 boolean phaseStart = true;
 int selection;
 
@@ -24,14 +26,17 @@ void draw(){
     for(int i = 0; i < possibleSkill.size(); i++){
       text(possibleSkill.get(i).getName(), 5, 420 + i * (20));
     }
-    int prevX = x;
-    int prevY = y;
+    int prevX = drawx;
+    int prevY = drawy;
     int count = 3;
     if((prevX != x || prevY != 0) && count > 0){
-      if(prevY > 420 && prevY < 800){
+      if(prevY > 420 && prevY < 420 + possibleSkill.size() * 20){
         newPerson.addSkill(possibleSkill.get((y - 420) / 20));
         count--;
       }
+    }
+    if(count == 0){
+      phase = 1;
     }
   }
   if(phase == 0){
@@ -73,6 +78,8 @@ void draw(){
 void mouseClicked(){
   x = (mouseX-sizeOfSidebar)/sizePerSquare;
   y = (mouseY)/sizePerSquare;
+  drawx = mouseX;
+  drawy = mouseY;
   if(phase == 0){
     if(newPerson.movement(test2, x, y)){
       phase = 1;
