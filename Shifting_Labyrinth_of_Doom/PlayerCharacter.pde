@@ -1,3 +1,4 @@
+
 class PlayerCharacter{
   private int HP;
   private Skill[] Skills;
@@ -8,9 +9,9 @@ class PlayerCharacter{
   
   public PlayerCharacter(){
     HP = 0;
-    Skill A = new SkillTest();
-    Skill B = new SkillSwipe();
-    Skill C = new SkillSwipe();
+    Skill A = new Forcefeild();
+    Skill B = new Swipe();
+    Skill C = new Sniper();
     Skills = new Skill[] {A, B, C};
     UnlockedSkills = new ArrayList<Skill> ();
     UnlockedSkills.add(A);
@@ -58,6 +59,11 @@ class PlayerCharacter{
     }
     choice.useSkill(map,x,y,direction);
   }
+  
+  public Skill[] getSkills(){
+    return Skills;
+  }
+  
   public Skill getSkill(int choice){
     return Skills[choice];
   }
@@ -66,6 +72,9 @@ class PlayerCharacter{
       Skills[numSkill] = choice;
     }
     numSkill++;
+  }
+  public ArrayList<Skill> getSkillArray(){
+    return UnlockedSkills;
   }
   public void gainSkill(Skill choice){
     UnlockedSkills.add(choice);

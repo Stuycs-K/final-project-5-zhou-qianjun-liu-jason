@@ -26,7 +26,21 @@ Worked on useSkill and battleMap coordinates access system
 
 Modified Display methods and set up basic game structure
 
+### May 29, 2024
 
+Worked on new skill classes and display for battlemap
+
+### May 29, 2024
+
+Implemented UI elements as well as implemented enemy movement
+
+### May 30, 2024
+
+Made enemy movement hover functional.
+
+### June 1, 2024
+
+Added combatGeneration and helped ryan bug fix also fixed enemies leaving to the great beyond.
 
 ## Qianjun Zhou
 
@@ -50,3 +64,16 @@ Made the movement method work within the character class and firgured out how th
 
 I made the swapping function for the main character work in conjunction with the map and possible movement.
 info
+
+### May 29, 2024
+
+Added more skills and coded some of the small chatbox on the side that teaches you what you do.
+
+### May 30, 2024
+
+Added a bunch of new skill classes and new enemies with their respective skills.
+
+### June 1, 2024
+
+Coded the beginnings of the side bar to swap out skills and made it half work, jason bug fixed everything else with me in a call.
+

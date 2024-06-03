@@ -1,4 +1,4 @@
-class SkillTest extends Skill{
+class Swipe extends Skill{
   private int[][] Range;
   private int Dmg;
   private int Cooldown;
@@ -6,18 +6,13 @@ class SkillTest extends Skill{
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
   
-  String getName(){
-    return "BasicSkill2";
-  }
-  
-  
-  public SkillTest(){
+  public Swipe(){
     Range = new int[][]{
-      {0,0,1,0,1,0,1,0,0}, // range center is person location you can change and try
-      {0,0,1,0,1,0,1,0,0},
-      {0,0,0,1,1,1,0,0,0},
-      {0,0,1,0,1,0,1,0,0},
-      {0,0,0,0,1,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0}, // range center is person location you can change and try
+      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,1,1,0,0,0,0},
+      {0,0,0,0,0,1,0,0,0},
       {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
@@ -26,6 +21,10 @@ class SkillTest extends Skill{
     Dmg = 1;
     Cooldown = 0;
     MaxCooldown = 10;
+  }
+  
+  String getName(){
+    return "Swipe";
   }
   
   int getCooldown(){

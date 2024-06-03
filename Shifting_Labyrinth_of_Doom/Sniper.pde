@@ -1,4 +1,4 @@
-class SkillTest extends Skill{
+class Sniper extends Skill{
   private int[][] Range;
   private int Dmg;
   private int Cooldown;
@@ -6,26 +6,27 @@ class SkillTest extends Skill{
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
   
-  String getName(){
-    return "BasicSkill2";
-  }
-  
-  
-  public SkillTest(){
+  public Sniper(){
     Range = new int[][]{
-      {0,0,1,0,1,0,1,0,0}, // range center is person location you can change and try
-      {0,0,1,0,1,0,1,0,0},
-      {0,0,0,1,1,1,0,0,0},
-      {0,0,1,0,1,0,1,0,0},
-      {0,0,0,0,1,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,1,0,0,0,0,0}, // range center is person location you can change and try
+      {0,0,0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0,0,0,0,0,0,0},
     };
     Dmg = 1;
     Cooldown = 0;
     MaxCooldown = 10;
+  }
+  
+  String getName(){
+    return "Sniper";
   }
   
   int getCooldown(){

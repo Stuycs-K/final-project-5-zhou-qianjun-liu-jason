@@ -1,4 +1,4 @@
-class SkillTest extends Skill{
+class BasicSkill1 extends Skill{
   private int[][] Range;
   private int Dmg;
   private int Cooldown;
@@ -7,21 +7,16 @@ class SkillTest extends Skill{
   public int sizePerSquare = 50;
   
   String getName(){
-    return "BasicSkill2";
+    return "BasicSkill1";
   }
   
-  
-  public SkillTest(){
+  public BasicSkill1(){
     Range = new int[][]{
-      {0,0,1,0,1,0,1,0,0}, // range center is person location you can change and try
-      {0,0,1,0,1,0,1,0,0},
-      {0,0,0,1,1,1,0,0,0},
-      {0,0,1,0,1,0,1,0,0},
-      {0,0,0,0,1,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0,0},
+      {0,0,0,0,0},
+      {0,1,1,1,0},
+      {0,1,0,1,0},
+      {0,1,1,1,0},
+      {0,0,0,0,0}
     };
     Dmg = 1;
     Cooldown = 0;

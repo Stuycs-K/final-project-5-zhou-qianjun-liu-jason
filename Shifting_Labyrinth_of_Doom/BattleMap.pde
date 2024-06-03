@@ -5,7 +5,7 @@ class BattleMap{
   int[][] possibleMove;
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
-  
+  ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   public BattleMap(){
     Appearance = new PImage[16][16];
     MiniMap = new String[][]{
@@ -13,7 +13,7 @@ class BattleMap{
       {"etl","col","enu","cor",null},
       {null,"end","cou",null,null},
       {null,null,"cou",null,null},
-      {null,null,"exn",null,null}
+      {null,null,"exnp",null,null}
       
       // need to add identifier likely based in string of ,Two-Letter Acronym + Direction, in order to map map more functional
       // direction is set to which way to enter so u is go up to get in room
@@ -21,35 +21,117 @@ class BattleMap{
     Combat = new String[][]{
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,"PC",null,null,null,null,null,null,null,null,null,null,null,null,null},
+      {null,null,null,null,null,null,null,null,null,null,null,null,null,"EC3",null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+      {null,null,null,null,null,null,null,null,"PC",null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,"EC",null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+      {null,null,null,null,null,null,null,null,null,null,null,null,"EC0",null,null,null},
+      {null,null,null,null,null,null,null,null,null,null,"EC1",null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+      {null,null,null,null,"EC2",null,null,null,null,null,null,null,null,null,null,null},
       {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
     };
+    
+    enemies.add(new Goblin(0));
+    enemies.add(new Goblin(1));
+    enemies.add(new Dartgoblin(2));
+    enemies.add(new Dartgoblin(3));
   }
   
   String[][] getCombat(){
     return Combat;
   }
   
+  ArrayList<Enemy> getEnemy(){
+    return enemies;
+  }
+  
   public void generateRoom(String type){
+    
   }
   
   public void generateFloor(){
+    String[][] newMap = new String[5][5];
+    int entrance = (int)(Math.random()*5);
+    int exit = (int)(Math.random()*5);
+    generatePathway(0, entrance, exit, newMap, 8);
   }
   
-  public void combatEncounter(int diff){
+  public String[][] generatePathway(int x, int y, int exit, String[][] newMap, int size){
+    String[][] empty = new String[1][1];
+    if(size == -1){
+      return new String[1][1];
+    }
+    if(x == 4 && y == exit){
+      return newMap;
+    }
+    newMap[x][y] = "etu";
+    if(generatePathway(x+1, y, exit, newMap, size-1).length!=1){
+      return generatePathway(x+1, y, exit, newMap, size-1);
+    }
+    newMap[x][y] = "etd";
+    if(generatePathway(x-1, y, exit, newMap, size-1).length!=1){
+      return generatePathway(x-1, y, exit, newMap, size-1);
+    }
+    newMap[x][y] = "etl";
+    if(generatePathway(x, y-1, exit, newMap, size-1).length!=1){
+      return generatePathway(x, y-1, exit, newMap, size-1);
+    }
+    newMap[x][y] = "etr";
+    if(generatePathway(x, y+1, exit, newMap, size).length!=1){
+      return generatePathway(x, y+1, exit, newMap, size-1);
+    }
+    return newMap;
+  }
+  
+  void combatEncounter(int diff){
+    String[][] combat = new String[16][16];
+    for(int i = 0; i < combat.length; i++){
+      for(int k = 0; k < combat[i].length; k++){
+        combat[i][k] = null;
+      }
+    }
+    //combat[0][0] = "PC";
+    int a = 0;
+    ArrayList<Enemy> enemys = new ArrayList<Enemy>();
+    while(diff>0){
+      int x = (int)(Math.random()*14)+1;
+      int y = (int)(Math.random()*14)+1;
+      if(combat[x][y] == null){
+         int select = (int)(Math.random()*3);
+         if(select == 0){
+           if(diff - 1 >= 0){
+             combat[x][y] = "EC" + a;
+             enemys.add(new Goblin(a));
+             a++;
+             diff--;
+           }
+         }
+         if(select == 1){
+           if(diff - 1 >= 0){
+             combat[x][y] = "EC" + a;
+             enemys.add(new Dartgoblin(a));
+             a++;
+             diff--;
+           }
+         }
+         if(select == 2){
+           if(diff - 2 >= 0){
+             combat[x][y] = "EC" + a;
+             enemys.add(new Ogre(a));
+             a++;
+             diff -= 2;
+           }
+         }
+      }
+    }
+    enemies = enemys;
+    Combat = combat;
   }
 
   boolean swap(int x, int y){
@@ -69,8 +151,8 @@ class BattleMap{
         break;
       }
     }
-    if(possibleMove[x][y] == 1){
-      if(Combat[x][y] != null && Combat[x][y].equals("EC")){
+    if(x > 0 && y > 0 && possibleMove[x][y] == 1){
+      if(Combat[x][y] != null && Combat[x][y].substring(0, 2).equals("EC")){
         return false;
       }
       Combat[updateableX][updateableY] = null;
@@ -80,6 +162,130 @@ class BattleMap{
     else{
       return false;
     }
+  }
+  
+  void enemySwap(int num, int movement, int dist){
+    int spotEnemies = 2;
+    int[][] characters = new int[enemies.size()+1][2];
+    for(int i = 0; i < Combat.length; i++){
+      for(int k = 0; k < Combat[i].length; k++){
+        if(Combat[i][k] != null && Combat[i][k].equals("PC")){
+          characters[1][0] = i;
+          characters[1][1] = k;
+        }
+        if(Combat[i][k] != null && Combat[i][k].substring(0,2).equals("EC" )){
+          if(Combat[i][k].equals("EC" + num)){
+            characters[0][0] = i;
+            characters[0][1] = k;
+          }else{
+            characters[spotEnemies][0] = i;
+            characters[spotEnemies][1] = k;
+            spotEnemies++;
+          }
+        }
+      }
+    }
+    Combat[characters[0][0]][characters[0][1]] = null;
+    while(movement != 0){
+      boolean step = true;
+      int randomized = (int)(Math.random()*4);
+      boolean up = false;
+      boolean down = false;
+      boolean left = false;
+      boolean right = false;
+      while(step){
+        if(randomized == 0){//up
+          //if(characters[1][1]-characters[0][1]<-(dist)){
+          //  if(confirmation(characters, characters[0][0], characters[0][1]-1)){
+          //    characters[0][1]-=1;
+          //    step = false;
+          //  }else{
+          //    up = true;
+          //  }
+          //}else{
+          //  up = true;
+          //}
+          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-(characters[0][1]-1))+Math.abs(characters[1][0]-characters[0][0])-dist)){
+            if(confirmation(characters, characters[0][0], characters[0][1]-1)){
+              if(characters[0][1]-1 < 0){
+                up = true;
+              }else{
+                characters[0][1]-=1;
+                step = false;
+              }
+            }else{
+              up = true;
+            }
+          }else{
+            up = true;
+          }
+        }
+        if(randomized == 1){// down
+          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-(characters[0][1]+1))+Math.abs(characters[1][0]-characters[0][0])-dist)){
+            if(confirmation(characters, characters[0][0], characters[0][1]+1)){
+              if(characters[0][1]+1 > 15){
+                down = true;
+              }else{
+                characters[0][1]+=1;
+                step = false;
+              }
+            }else{
+              down = true;
+            }
+          }else{
+            down = true;
+          }
+        }
+        if(randomized == 2){//left
+          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-(characters[0][0]-1))-dist)){
+            if(confirmation(characters, characters[0][0]-1, characters[0][1])){
+              if(characters[0][0]-1 < 0){
+                left = true;
+              }else{
+                characters[0][0]-=1;
+                step = false;
+              }
+            }else{
+              left = true;
+            }
+          }else{
+            left = true;
+          }
+        }
+        if(randomized == 3){//right
+          if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-(characters[0][0]+1))-dist)){
+            if(confirmation(characters, characters[0][0]+1, characters[0][1])){
+              if(characters[0][0]+1 > 15){
+                right = true;
+              }else{
+                characters[0][0]+=1;
+                step = false;
+              }
+            }else{
+              right = true;
+            }
+          }else{
+            right = true;
+          }
+        }
+        if(up && down && left && right){
+          step = false;
+        }
+        randomized = (randomized+1)%4;
+      }
+      movement--;
+    }
+    
+    Combat[characters[0][0]][characters[0][1]] = "EC" + num;
+  }
+  
+  boolean confirmation(int[][] list, int x, int y){
+    for(int i = 1; i < list.length; i++){
+      if(list[i][0] == x && list[i][1] == y){
+        return false;
+      }
+    }
+    return true;
   }
   
   void displayCombat(){
@@ -92,9 +298,12 @@ class BattleMap{
             circle(i+25,j+25,25);
             noFill();
           }
-          if(Combat[(i-400)/50][j/50].equals("EC")){
+          if(Combat[(i-400)/50][j/50].substring(0,2).equals("EC")){
             fill(255,127,127);
             circle(i+25,j+25,25);
+            fill(0,0,0);
+            textSize(20);
+            text(Combat[(i-400)/50][j/50].substring(2,3),i+20,j+30);
             noFill();
           }
         }
@@ -111,6 +320,9 @@ class BattleMap{
         noFill();
       }
     }
+    fill(255,255,255);
+    square(0, 400, 400);
+    noFill();
     stroke(255,255,255);
     fill(0,0,0);
     square(0,0,400);
@@ -154,6 +366,11 @@ class BattleMap{
             square(j*80-10,i*80+30,20);
           }
           noFill();
+          if(MiniMap[i][j].length() == 4){
+            fill(17,26,98);
+            circle(j*80+40,i*80+40,20);
+            noFill();
+          }
           
         }
         noStroke();
