@@ -55,38 +55,131 @@ class BattleMap{
     
   }
   
-  public void generateFloor(){
-    String[][] newMap = new String[5][5];
-    int entrance = (int)(Math.random()*5);
-    int exit = (int)(Math.random()*5);
-    generatePathway(0, entrance, exit, newMap, 8);
+  public boolean canCarve(int row, int col) {
+    if(row == 0 || col == 0 || row == Combat.length-1 || col == Combat[0].length-1){
+      return false;
+    }
+    int a = 0;
+    if(Combat[row+1][col]!=null){
+      a++;
+    }
+    if(Combat[row-1][col]!=null){
+      a++;
+    }
+    if(Combat[row][col+1]!=null){
+      a++;
+    }
+    if(Combat[row][col-1]!=null){
+      a++;
+    }
+    if(a > 1){
+      return false;
+    }
+    return true;
   }
   
-  public String[][] generatePathway(int x, int y, int exit, String[][] newMap, int size){
-    String[][] empty = new String[1][1];
-    if(size == -1){
-      return new String[1][1];
+  public void carveMaze(int row, int col, String previousDirection, double CHANCE_TO_GO_STRAIGHT){
+    Combat = new String[5][5];
+    ArrayList<String> Order = new ArrayList<String>();
+    Order.add("Up");
+    Order.add("Down");
+    Order.add("Left");
+    Order.add("Right");
+    while(Order.size()!=0){
+      if(Math.random()<=CHANCE_TO_GO_STRAIGHT){
+        if(previousDirection.equals("Up")){
+          if(canCarve(row-1, col)){
+            Combat[row-1][col] = "co";
+            
+              // gotoTop();
+              // System.out.println(this);
+              // wait(50);
+            
+            carveMaze(row-1, col, "Up", CHANCE_TO_GO_STRAIGHT);
+          }
+        }
+        if(previousDirection.equals("Down")){
+          if(canCarve(row+1, col)){
+            Combat[row+1][col] = "co";
+            
+              // gotoTop();
+              // System.out.println(this);
+              // wait(50);
+            
+            carveMaze(row+1, col, "Down", CHANCE_TO_GO_STRAIGHT);
+          }
+        }
+        if(previousDirection.equals("Left")){
+          if(canCarve(row, col-1)){
+            Combat[row][col-1] = "co";
+            
+              // gotoTop();
+              // System.out.println(this);
+              // wait(50);
+            
+            carveMaze(row, col-1, "Left", CHANCE_TO_GO_STRAIGHT);
+          }
+        }
+        if(previousDirection.equals("Right")){
+          if(canCarve(row, col+1)){
+            Combat[row][col+1] = "co";
+            
+              // gotoTop();
+              // System.out.println(this);
+              // wait(50);
+            
+            carveMaze(row, col+1, "Right", CHANCE_TO_GO_STRAIGHT);
+          }
+        }
+      }
+      int index = (int)(Math.random()*Order.size());
+      String direction = Order.get(index);
+      Order.remove(index);
+      if(direction.equals("Up")){
+        if(canCarve(row-1, col)){
+          Combat[row-1][col] = "co";
+          
+            // gotoTop();
+            // System.out.println(this);
+            // wait(50);
+          
+          carveMaze(row-1, col, "Up", CHANCE_TO_GO_STRAIGHT);
+        }
+      }
+      if(direction.equals("Down")){
+        if(canCarve(row+1, col)){
+          Combat[row+1][col] = "co";
+          
+            // gotoTop();
+            // System.out.println(this);
+            // wait(50);
+          
+          carveMaze(row+1, col, "Down", CHANCE_TO_GO_STRAIGHT);
+        }
+      }
+      if(direction.equals("Left")){
+        if(canCarve(row, col-1)){
+          Combat[row][col-1] = "co";
+          
+            // gotoTop();
+            // System.out.println(this);
+            // wait(50);
+          
+          carveMaze(row, col-1, "Left", CHANCE_TO_GO_STRAIGHT);
+        }
+      }
+      if(direction.equals("Right")){
+        if(canCarve(row, col+1)){
+          Combat[row][col+1] = "co";
+          
+            // gotoTop();
+            // System.out.println(this);
+            // wait(50);
+          
+          carveMaze(row, col+1, "Right", CHANCE_TO_GO_STRAIGHT);
+        }
+      }
     }
-    if(x == 4 && y == exit){
-      return newMap;
-    }
-    newMap[x][y] = "etu";
-    if(generatePathway(x+1, y, exit, newMap, size-1).length!=1){
-      return generatePathway(x+1, y, exit, newMap, size-1);
-    }
-    newMap[x][y] = "etd";
-    if(generatePathway(x-1, y, exit, newMap, size-1).length!=1){
-      return generatePathway(x-1, y, exit, newMap, size-1);
-    }
-    newMap[x][y] = "etl";
-    if(generatePathway(x, y-1, exit, newMap, size-1).length!=1){
-      return generatePathway(x, y-1, exit, newMap, size-1);
-    }
-    newMap[x][y] = "etr";
-    if(generatePathway(x, y+1, exit, newMap, size).length!=1){
-      return generatePathway(x, y+1, exit, newMap, size-1);
-    }
-    return newMap;
   }
   
   void combatEncounter(int diff){
