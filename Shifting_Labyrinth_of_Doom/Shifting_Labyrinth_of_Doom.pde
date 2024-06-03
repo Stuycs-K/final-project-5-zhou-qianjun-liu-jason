@@ -123,10 +123,9 @@ void mouseClicked(){
 
 void keyPressed(){
   if(phase == 4){
-    test2.getEnemy().get(0).movement(test2);
-    test2.getEnemy().get(1).movement(test2);
-    test2.getEnemy().get(2).movement(test2);
-    test2.getEnemy().get(3).movement(test2);
+    for(int i = 0; i < test2.getEnemy().size(); i++){
+      test2.getEnemy().get(i).movement(test2);
+    }
     if(key == ENTER){
       phase++;
       test2.display();
