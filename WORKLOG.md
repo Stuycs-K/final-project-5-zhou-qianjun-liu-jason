@@ -42,6 +42,10 @@ Made enemy movement hover functional.
 
 Added combatGeneration and helped ryan bug fix also fixed enemies leaving to the great beyond.
 
+### June 3, 2024
+
+Added map generation.
+
 ## Qianjun Zhou
 
 ### May 22, 2024
