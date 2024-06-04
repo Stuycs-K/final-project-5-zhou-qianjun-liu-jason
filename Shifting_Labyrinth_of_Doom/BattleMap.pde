@@ -75,7 +75,7 @@ class BattleMap{
       while(step){
         if(randomized == 0){//up
           if(Math.abs(Math.abs(4-y)+Math.abs(end-x))>Math.abs(Math.abs(4-y)+Math.abs(end-(x-1)))){
-            if(x-1>=0&&MiniMap[x-1][y]==null&&rmNumber>2){
+            if(x-1>=0&&MiniMap[x-1][y]==null){
               x -= 1;
               addition = "u";
               step = false;
@@ -97,7 +97,7 @@ class BattleMap{
         }
         if(randomized == 1){//down
           if(Math.abs(Math.abs(4-y)+Math.abs(end-x))>Math.abs(Math.abs(4-y)+Math.abs(end-(x+1)))){
-            if(x+1<=4&&MiniMap[x+1][y]==null&&rmNumber>2){
+            if(x+1<=4&&MiniMap[x+1][y]==null){
               x += 1;
               addition = "d";
               step = false;
@@ -119,7 +119,7 @@ class BattleMap{
         }
         if(randomized == 2){//left
           if(Math.abs(Math.abs(4-y)+Math.abs(end-x))>Math.abs(Math.abs(4-(y-1))+Math.abs(end-(x)))){
-            if(y-1>=0&&MiniMap[x][y-1]==null&&rmNumber>2){
+            if(y-1>=0&&MiniMap[x][y-1]==null){
               y-= 1;
               addition = "l";
               step = false;
@@ -157,11 +157,8 @@ class BattleMap{
         }
         randomized = (randomized+1)%4;
       }
-      if(rmNumber == 3 && needsTraining){
-        MiniMap[x][y] = "tr" + addition;
-        needsTraining = false;
-      }
-      if(Math.random()>.25 && needsTraining){
+      
+      if(Math.random()>.75 && needsTraining){
         MiniMap[x][y] = "tr" + addition;
         needsTraining = false;
       }else{
@@ -170,6 +167,10 @@ class BattleMap{
         }else{
           MiniMap[x][y] = "en" + addition;
         }
+      }
+      if(rmNumber == 2 && needsTraining){
+        MiniMap[x][y] = "tr" + addition;
+        needsTraining = false;
       }
       rmNumber++;
     }
