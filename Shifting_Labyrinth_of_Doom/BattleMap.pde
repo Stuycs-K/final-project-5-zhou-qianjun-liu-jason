@@ -55,131 +55,125 @@ class BattleMap{
     
   }
   
-  public boolean canCarve(int row, int col) {
-    if(row == 0 || col == 0 || row == Combat.length-1 || col == Combat[0].length-1){
-      return false;
-    }
-    int a = 0;
-    if(Combat[row+1][col]!=null){
-      a++;
-    }
-    if(Combat[row-1][col]!=null){
-      a++;
-    }
-    if(Combat[row][col+1]!=null){
-      a++;
-    }
-    if(Combat[row][col-1]!=null){
-      a++;
-    }
-    if(a > 1){
-      return false;
-    }
-    return true;
-  }
-  
-  public void carveMaze(int row, int col, String previousDirection, double CHANCE_TO_GO_STRAIGHT){
-    Combat = new String[5][5];
-    ArrayList<String> Order = new ArrayList<String>();
-    Order.add("Up");
-    Order.add("Down");
-    Order.add("Left");
-    Order.add("Right");
-    while(Order.size()!=0){
-      if(Math.random()<=CHANCE_TO_GO_STRAIGHT){
-        if(previousDirection.equals("Up")){
-          if(canCarve(row-1, col)){
-            Combat[row-1][col] = "co";
-            
-              // gotoTop();
-              // System.out.println(this);
-              // wait(50);
-            
-            carveMaze(row-1, col, "Up", CHANCE_TO_GO_STRAIGHT);
+  public void generateFloor(){
+    int start = (int)(Math.random()*3)+1;
+    int end = (int)(Math.random()*3)+1;
+    int x = start;
+    int y = 0;
+    boolean needsTraining = true;
+    int rmNumber = 0;
+    MiniMap = new String[5][5];
+    MiniMap[x][y] = "etn";
+    String addition = "n";
+    while(!(x == end && y == 4)){
+      boolean step = true;
+      int randomized = (int)(Math.random()*4);
+      boolean up = false;
+      boolean down = false;
+      boolean left = false;
+      boolean right = false;
+      while(step){
+        if(randomized == 0){//up
+          if(Math.abs(Math.abs(4-y)+Math.abs(end-x))>Math.abs(Math.abs(4-y)+Math.abs(end-(x-1)))){
+            if(x-1>=0&&MiniMap[x-1][y]==null&&rmNumber>2){
+              x -= 1;
+              addition = "u";
+              step = false;
+            }else{
+              up = true;
+            }
+          }else{
+            if(Math.random()>.1&&y!=4){
+              if(x-1>=0&&MiniMap[x-1][y]==null&&rmNumber<6){
+                x -= 1;
+                addition = "u";
+                step = false;
+              }else{
+                up = true;
+              }
+            }
+            up = true;
           }
         }
-        if(previousDirection.equals("Down")){
-          if(canCarve(row+1, col)){
-            Combat[row+1][col] = "co";
-            
-              // gotoTop();
-              // System.out.println(this);
-              // wait(50);
-            
-            carveMaze(row+1, col, "Down", CHANCE_TO_GO_STRAIGHT);
+        if(randomized == 1){//down
+          if(Math.abs(Math.abs(4-y)+Math.abs(end-x))>Math.abs(Math.abs(4-y)+Math.abs(end-(x+1)))){
+            if(x+1<=4&&MiniMap[x+1][y]==null&&rmNumber>2){
+              x += 1;
+              addition = "d";
+              step = false;
+            }else{
+              down = true;
+            }
+          }else{
+            if(Math.random()>.1&&y!=4){
+              if(x+1<=4&&MiniMap[x+1][y]==null&&rmNumber<6){
+                x += 1;
+                addition = "d";
+                step = false;
+              }else{
+                down = true;
+              }
+            }
+            down = true;
           }
         }
-        if(previousDirection.equals("Left")){
-          if(canCarve(row, col-1)){
-            Combat[row][col-1] = "co";
-            
-              // gotoTop();
-              // System.out.println(this);
-              // wait(50);
-            
-            carveMaze(row, col-1, "Left", CHANCE_TO_GO_STRAIGHT);
+        if(randomized == 2){//left
+          if(Math.abs(Math.abs(4-y)+Math.abs(end-x))>Math.abs(Math.abs(4-(y-1))+Math.abs(end-(x)))){
+            if(y-1>=0&&MiniMap[x][y-1]==null&&rmNumber>2){
+              y-= 1;
+              addition = "l";
+              step = false;
+            }else{
+              left = true;
+            }
+          }else{
+            left = true;
           }
         }
-        if(previousDirection.equals("Right")){
-          if(canCarve(row, col+1)){
-            Combat[row][col+1] = "co";
-            
-              // gotoTop();
-              // System.out.println(this);
-              // wait(50);
-            
-            carveMaze(row, col+1, "Right", CHANCE_TO_GO_STRAIGHT);
+        if(randomized == 3){//right
+          if(Math.abs(Math.abs(4-y)+Math.abs(end-x))>Math.abs(Math.abs(4-(y+1))+Math.abs(end-(x)))){
+            if(y+1<=4&&MiniMap[x][y+1]==null){
+              y += 1;
+              addition = "r";
+              step = false;
+            }else{
+              right = true;
+            }
+          }else{
+            if(Math.random()>.1){
+              if(y+1<=4&&MiniMap[x][y+1]==null&&rmNumber<6){
+                y += 1;
+                addition = "r";
+                step = false;
+              }else{
+                right = true;
+              }
+            }
+            right = true;
           }
         }
+        if(up && down && left && right){
+          step = false;
+        }
+        randomized = (randomized+1)%4;
       }
-      int index = (int)(Math.random()*Order.size());
-      String direction = Order.get(index);
-      Order.remove(index);
-      if(direction.equals("Up")){
-        if(canCarve(row-1, col)){
-          Combat[row-1][col] = "co";
-          
-            // gotoTop();
-            // System.out.println(this);
-            // wait(50);
-          
-          carveMaze(row-1, col, "Up", CHANCE_TO_GO_STRAIGHT);
+      if(rmNumber == 3 && needsTraining){
+        MiniMap[x][y] = "tr" + addition;
+        needsTraining = false;
+      }
+      if(Math.random()>.25 && needsTraining){
+        MiniMap[x][y] = "tr" + addition;
+        needsTraining = false;
+      }else{
+        if(Math.random()>.33){
+          MiniMap[x][y] = "co" + addition;
+        }else{
+          MiniMap[x][y] = "en" + addition;
         }
       }
-      if(direction.equals("Down")){
-        if(canCarve(row+1, col)){
-          Combat[row+1][col] = "co";
-          
-            // gotoTop();
-            // System.out.println(this);
-            // wait(50);
-          
-          carveMaze(row+1, col, "Down", CHANCE_TO_GO_STRAIGHT);
-        }
-      }
-      if(direction.equals("Left")){
-        if(canCarve(row, col-1)){
-          Combat[row][col-1] = "co";
-          
-            // gotoTop();
-            // System.out.println(this);
-            // wait(50);
-          
-          carveMaze(row, col-1, "Left", CHANCE_TO_GO_STRAIGHT);
-        }
-      }
-      if(direction.equals("Right")){
-        if(canCarve(row, col+1)){
-          Combat[row][col+1] = "co";
-          
-            // gotoTop();
-            // System.out.println(this);
-            // wait(50);
-          
-          carveMaze(row, col+1, "Right", CHANCE_TO_GO_STRAIGHT);
-        }
-      }
+      rmNumber++;
     }
+    MiniMap[end][4] = "ex" + addition;
   }
   
   void combatEncounter(int diff){

@@ -16,7 +16,7 @@ int prevY = 0;
 
 void setup(){
   size(1201,800);
-  test2.carveMaze(0,0,"",.9);
+  test2.generateFloor();
   test2.display();
   //test2.combatEncounter(4);
   test2.displayCombat();
