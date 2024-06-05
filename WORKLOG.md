@@ -81,3 +81,7 @@ Added a bunch of new skill classes and new enemies with their respective skills.
 
 Coded the beginnings of the side bar to swap out skills and made it half work, jason bug fixed everything else with me in a call.
 
+### June 3, 2024
+
+Fixed alot of the small bugs with the mid presentation.
+
