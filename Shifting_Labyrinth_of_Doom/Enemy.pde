@@ -1,5 +1,5 @@
 abstract class Enemy{
-  private int HP;
+  int HP;
   private Skill Skills;
   private int Movement;
   abstract String getName();

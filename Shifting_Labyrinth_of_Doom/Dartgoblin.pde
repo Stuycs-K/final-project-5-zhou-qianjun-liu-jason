@@ -1,5 +1,5 @@
 class Dartgoblin extends Enemy{
-  private int HP = 10;
+  int HP = 10;
   private Skill Skills;
   private int Movement = 4;
   private int number;

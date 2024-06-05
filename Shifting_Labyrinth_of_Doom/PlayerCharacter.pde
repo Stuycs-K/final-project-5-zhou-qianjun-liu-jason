@@ -17,6 +17,7 @@ class PlayerCharacter{
     UnlockedSkills.add(A);
     UnlockedSkills.add(B);
     UnlockedSkills.add(C);
+    UnlockedSkills.add(new Fireball());
     numSkill = 3;
     Movement = 2;
     direction = "down";
