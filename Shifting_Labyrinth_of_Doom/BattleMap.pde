@@ -61,6 +61,7 @@ class BattleMap{
     int x = start;
     int y = 0;
     boolean needsTraining = true;
+    boolean needsEncounter = true;
     int rmNumber = 0;
     MiniMap = new String[5][5];
     MiniMap[x][y] = "etn";
@@ -83,7 +84,7 @@ class BattleMap{
               up = true;
             }
           }else{
-            if(Math.random()>.1&&y!=4){
+            if(Math.random()>.05&&y!=4){
               if(x-1>=0&&MiniMap[x-1][y]==null&&rmNumber<6){
                 x -= 1;
                 addition = "u";
@@ -105,7 +106,7 @@ class BattleMap{
               down = true;
             }
           }else{
-            if(Math.random()>.1&&y!=4){
+            if(Math.random()>.05&&y!=4){
               if(x+1<=4&&MiniMap[x+1][y]==null&&rmNumber<6){
                 x += 1;
                 addition = "d";
@@ -113,6 +114,7 @@ class BattleMap{
               }else{
                 down = true;
               }
+            }else{
             }
             down = true;
           }
@@ -140,15 +142,27 @@ class BattleMap{
               right = true;
             }
           }else{
-            if(Math.random()>.1){
-              if(y+1<=4&&MiniMap[x][y+1]==null&&rmNumber<6){
-                y += 1;
-                addition = "r";
-                step = false;
-              }else{
-                right = true;
-              }
-            }
+            //if(Math.random()>.50){
+            //  if(y+1<=4&&MiniMap[x][y+1]==null&&rmNumber<6){
+            //    y += 1;
+            //    addition = "r";
+            //    step = false;
+            //  }else{
+            //    right = true;
+            //  }
+            //}else{
+            //  if(y+1<=4&&MiniMap[x][y+1]==null){
+            //    //if(Math.random()>.05){
+            //      MiniMap[x][y+1] = "cor";
+            //    //  if(needsEncounter && Math.random()>.5){
+            //    //    MiniMap[x][y+1] = "enr";
+            //    //    needsEncounter = false;
+            //    //  }
+            //    //}else{
+            //    //  MiniMap[x][y+1] = "enr";
+            //    //}
+            //  }
+            //}
             right = true;
           }
         }
@@ -162,11 +176,16 @@ class BattleMap{
         MiniMap[x][y] = "tr" + addition;
         needsTraining = false;
       }else{
-        if(Math.random()>.33){
+        if(Math.random()>.05){
           MiniMap[x][y] = "co" + addition;
+          if(needsEncounter && Math.random()>.5){
+            MiniMap[x][y] = "en" + addition;
+            needsEncounter = false;
+          }
         }else{
           MiniMap[x][y] = "en" + addition;
         }
+        
       }
       if(rmNumber == 2 && needsTraining){
         MiniMap[x][y] = "tr" + addition;
