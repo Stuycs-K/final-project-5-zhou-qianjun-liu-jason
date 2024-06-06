@@ -12,7 +12,7 @@ class Goblin extends Enemy{
     return "Goblin";
   }
   
-  void useSkill(BattleMap map){
+  private void useSkill(BattleMap map){
     int x = 0;
     int y = 0;
     boolean found = false;
@@ -31,10 +31,10 @@ class Goblin extends Enemy{
     }
     Skills.useSkill(map, x, y, "right");
   }
-  void hpChange(int Extent){
+  private void hpChange(int Extent){
     HP = HP - Extent;
   }
-  void movement(BattleMap map){
+  private void movement(BattleMap map){
     map.enemySwap(number,Movement,1);
   }
 }
