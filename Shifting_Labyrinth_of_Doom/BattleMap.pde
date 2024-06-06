@@ -39,8 +39,8 @@ class BattleMap{
     
     enemies.add(new Goblin(0));
     enemies.add(new Goblin(1));
-    enemies.add(new Dartgoblin(2));
-    enemies.add(new Dartgoblin(3));
+    enemies.add(new Goblin(2));
+    enemies.add(new Goblin(3));
   }
   
   String[][] getCombat(){
@@ -429,15 +429,17 @@ class BattleMap{
             noFill();
           }
           if(Combat[(i-400)/50][j/50].substring(0,2).equals("EC")){
-            if(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2))).HP > 0){
+            if(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2))).getHP() <= 0){
               Combat[(i-400)/50][j/50] = null;
+            }else{
+              fill(255,127,127);
+              circle(i+25,j+25,25);
+              fill(0,0,0);
+              textSize(20);
+              text(Combat[(i-400)/50][j/50].substring(2,3),i+20,j+30);
+              noFill();
+              text(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2,3))).getHP()+"", i+20, j+50);
             }
-            fill(255,127,127);
-            circle(i+25,j+25,25);
-            fill(0,0,0);
-            textSize(20);
-            text(Combat[(i-400)/50][j/50].substring(2,3),i+20,j+30);
-            noFill();
           }
         }
       }
