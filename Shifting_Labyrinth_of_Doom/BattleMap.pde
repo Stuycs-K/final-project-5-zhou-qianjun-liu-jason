@@ -428,7 +428,10 @@ class BattleMap{
             circle(i+25,j+25,25);
             noFill();
           }
-          if((Combat[(i-400)/50][j/50].substring(0,2).equals("EC"))&&(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2))).HP > 0)){
+          if(Combat[(i-400)/50][j/50].substring(0,2).equals("EC")){
+            if(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2))).HP > 0){
+              Combat[(i-400)/50][j/50] = null;
+            }
             fill(255,127,127);
             circle(i+25,j+25,25);
             fill(0,0,0);
