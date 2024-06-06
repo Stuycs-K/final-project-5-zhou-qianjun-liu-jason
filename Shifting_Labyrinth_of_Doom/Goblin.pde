@@ -1,11 +1,16 @@
 class Goblin extends Enemy{
-  int HP = 10;
+  private int HP;
   private Skill Skills;
   private int Movement = 3;
   private int number;
   public Goblin(int num){
+    HP = 10;
     number = num;
     Skills = new Goblinswipe();
+  }
+  
+  int getHP(){
+    return HP;
   }
   
   String getName(){

@@ -1,11 +1,15 @@
 class Dartgoblin extends Enemy{
-  int HP = 10;
+  private int HP = 10;
   private Skill Skills;
   private int Movement = 4;
   private int number;
   public Dartgoblin(int num){
     number = num;
     Skills = new Darts();
+  }
+  
+  int getHP(){
+    return HP;
   }
   
   String getName(){

@@ -1,5 +1,5 @@
 class Ogre extends Enemy{
-  int HP = 10;
+  private int HP = 10;
   private Skill Skills;
   private int Movement = 3;
   private int number;
@@ -10,6 +10,10 @@ class Ogre extends Enemy{
   
   String getName(){
     return "Ogre";
+  }
+  
+  int getHP(){
+    return HP;
   }
   
   void useSkill(BattleMap map){
