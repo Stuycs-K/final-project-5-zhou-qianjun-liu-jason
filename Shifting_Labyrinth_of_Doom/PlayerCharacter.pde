@@ -18,6 +18,8 @@ class PlayerCharacter{
     UnlockedSkills.add(B);
     UnlockedSkills.add(C);
     UnlockedSkills.add(new Fireball());
+    UnlockedSkills.add(new Hammer());
+    UnlockedSkills.add(new Piercer());
     numSkill = 3;
     Movement = 2;
     direction = "down";
