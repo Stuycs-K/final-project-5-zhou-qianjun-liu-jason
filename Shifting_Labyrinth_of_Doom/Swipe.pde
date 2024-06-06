@@ -69,9 +69,8 @@ class Swipe extends Skill{
             if(c<0||c>15||d<0||d>15){
             }else{
                 if(map.getCombat()[d][c] != null && map.getCombat()[d][c].substring(0, 2).equals("EC")){
-                  fill(69,72,96);
-                  square(400+d*50,c*50,50);
-                  noFill();
+                  ArrayList<Enemy> enemies = map.getEnemy();
+                  enemies.get(Integer.parseInt(map.getCombat()[d][c].substring(2))).hpChange(Dmg);
                 }
             }
           }
