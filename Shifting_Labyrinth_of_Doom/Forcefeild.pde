@@ -18,7 +18,7 @@ class Forcefeild extends Skill{
       {0,0,1,1,1,1,1,0,0},
       {0,0,0,0,1,0,0,0,0},
     };
-    Dmg = 1;
+    Dmg = 3;
     Cooldown = 0;
     MaxCooldown = 10;
   }

@@ -22,7 +22,7 @@ class Piercer extends Skill{
       {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
     };
-    Dmg = 1;
+    Dmg = 10;
     Cooldown = 0;
     MaxCooldown = 10;
   }

@@ -4,8 +4,8 @@ int x;
 int y;
 int drawx;
 int drawy;
-BattleMap test2 = new BattleMap();
 PlayerCharacter newPerson = new PlayerCharacter();
+BattleMap test2 = new BattleMap(newPerson);
 Skill test = new SkillTest();
 int phase = -1;
 boolean phaseStart = true;
@@ -18,7 +18,7 @@ void setup(){
   size(1201,800);
   test2.generateFloor();
   test2.display();
-  //test2.combatEncounter(4);
+  //test2.combatEncounter(1);
   test2.displayCombat();
   
 }
@@ -28,7 +28,9 @@ void draw(){
   Skill[] SkillHave = newPerson.getSkills();
   for(int i = 0; i < SkillHave.length; i++){
     if(SkillHave[i] != null){
+      fill(0,0,0);
       text(SkillHave[i].getName(), 5, 600 + i * (20));
+      noFill();
     }
   }
   if(phase == -1){
@@ -75,10 +77,12 @@ void draw(){
     }
   }
   textSize(100);
+  fill(255,255,255);
   text(phase, 10, 70);
-  if(phase == 5){
-    phase = 0;
-  }
+  noFill();
+  //if(phase == 5){
+  //  phase = 0;
+  //}
   //test2.displayCombat();
   //textSize(20);
   //String a = returnPhaseString(phase);
@@ -124,12 +128,24 @@ void mouseClicked(){
 }
 
 void keyPressed(){
+  if(phase == 5){
+    for(int i = 0; i < test2.getEnemy().size(); i++){
+      test2.getEnemy().get(i).useSkill(test2);
+    }
+    if(key == ENTER){
+      phase=0;
+      test2.display();
+      test2.displayCombat();
+      textSize(20);
+      text(returnPhaseString(phase), 5, 420); 
+    }
+  }
   if(phase == 4){
     for(int i = 0; i < test2.getEnemy().size(); i++){
       test2.getEnemy().get(i).movement(test2);
     }
     if(key == ENTER){
-      phase++;
+      phase=5;
       test2.display();
       test2.displayCombat();
       textSize(20);
@@ -258,7 +274,10 @@ String returnPhaseString(int phase){
     return "Comfirmation Phase: Click enter to continue. \nOr click x to go back to Skill Phase.";
   }
   if(phase == 4){
-    return "Enemies Phase: Click enter to continue.";
+    return "Enemies Movement Phase: Click enter to \ncontinue.";
+  }
+  if(phase == 5){
+    return "Enemies Attack Phase: Click enter to \ncontinue.";
   }
   return "";
 }

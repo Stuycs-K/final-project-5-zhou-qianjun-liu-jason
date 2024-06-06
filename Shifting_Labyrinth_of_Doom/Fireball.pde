@@ -18,7 +18,7 @@ class Fireball extends Skill{
       {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
     };
-    Dmg = 10;
+    Dmg = 6;
     Cooldown = 0;
     MaxCooldown = 10;
   }

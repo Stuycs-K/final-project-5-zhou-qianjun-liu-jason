@@ -1,10 +1,9 @@
 class Goblin extends Enemy{
-  private int HP;
+  private int HP = 15;
   private Skill Skills;
   private int Movement = 3;
   private int number;
   public Goblin(int num){
-    HP = 10;
     number = num;
     Skills = new Goblinswipe();
   }

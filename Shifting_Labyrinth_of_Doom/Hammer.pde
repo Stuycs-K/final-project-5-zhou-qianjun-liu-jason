@@ -22,7 +22,7 @@ class Hammer extends Skill{
       {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
     };
-    Dmg = 1;
+    Dmg = 8;
     Cooldown = 0;
     MaxCooldown = 10;
   }

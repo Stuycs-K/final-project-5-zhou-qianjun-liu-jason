@@ -18,7 +18,7 @@ class Swipe extends Skill{
       {0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0},
     };
-    Dmg = 1;
+    Dmg = 12;
     Cooldown = 0;
     MaxCooldown = 10;
   }

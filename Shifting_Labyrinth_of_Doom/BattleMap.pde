@@ -6,7 +6,9 @@ class BattleMap{
   public int sizeOfSidebar = 400;
   public int sizePerSquare = 50;
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-  public BattleMap(){
+  PlayerCharacter store;
+  public BattleMap(PlayerCharacter a){
+    store = a;
     Appearance = new PImage[16][16];
     MiniMap = new String[][]{
       {null,null,"tru",null,null},
@@ -41,6 +43,10 @@ class BattleMap{
     enemies.add(new Goblin(1));
     enemies.add(new Goblin(2));
     enemies.add(new Goblin(3));
+  }
+  
+  PlayerCharacter getPlayerCharacter(){
+    return store;
   }
   
   String[][] getCombat(){
@@ -281,7 +287,7 @@ class BattleMap{
         break;
       }
     }
-    if(x > 0 && y > 0 && possibleMove[x][y] == 1){
+    if(x >= 0 && y >= 0 && possibleMove[x][y] == 1){
       if(Combat[x][y] != null && Combat[x][y].substring(0, 2).equals("EC")){
         return false;
       }
@@ -427,6 +433,8 @@ class BattleMap{
             fill(1,50,32);
             circle(i+25,j+25,25);
             noFill();
+            textSize(20);
+            text(store.getHP(),i+20,j+50);
           }
           if(Combat[(i-400)/50][j/50].substring(0,2).equals("EC")){
             if(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2))).getHP() <= 0){

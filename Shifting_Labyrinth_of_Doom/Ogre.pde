@@ -1,5 +1,5 @@
 class Ogre extends Enemy{
-  private int HP = 10;
+  private int HP = 20;
   private Skill Skills;
   private int Movement = 3;
   private int number;

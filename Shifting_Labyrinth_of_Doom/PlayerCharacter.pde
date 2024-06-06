@@ -8,7 +8,7 @@ class PlayerCharacter{
   private String direction;
   
   public PlayerCharacter(){
-    HP = 0;
+    HP = 40;
     Skill A = new Forcefeild();
     Skill B = new Swipe();
     Skill C = new Sniper();
@@ -24,6 +24,11 @@ class PlayerCharacter{
     Movement = 2;
     direction = "down";
   }
+  
+  int getHP(){
+    return HP;
+  }
+  
   public void displaySkill(BattleMap map, Skill choice){
     int x = 0;
     int y = 0;

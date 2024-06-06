@@ -20,7 +20,7 @@ class Sniper extends Skill{
       {0,0,0,0,0,0,0,0,0,0,0},
       {0,0,0,0,0,0,0,0,0,0,0},
     };
-    Dmg = 1;
+    Dmg = 999999999;
     Cooldown = 0;
     MaxCooldown = 10;
   }
