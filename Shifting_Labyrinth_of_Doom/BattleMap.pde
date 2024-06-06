@@ -84,7 +84,7 @@ class BattleMap{
               up = true;
             }
           }else{
-            if(Math.random()>.05&&y!=4){
+            if(Math.random()>.4&&y!=4){
               if(x-1>=0&&MiniMap[x-1][y]==null&&rmNumber<6){
                 x -= 1;
                 addition = "u";
@@ -92,6 +92,18 @@ class BattleMap{
               }else{
                 up = true;
               }
+            }else{
+              //if(x-1>=0&&MiniMap[x-1][y]==null&&rmNumber<6){
+              //  if(Math.random()>.05){
+              //    MiniMap[x-1][y] = "cou";
+              //    if(needsEncounter && Math.random()>.5){
+              //      MiniMap[x-1][y] = "enu";
+              //      needsEncounter = false;
+              //    }
+              //  }else{
+              //    MiniMap[x-1][y] = "enu";
+              //  }
+              //}
             }
             up = true;
           }
@@ -106,7 +118,7 @@ class BattleMap{
               down = true;
             }
           }else{
-            if(Math.random()>.05&&y!=4){
+            if(Math.random()>.4&&y!=4){
               if(x+1<=4&&MiniMap[x+1][y]==null&&rmNumber<6){
                 x += 1;
                 addition = "d";
@@ -115,6 +127,17 @@ class BattleMap{
                 down = true;
               }
             }else{
+              //if(x+1<=4&&MiniMap[x+1][y]==null&&rmNumber<6){
+              //  if(Math.random()>.05){
+              //    MiniMap[x-1][y] = "cou";
+              //    if(needsEncounter && Math.random()>.5){
+              //      MiniMap[x-1][y] = "enu";
+              //      needsEncounter = false;
+              //    }
+              //  }else{
+              //    MiniMap[x-1][y] = "enu";
+              //  }
+              //}
             }
             down = true;
           }
