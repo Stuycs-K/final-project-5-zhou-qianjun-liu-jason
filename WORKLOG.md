@@ -85,3 +85,11 @@ Coded the beginnings of the side bar to swap out skills and made it half work, j
 
 Fixed alot of the small bugs with the mid presentation.
 
+### June 4, 2024
+
+Skills now do damage to the enemies.
+
+### June 3, 2024
+
+Fixed multiple bugs and helped code skill implementation with enemies and character.
+
