@@ -46,6 +46,14 @@ Added combatGeneration and helped ryan bug fix also fixed enemies leaving to the
 
 Added map generation.
 
+### June 5, 2024
+
+Fixed map generation.
+
+### June 6, 2024
+
+Coded skill usage for players and enemies with Ryan.
+
 ## Qianjun Zhou
 
 ### May 22, 2024
@@ -85,11 +93,11 @@ Coded the beginnings of the side bar to swap out skills and made it half work, j
 
 Fixed alot of the small bugs with the mid presentation.
 
-### June 4, 2024
+### June 5, 2024
 
 Skills now do damage to the enemies.
 
-### June 3, 2024
+### June 6, 2024
 
 Fixed multiple bugs and helped code skill implementation with enemies and character.
 
