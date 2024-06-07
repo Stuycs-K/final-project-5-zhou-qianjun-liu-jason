@@ -58,7 +58,9 @@ class BattleMap{
   }
   
   public void generateRoom(String type){
-    
+    if(type.equals("Combat")){
+      //combat
+    }
   }
   
   public void generateFloor(){
@@ -70,7 +72,7 @@ class BattleMap{
     boolean needsEncounter = true;
     int rmNumber = 0;
     MiniMap = new String[5][5];
-    MiniMap[x][y] = "etn";
+    MiniMap[x][y] = "etnp";
     String addition = "n";
     while(!(x == end && y == 4)){
       boolean step = true;
