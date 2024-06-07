@@ -102,6 +102,7 @@ void draw(){
   //  test2.getEnemy()[3].movement(test2);
   //  phase++;
   //}
+  
 } 
 
 void mouseClicked(){

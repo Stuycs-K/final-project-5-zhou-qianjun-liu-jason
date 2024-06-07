@@ -568,4 +568,13 @@ class BattleMap{
     }
     return returnable;
   }
+  
+  boolean allEnemyDead(){
+    for(int i = 0; i < enemies.size(); i++){
+      if(enemies.get(i).getHP() > 0){
+        return false;
+      }
+    }
+    return true;
+  }
 }
