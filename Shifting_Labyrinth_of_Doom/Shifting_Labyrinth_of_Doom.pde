@@ -24,6 +24,13 @@ void setup(){
 }
 
 void draw(){
+  
+  if(newPerson.getHP()<=0){
+    textSize(400);
+    fill(0,0,0);
+    text("lose", 600,400);
+    noFill();
+  }
   textSize(20);
   Skill[] SkillHave = newPerson.getSkills();
   for(int i = 0; i < SkillHave.length; i++){
