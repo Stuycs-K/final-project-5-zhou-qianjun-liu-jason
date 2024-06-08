@@ -5,7 +5,6 @@ int y;
 int drawx;
 int drawy;
 PlayerCharacter newPerson = new PlayerCharacter();
-BattleMap test2 = new BattleMap(newPerson);
 Skill test = new SkillTest();
 int phase = -1;
 boolean phaseStart = true;
@@ -13,14 +12,24 @@ int selection;
 int count;
 int prevX = 0;
 int prevY = 0;
+BattleMap test2;
 
 void setup(){
+  PImage Cobblestone = loadImage("Cobblestone.png");
+  PImage Andesite = loadImage("Andesite.png");
+  PImage CrackedStoneBricks = loadImage("Cracked Stone Bricks.png");
+  PImage Gravel = loadImage("Gravel.png");
+  PImage Stone = loadImage("Stone.png");
+  PImage DeadFireCoral = loadImage("Dead Fire Coral.png");
+  PImage DeadHornCoral = loadImage("Dead Horn Coral.png");
+  PImage DeadTubeCoral = loadImage("Dead Tube Coral.png");
+  PImage[] textures = new PImage[]{ Cobblestone, Andesite, CrackedStoneBricks, Gravel, Stone, DeadFireCoral, DeadHornCoral, DeadTubeCoral };
+  test2 = new BattleMap(newPerson, textures);
   size(1201,800);
   test2.generateFloor();
   test2.display();
   //test2.combatEncounter(1);
   test2.displayCombat();
-  
 }
 
 void draw(){

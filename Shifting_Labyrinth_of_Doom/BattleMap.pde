@@ -7,7 +7,8 @@ class BattleMap{
   public int sizePerSquare = 50;
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   PlayerCharacter store;
-  public BattleMap(PlayerCharacter a){
+  PImage[] textures;
+  public BattleMap(PlayerCharacter a, PImage[] textures){
     store = a;
     Appearance = new PImage[16][16];
     MiniMap = new String[][]{
@@ -43,6 +44,8 @@ class BattleMap{
     enemies.add(new Goblin(1));
     enemies.add(new Goblin(2));
     enemies.add(new Goblin(3));
+    
+    this.textures = textures;
   }
   
   PlayerCharacter getPlayerCharacter(){
@@ -185,27 +188,6 @@ class BattleMap{
               right = true;
             }
           }else{
-            //if(Math.random()>.50){
-            //  if(y+1<=4&&MiniMap[x][y+1]==null&&rmNumber<6){
-            //    y += 1;
-            //    addition = "r";
-            //    step = false;
-            //  }else{
-            //    right = true;
-            //  }
-            //}else{
-            //  if(y+1<=4&&MiniMap[x][y+1]==null){
-            //    //if(Math.random()>.05){
-            //      MiniMap[x][y+1] = "cor";
-            //    //  if(needsEncounter && Math.random()>.5){
-            //    //    MiniMap[x][y+1] = "enr";
-            //    //    needsEncounter = false;
-            //    //  }
-            //    //}else{
-            //    //  MiniMap[x][y+1] = "enr";
-            //    //}
-            //  }
-            //}
             right = true;
           }
         }
@@ -345,16 +327,6 @@ class BattleMap{
       boolean right = false;
       while(step){
         if(randomized == 0){//up
-          //if(characters[1][1]-characters[0][1]<-(dist)){
-          //  if(confirmation(characters, characters[0][0], characters[0][1]-1)){
-          //    characters[0][1]-=1;
-          //    step = false;
-          //  }else{
-          //    up = true;
-          //  }
-          //}else{
-          //  up = true;
-          //}
           if(Math.abs(Math.abs(characters[1][1]-characters[0][1])+Math.abs(characters[1][0]-characters[0][0])-dist)>Math.abs(Math.abs(characters[1][1]-(characters[0][1]-1))+Math.abs(characters[1][0]-characters[0][0])-dist)){
             if(confirmation(characters, characters[0][0], characters[0][1]-1)){
               if(characters[0][1]-1 < 0){
@@ -468,13 +440,16 @@ class BattleMap{
     }
   }
   
+  void addFloorTexture(int x, int y){
+    int textureNumber = (int)(Math.random()*9);
+    image(textures[textureNumber], x, y);
+  }
+  
   void display(){
     stroke(0,0,0);
     for(int i = 400; i < 1200; i += 50){
       for(int j = 0; j < 800; j += 50){
-        fill(255,255,255);
-        square(i,j,50);
-        noFill();
+        addFloorTexture(i,j);
       }
     }
     fill(255,255,255);
