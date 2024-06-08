@@ -62,7 +62,7 @@ class BattleMap{
   
   public void generateRoom(String type){
     if(type.substring(0,2).equals("co")){
-      combatEncounter(Integer.parseInt(type.substring(2)));
+      combatEncounter(5, type.charAt(2));
     }
     if(type.substring(0,2).equals("en")){
       Combat = new String[16][16];
@@ -221,7 +221,7 @@ class BattleMap{
     MiniMap[end][4] = "ex" + addition;
   }
   
-  void combatEncounter(int diff){
+  void combatEncounter(int diff, char b){
     String[][] combat = new String[16][16];
     for(int i = 0; i < combat.length; i++){
       for(int k = 0; k < combat[i].length; k++){
@@ -264,6 +264,58 @@ class BattleMap{
     }
     enemies = enemys;
     Combat = combat;
+    //going from up
+    x = 15;
+    y = 7;
+    if(b == 'u'){
+      if(Combat[x][y] != null && Combat[x][y].substring(0,2) != "EC"){
+        Combat[x][y] = "PC";
+      }
+      else{
+        if(Combat[x][y + 1] != null && Combat[x][y].substring(0,2) != "EC"){
+          Combat[x][y] = "PC";
+        }
+      }
+    }
+    //going from down
+    x = 0;
+    y = 7;
+    if(b == 'd'){
+      if(Combat[x][y] != null && Combat[x][y].substring(0,2) != "EC"){
+        Combat[x][y] = "PC";
+      }
+      else{
+        if(Combat[x][y + 1] != null && Combat[x][y].substring(0,2) != "EC"){
+          Combat[x][y] = "PC";
+        }
+      }
+    }
+    //going from left
+    x = 7;
+    y = 0;
+    if(b == 'l'){
+      if(Combat[x][y] != null && Combat[x][y].substring(0,2) != "EC"){
+        Combat[x][y] = "PC";
+      }
+      else{
+        if(Combat[x + 1][y] != null && Combat[x][y].substring(0,2) != "EC"){
+          Combat[x][y] = "PC";
+        }
+      }
+    }
+    //going from right
+    x = 7;
+    y = 15;
+    if(b == 'r'){
+      if(Combat[x][y] != null && Combat[x][y].substring(0,2) != "EC"){
+        Combat[x][y] = "PC";
+      }
+      else{
+        if(Combat[x + 1][y] != null && Combat[x][y].substring(0,2) != "EC"){
+          Combat[x][y] = "PC";
+        }
+      }
+    }
   }
 
   boolean swap(int x, int y){
@@ -577,7 +629,7 @@ class BattleMap{
           x = x-1;
           if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
             if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'r'){
-              return MiniMap[y][x].substring(0,2);
+              return MiniMap[y][x].substring(0,3);
             }
           }
           x = k;
@@ -585,7 +637,7 @@ class BattleMap{
           x = x+1;
           if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
             if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'l'){
-              return MiniMap[y][x].substring(0,2);
+              return MiniMap[y][x].substring(0,3);
             }
           }
           x = k;
@@ -593,7 +645,7 @@ class BattleMap{
           y = y + 1;
           if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
             if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'd'){
-              return MiniMap[y][x].substring(0,2);
+              return MiniMap[y][x].substring(0,3);
             }
           }
           y = i;
@@ -601,13 +653,13 @@ class BattleMap{
           y = y - 1;
           if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
             if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'u'){
-              return MiniMap[y][x].substring(0,2);
+              return MiniMap[y][x].substring(0,3);
             }
           }
           y = i;
         }
       }
     }
-    return "co";
+    return "cod";
   }
 }
