@@ -26,11 +26,7 @@ void setup(){
   test2 = new BattleMap(newPerson, textures);
   size(1201,800);
   test2.generateFloor();
-<<<<<<< HEAD
-  test2.generateRoom("etn");
-=======
   test2.generateRoom(test2.CurrentMapType() + "l");
->>>>>>> 052f044d85ac5e33e0430dc42048ed18692ca6f4
   test2.display();
   //test2.combatEncounter(1);
   test2.displayCombat();
