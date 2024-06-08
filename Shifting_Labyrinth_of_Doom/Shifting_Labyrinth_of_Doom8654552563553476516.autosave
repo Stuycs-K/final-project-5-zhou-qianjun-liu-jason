@@ -13,11 +13,7 @@ int count;
 int prevX = 0;
 int prevY = 0;
 BattleMap test2;
-<<<<<<< HEAD
 int floor = 1;
-=======
-int floor = 4;
->>>>>>> e3faafedd5cfc9f5363aa444cc2f49cc9c9398a2
 
 void setup(){
   PImage Cobblestone = loadImage("Cobblestone.png");
@@ -68,17 +64,6 @@ void setup(){
 }
 
 void draw(){
-  if(floor == 4){
-    phase = -10;
-    fill(255,255,255);
-    rect(0, 0, 1201, 800);
-    noFill();
-    fill(0, 0, 0);
-    textSize(20);
-    String end = "Once upon a time, there was a player. /n Sometimes the player dreamed it was lost in a story. \n The story was the game and he played it till the end. /n And the game was over and the player woke up from the dream. \n And the player began a new dream. \n And the player dreamed again, dreamed better. \n And the player was the universe. And the player was love.\n You are the player. \n Wake up.";
-    text(end, 20, 20);
-    noFill();
-  }
   if(test2.CurrentMapType().equals("ex") && test2.leaveFloor()){
     floor++;
     test2.generateFloor();
@@ -189,14 +174,12 @@ void draw(){
       newPerson.displayMovement(test2);
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
       phaseStart = false;
     }
   }
-  textSize(100);
-  fill(255,255,255);
-  text(phase, 10, 70);
-  noFill();
   
 } 
 
@@ -211,7 +194,9 @@ void mouseClicked(){
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
       phaseStart = true;
     }
   }
@@ -227,7 +212,9 @@ void keyPressed(){
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
     }
   }
   if(phase == 4){
@@ -239,7 +226,9 @@ void keyPressed(){
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
     }
   }
   if(phase == 1){
@@ -249,7 +238,9 @@ void keyPressed(){
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
     }
     if(keyCode == DOWN){
       newPerson.setOrientation("down");
@@ -257,7 +248,9 @@ void keyPressed(){
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
     }
     if(keyCode == LEFT){
       newPerson.setOrientation("left");
@@ -265,7 +258,9 @@ void keyPressed(){
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
     }
     if(keyCode == RIGHT){
       newPerson.setOrientation("right");
@@ -273,7 +268,9 @@ void keyPressed(){
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
     }
   }
   if(phase == 2){
@@ -285,7 +282,9 @@ void keyPressed(){
       newPerson.displaySkill(test2,newPerson.getSkill(0));
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill(); 
     }
     if(key == 'b'){
       //phase = 3;
@@ -295,7 +294,9 @@ void keyPressed(){
       newPerson.displaySkill(test2,newPerson.getSkill(1));
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
     }
     if(key == 'c'){
       //phase = 3;
@@ -305,21 +306,27 @@ void keyPressed(){
       newPerson.displaySkill(test2,newPerson.getSkill(2));
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
     }
     if(keyCode == ENTER){
       phase = 4;
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill(); 
     }
     if(key == 'x'){
       phase = 1;
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill(); 
     }
   }
   if(phase == 3){
@@ -330,7 +337,9 @@ void keyPressed(){
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
     }
     if(keyCode == ENTER){
       newPerson.useSkill(test2,newPerson.getSkill(selection));
@@ -338,7 +347,9 @@ void keyPressed(){
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
     }
   }
   if(key == 'p'){
@@ -346,7 +357,9 @@ void keyPressed(){
       test2.display();
       test2.displayCombat(floor);
       textSize(20);
+      fill(0,0,0);
       text(returnPhaseString(phase), 5, 420); 
+      noFill();
   }
 }
 
