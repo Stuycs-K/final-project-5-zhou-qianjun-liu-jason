@@ -35,9 +35,14 @@ void setup(){
 void draw(){
   if(test2.allEnemyDead()){
     test2.generateRoom(test2.getNextRoom());
-    test2.display();
     phase = 0;
+    test2.display();
+    test2.displayCombat();
   }
+  //textSize(200);
+  //fill(255,255,255);
+  //text(test2.getNextRoom(), 420, 69);
+  //noFill();
   if(newPerson.getHP()<=0){
     textSize(400);
     fill(0,0,0);
@@ -115,7 +120,6 @@ void mouseClicked(){
       phaseStart = true;
     }
   }
-  
 }
 
 void keyPressed(){

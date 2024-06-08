@@ -62,7 +62,7 @@ class BattleMap{
   
   public void generateRoom(String type){
     if(type.substring(0,2).equals("co")){
-      combatEncounter(5, type.charAt(2));
+      combatEncounter(Integer.parseInt(type.substring(2)));
     }
     if(type.substring(0,2).equals("en")){
       Combat = new String[16][16];
@@ -221,7 +221,7 @@ class BattleMap{
     MiniMap[end][4] = "ex" + addition;
   }
   
-  void combatEncounter(int diff, char b){
+  void combatEncounter(int diff){
     String[][] combat = new String[16][16];
     for(int i = 0; i < combat.length; i++){
       for(int k = 0; k < combat[i].length; k++){
@@ -264,59 +264,6 @@ class BattleMap{
     }
     enemies = enemys;
     Combat = combat;
-    //going from up
-    x = 15;
-    y = 7;
-    if(b == 'u'){
-      if(Combat[y][x] == null){
-        Combat[y][x] = "PC";
-      }
-      else{
-        if(Combat[y][x+1] == null){
-          Combat[y][x+1] = "PC";
-        }
-      }
-    }
-    //going from down
-    x = 0;
-    y = 7;
-    if(b == 'd'){
-      if(Combat[y][x] == null){
-        Combat[y][x] = "PC";
-      }
-      else{
-        if(Combat[y][x+1] == null){
-          Combat[y][x+1] = "PC";
-        }
-      }
-    }
-    ////going from left
-    //x = 7;
-    //y = 0;
-    //if(b == 'l'){
-    //  if(Combat[x][y] != null && Combat[x][y].substring(0,2) != "EC"){
-    //    Combat[x][y] = "PC";
-    //  }
-    //  else{
-    //    if(Combat[x + 1][y] != null && Combat[x][y].substring(0,2) != "EC"){
-    //      Combat[x][y] = "PC";
-    //    }
-    //  }
-    //}
-    //going from right
-    x = 7;
-    y = 0;
-    if(b == 'r'){
-      if(Combat[y][x] == null){
-        Combat[y][x] = "PC";
-      }
-      else{
-        if(Combat[y+1][x] == null){
-          Combat[y+1][x] = "PC";
-        }
-      }
-    }
-    //Combat[x][y] = "PC";
   }
 
   boolean swap(int x, int y){
@@ -624,47 +571,43 @@ class BattleMap{
     for(int i = 0; i < MiniMap.length; i++){
       for(int k = 0; k < MiniMap[0].length; k++){
         if(MiniMap[i][k] != null && MiniMap[i][k].substring(3).equals("p")){
-          MiniMap[i][k] = MiniMap[i][k].substring(0,3);
           int y = i;
           int x = k;
-          ////left block
-          //x = x-1;
-          //if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
-          //  if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'r'){
-          //    return MiniMap[y][x].substring(0,3);
-          //  }
-          //}
-          //x = k;
-          //right block
-          x = x+1;
+          //left block
+          x = x-1;
           if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
             if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'r'){
-              MiniMap[y][x] = MiniMap[y][x] + "p";
-              return MiniMap[y][x].substring(0,3);
+              return MiniMap[y][x].substring(0,2);
             }
           }
           x = k;
-          //down block
+          //right block
+          x = x+1;
+          if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
+            if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'l'){
+              return MiniMap[y][x].substring(0,2);
+            }
+          }
+          x = k;
+          //up block
           y = y + 1;
           if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
             if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'd'){
-              MiniMap[y][x] = MiniMap[y][x] + "p";
-              return MiniMap[y][x].substring(0,3);
+              return MiniMap[y][x].substring(0,2);
             }
           }
           y = i;
-          //up block
+          //down block
           y = y - 1;
           if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
             if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'u'){
-              MiniMap[y][x] = MiniMap[y][x] + "p";
-              return MiniMap[y][x].substring(0,3);
+              return MiniMap[y][x].substring(0,2);
             }
           }
           y = i;
         }
       }
     }
-    return "dzn";
+    return "co";
   }
 }
