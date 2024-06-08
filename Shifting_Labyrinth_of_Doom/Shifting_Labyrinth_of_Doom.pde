@@ -13,7 +13,7 @@ int count;
 int prevX = 0;
 int prevY = 0;
 BattleMap test2;
-int floor = 2;
+int floor = 1;
 
 void setup(){
   PImage Cobblestone = loadImage("Cobblestone.png");
@@ -46,10 +46,13 @@ void setup(){
   PImage PiglinBrute = loadImage("PiglinBruteFace.png");
   PImage WitherSkeleton = loadImage("WitherSkeletonFace.png");
   PImage Blaze = loadImage("BlazeFace.png");
+  PImage Beacon = loadImage("Beacon.png");
+  PImage PC = loadImage("TechnoBlade.png");
   PImage[] textures = new PImage[]{ 
     Cobblestone, Cobblestone, Andesite, Andesite, Andesite, CrackedStoneBricks, Gravel, Gravel, Stone, Stone, Stone, DeadFireCoral, DeadTubeCoral, Creeper, Zombie, Skeleton,
     DarkPrismarine, DarkPrismarine, OxidizedCopper, OxidizedCopper, OxidizedCopper, TubeCoral, SeaLantern, SeaLantern, PrimarineBrick, PrimarineBrick, PrimarineBrick, StrippedWarpedStem, OxidizedCutCopper, ElderGuardian, Drowned, Guardian,
-    Basalt2, Basalt2, NetherBricks, NetherBricks, NetherBricks, ChisledPolishedBlackstone, Basalt, Basalt, SmoothBasalt, SmoothBasalt, SmoothBasalt, ChisledNetherBricks, PolishedBlackstone, PiglinBrute, WitherSkeleton, Blaze
+    Basalt2, Basalt2, NetherBricks, NetherBricks, NetherBricks, ChisledPolishedBlackstone, Basalt, Basalt, SmoothBasalt, SmoothBasalt, SmoothBasalt, ChisledNetherBricks, PolishedBlackstone, PiglinBrute, WitherSkeleton, Blaze,
+    Beacon, PC
   };
   test2 = new BattleMap(newPerson, textures);
   size(1201,800);
@@ -66,7 +69,7 @@ void draw(){
     test2.generateFloor();
     test2.generateRoom(test2.CurrentMapType() + "l",floor);
     test2.display();
-    test2.displayCombat();
+    test2.displayCombat(floor);
   }
   if(phase == 0 && test2.CurrentMapType().equals("tr")){
     test2.generateRoom(test2.getNextRoom(),floor);

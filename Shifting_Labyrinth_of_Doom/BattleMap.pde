@@ -74,7 +74,7 @@ class BattleMap{
       enterenceRoom();
     }
     if(type.substring(0,2).equals("ex")){
-      Combat = new String[16][16];
+      exitRoom();
     }
     texturesMap = new PImage[16][16];
     for(int i = 0; i < texturesMap.length; i++){
@@ -639,11 +639,11 @@ class BattleMap{
       for(int j = 0; j < 800; j += 50){
         if(Combat[(i-400)/50][j/50] != null){
           if(Combat[(i-400)/50][j/50].equals("PC")){
-            fill(1,50,32);
-            circle(i+25,j+25,25);
-            noFill();
+            image(textures[49], i + 5, j + 5);
             textSize(20);
-            text(store.getHP(),i+20,j+50);
+            fill(0,0,0);
+            text(store.getHP(),i+15,j+60);
+            noFill();
           }
           if(Combat[(i-400)/50][j/50].substring(0,2).equals("EC")){
             if(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2))).getHP() <= 0){
@@ -683,7 +683,7 @@ class BattleMap{
                 }
               }
               if(a.equals("HealerTurrent")){
-                image(textures[13], i + 5, j + 5);
+                image(textures[48], i + 5, j + 5);
               }
               textSize(20);
               noFill();

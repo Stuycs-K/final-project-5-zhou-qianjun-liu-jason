@@ -21,7 +21,7 @@ class PlayerCharacter{
     UnlockedSkills.add(new Hammer());
     UnlockedSkills.add(new Piercer());
     numSkill = 3;
-    Movement = 2;
+    Movement = 3;
     direction = "down";
   }
   
