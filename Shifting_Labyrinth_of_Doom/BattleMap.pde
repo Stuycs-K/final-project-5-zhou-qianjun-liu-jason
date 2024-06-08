@@ -8,6 +8,7 @@ class BattleMap{
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   PlayerCharacter store;
   PImage[] textures;
+  PImage[][] texturesMap;
   public BattleMap(PlayerCharacter a, PImage[] textures){
     store = a;
     Appearance = new PImage[16][16];
@@ -75,6 +76,12 @@ class BattleMap{
     }
     if(type.substring(0,2).equals("ex")){
       Combat = new String[16][16];
+    }
+    texturesMap = new PImage[16][16];
+    for(int i = 0; i < texturesMap.length; i++){
+      for(int k = 0; k < texturesMap[i].length; k++){
+        texturesMap[i][k] = textures[(int)(Math.random()*7)];
+      }
     }
   }
   
@@ -493,16 +500,11 @@ class BattleMap{
     }
   }
   
-  void addFloorTexture(int x, int y){
-    int textureNumber = (int)(Math.random()*8);
-    image(textures[textureNumber], x, y);
-  }
-  
   void display(){
     stroke(0,0,0);
     for(int i = 400; i < 1200; i += 50){
       for(int j = 0; j < 800; j += 50){
-        addFloorTexture(i,j);
+        image(texturesMap[(i-400)/50][j/50], i, j);
       }
     }
     fill(255,255,255);
