@@ -60,7 +60,7 @@ void setup(){
   test2 = new BattleMap(newPerson, textures);
   size(1201,800);
   test2.generateFloor();
-  test2.generateRoom(test2.CurrentMapType() + "l",floor);
+  test2.generateRoom(test2.CurrentMapType() + "l",floor, diff);
   test2.display();
   //test2.combatEncounter(1);
   test2.displayCombat(floor);
@@ -82,12 +82,12 @@ void draw(){
     floor++;
     diff += 3;
     test2.generateFloor();
-    test2.generateRoom(test2.CurrentMapType() + "l",floor);
+    test2.generateRoom(test2.CurrentMapType() + "l",floor, diff);
     test2.display();
     test2.displayCombat(floor);
   }
   if(phase == 0 && test2.CurrentMapType().equals("tr")){
-    test2.generateRoom(test2.getNextRoom(),floor);
+    test2.generateRoom(test2.getNextRoom(),floor, diff);
     phaseStart = false;
     phase = 0;
     
@@ -98,7 +98,7 @@ void draw(){
     text(returnPhaseString(phase), 5, 420); 
   }
   if(test2.allEnemyDead() && test2.CurrentMapType().equals("co")){
-    test2.generateRoom(test2.getNextRoom(),floor);
+    test2.generateRoom(test2.getNextRoom(),floor, diff);
     phase = 0;
     test2.display();
     test2.displayCombat(floor);
@@ -106,7 +106,7 @@ void draw(){
     text(returnPhaseString(phase), 5, 420); 
   }
   if(test2.enterenceExitArrive()){
-    test2.generateRoom(test2.getNextRoom(),floor);
+    test2.generateRoom(test2.getNextRoom(),floor, diff);
     phase = 0;
     test2.display();
     test2.displayCombat(floor);
@@ -114,7 +114,7 @@ void draw(){
     text(returnPhaseString(phase), 5, 420); 
   }
   if(test2.enounterRoomLeave()){
-    test2.generateRoom(test2.getNextRoom(),floor);
+    test2.generateRoom(test2.getNextRoom(),floor, diff);
     phase = 0;
     test2.display();
     test2.displayCombat(floor);
