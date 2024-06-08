@@ -591,4 +591,48 @@ class BattleMap{
     }
     return true;
   }
+  
+  String getNextRoom(){
+    for(int i = 0; i < MiniMap.length; i++){
+      for(int k = 0; k < MiniMap[0].length; k++){
+        if(MiniMap[i][k] != null && MiniMap[i][k].substring(3).equals("p")){
+          int y = i;
+          int x = k;
+          //left block
+          x = x-1;
+          if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
+            if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'r'){
+              return MiniMap[y][x].substring(0,2);
+            }
+          }
+          x = k;
+          //right block
+          x = x+1;
+          if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
+            if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'l'){
+              return MiniMap[y][x].substring(0,2);
+            }
+          }
+          x = k;
+          //up block
+          y = y + 1;
+          if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
+            if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'd'){
+              return MiniMap[y][x].substring(0,2);
+            }
+          }
+          y = i;
+          //down block
+          y = y - 1;
+          if(x <= 4 && x >= 0 && y <= 4 && y >=0){ //check for in bound
+            if(MiniMap[y][x] != null && MiniMap[y][x].charAt(2) == 'u'){
+              return MiniMap[y][x].substring(0,2);
+            }
+          }
+          y = i;
+        }
+      }
+    }
+    return "co";
+  }
 }
