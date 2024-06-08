@@ -177,6 +177,24 @@ class BattleMap{
   }
   
   void exitRoom(){
+    Combat = new String[][]{
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, "PC", null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+    };
   }
   
   public void generateFloor(){
