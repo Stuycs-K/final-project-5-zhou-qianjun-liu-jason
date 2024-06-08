@@ -83,6 +83,9 @@ class BattleMap{
         if(floor == 2){
           random += 16;
         }
+        if(floor == 3){
+          random += 32;
+        }
         texturesMap[i][k] = textures[(int)(random)];
       }
     }

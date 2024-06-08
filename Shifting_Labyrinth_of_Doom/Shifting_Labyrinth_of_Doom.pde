@@ -35,9 +35,20 @@ void setup(){
   PImage ElderGuardian = loadImage("ElderGuardian.png");
   PImage Drowned = loadImage("Drowned.png");
   PImage Guardian = loadImage("Guardian.png");
+  PImage ChisledPolishedBlackstone = loadImage("Chisled Polished Blackstone.png");
+  PImage Basalt = loadImage("Basalt.png");
+  PImage Basalt2 = loadImage("Basalt2.png");
+  PImage SmoothBasalt = loadImage("Smooth Basalt.png");
+  PImage ChisledNetherBricks = loadImage("Chisled Nether Bricks.png");
+  PImage NetherBricks = loadImage("Nether Bricks.png");
+  PImage PolishedBlackstone = loadImage("Polished Blackstone.png");
+  PImage PiglinBrute = loadImage("PiglinBruteFace.png");
+  PImage WitherSkeleton = loadImage("WitherSkeletonFace.png");
+  PImage Blaze = loadImage("BlazeFace.png");
   PImage[] textures = new PImage[]{ 
     Cobblestone, Cobblestone, Andesite, Andesite, Andesite, CrackedStoneBricks, Gravel, Gravel, Stone, Stone, Stone, DeadFireCoral, DeadTubeCoral, Creeper, Zombie, Skeleton,
-    DarkPrismarine, DarkPrismarine, OxidizedCopper, OxidizedCopper, OxidizedCopper, TubeCoral, SeaLantern, SeaLantern, PrimarineBrick, PrimarineBrick, PrimarineBrick, StrippedWarpedStem, OxidizedCutCopper, ElderGuardian, Drowned, Guardian
+    DarkPrismarine, DarkPrismarine, OxidizedCopper, OxidizedCopper, OxidizedCopper, TubeCoral, SeaLantern, SeaLantern, PrimarineBrick, PrimarineBrick, PrimarineBrick, StrippedWarpedStem, OxidizedCutCopper, ElderGuardian, Drowned, Guardian,
+    Basalt2, Basalt2, NetherBricks, NetherBricks, NetherBricks, ChisledPolishedBlackstone, Basalt, Basalt, SmoothBasalt, SmoothBasalt, SmoothBasalt, ChisledNetherBricks, PolishedBlackstone, PiglinBrute, WitherSkeleton, Blaze
   };
   test2 = new BattleMap(newPerson, textures);
   size(1201,800);
