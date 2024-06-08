@@ -70,7 +70,7 @@ class BattleMap{
       Combat = new String[16][16];
     }
     if(type.substring(0,2).equals("et")){
-      Combat = new String[16][16];
+      enterenceRoom();
     }
     if(type.substring(0,2).equals("ex")){
       Combat = new String[16][16];
@@ -81,6 +81,46 @@ class BattleMap{
         texturesMap[i][k] = textures[(int)(Math.random()*13)];
       }
     }
+  }
+  
+  void enterenceRoom(){
+    Combat = new String[][]{
+      {null, null, null, null, null, null, null, "PC", null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+    };
+  }
+  
+  boolean enterenceExitArrive(){
+    if(CurrentMapType().equals("et")){
+      for(int i = 0; i < 15; i++){
+        if(Combat[15][i] != null && Combat[15][i].equals("PC")){
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  void trainingRoom(){
+  }
+  
+  void encounterRoom(){
+  }
+  
+  void exitRoom(){
   }
   
   public void generateFloor(){
@@ -323,7 +363,16 @@ class BattleMap{
     }
     //Combat[x][y] = "PC";
   }
-
+  
+  boolean allEnemyDead(){
+    for(int i = 0; i < enemies.size(); i++){
+      if(enemies.get(i).getHP() > 0){
+        return false;
+      }
+    }
+    return true;
+  }
+  
   boolean swap(int x, int y){
     int updateableX = 0;
     int updateableY = 0;
@@ -616,15 +665,7 @@ class BattleMap{
     }
     return returnable;
   }
-  
-  boolean allEnemyDead(){
-    for(int i = 0; i < enemies.size(); i++){
-      if(enemies.get(i).getHP() > 0){
-        return false;
-      }
-    }
-    return true;
-  }
+
   
   String getNextRoom(){
     for(int i = 0; i < MiniMap.length; i++){
