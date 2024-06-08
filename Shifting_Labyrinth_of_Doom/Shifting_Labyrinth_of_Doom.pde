@@ -13,7 +13,7 @@ int count;
 int prevX = 0;
 int prevY = 0;
 BattleMap test2;
-int floor = 2;
+int floor = 4;
 
 void setup(){
   PImage Cobblestone = loadImage("Cobblestone.png");
@@ -61,12 +61,23 @@ void setup(){
 }
 
 void draw(){
+  if(floor == 4){
+    phase = -10;
+    fill(255,255,255);
+    rect(0, 0, 1201, 800);
+    noFill();
+    fill(0, 0, 0);
+    textSize(20);
+    String end = "Once upon a time, there was a player. /n Sometimes the player dreamed it was lost in a story. \n The story was the game and he played it till the end. /n And the game was over and the player woke up from the dream. \n And the player began a new dream. \n And the player dreamed again, dreamed better. \n And the player was the universe. And the player was love.\n You are the player. \n Wake up.";
+    text(end, 20, 20);
+    noFill();
+  }
   if(test2.CurrentMapType().equals("ex") && test2.leaveFloor()){
     floor++;
     test2.generateFloor();
     test2.generateRoom(test2.CurrentMapType() + "l",floor);
     test2.display();
-    test2.displayCombat();
+    test2.displayCombat(floor);
   }
   if(phase == 0 && test2.CurrentMapType().equals("tr")){
     test2.generateRoom(test2.getNextRoom(),floor);
