@@ -197,6 +197,39 @@ class BattleMap{
     };
   }
   
+  boolean leaveFloor(){
+    if(CurrentMapType().equals("ex")){
+      if(Combat[7][9] != null && Combat[7][9].equals("PC")){
+        return true;
+      }
+      if(Combat[8][9] != null && Combat[8][9].equals("PC")){
+        return true;
+      }
+      if(Combat[9][9] != null && Combat[9][9].equals("PC")){
+        return true;
+      }
+      if(Combat[7][10] != null && Combat[7][10].equals("PC")){
+        return true;
+      }
+      if(Combat[8][10] != null && Combat[8][10].equals("PC")){
+        return true;
+      }
+      if(Combat[9][10] != null && Combat[9][10].equals("PC")){
+        return true;
+      }
+      if(Combat[7][11] != null && Combat[7][11].equals("PC")){
+        return true;
+      }
+      if(Combat[8][11] != null && Combat[8][11].equals("PC")){
+        return true;
+      }
+      if(Combat[9][11] != null && Combat[9][11].equals("PC")){
+        return true;
+      }
+    }
+    return false;
+  }
+  
   public void generateFloor(){
     int start = (int)(Math.random()*3)+1;
     int end = (int)(Math.random()*3)+1;
