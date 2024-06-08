@@ -58,19 +58,19 @@ class BattleMap{
   }
   
   public void generateRoom(String type){
-    if(type.substring(0,6).equals("Combat")){
-      combatEncounter(Integer.parseInt(type.substring(6)));
+    if(type.substring(0,2).equals("co")){
+      combatEncounter(Integer.parseInt(type.substring(2)));
     }
-    if(type.equals("Encounter")){
+    if(type.substring(0,2).equals("en")){
       Combat = new String[16][16];
     }
-    if(type.equals("Training")){
+    if(type.substring(0,2).equals("tr")){
       Combat = new String[16][16];
     }
-    if(type.equals("Entrance")){
+    if(type.substring(0,2).equals("et")){
       Combat = new String[16][16];
     }
-    if(type.equals("Exit")){
+    if(type.substring(0,2).equals("ex")){
       Combat = new String[16][16];
     }
   }

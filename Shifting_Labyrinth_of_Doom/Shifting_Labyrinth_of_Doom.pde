@@ -56,9 +56,6 @@ void draw(){
       phaseStart = false;
     }
     
-    
-    //textSize(20);
-    //text(count,5,700);
     if((prevX != drawx || prevY != drawy) && count > 0){
       if(drawy > 400 && drawy < 400 + (possibleSkill.size() * 20)){
         newPerson.addSkill(possibleSkill.get((drawy - 400) / 20));
@@ -87,28 +84,6 @@ void draw(){
   fill(255,255,255);
   text(phase, 10, 70);
   noFill();
-  //if(phase == 5){
-  //  phase = 0;
-  //}
-  //test2.displayCombat();
-  //textSize(20);
-  //String a = returnPhaseString(phase);
-  //if(phaseAt != phase){
-  //    fill(color(0, 0, 0));
-  //    test2.display();
-  //    text(a, 0, 420); 
-  //    noFill();
-  //    a= "";
-  //    test2.displayCombat();
-  //  phaseAt = phase;
-  //}
-  //if(phase == 4){
-  //  test2.getEnemy()[0].movement(test2);
-  //  test2.getEnemy()[1].movement(test2);
-  //  test2.getEnemy()[2].movement(test2);
-  //  test2.getEnemy()[3].movement(test2);
-  //  phase++;
-  //}
   
 } 
 
@@ -128,11 +103,6 @@ void mouseClicked(){
     }
   }
   
-  //test2.getEnemy()[0].movement(test2);
-  //test2.getEnemy()[1].movement(test2);
-  //test2.getEnemy()[2].movement(test2);
-  //test2.getEnemy()[3].movement(test2);
-  //test2.displayCombat();
 }
 
 void keyPressed(){
