@@ -50,12 +50,14 @@ void setup(){
   PImage Blaze = loadImage("BlazeFace.png");
   PImage Beacon = loadImage("Beacon.png");
   PImage PC = loadImage("TechnoBlade.png");
+  PImage Obsidian = loadImage("Obsidian.png");
+  PImage Portal = loadImage("Portal.png");
   Death = loadImage("Death.png");
   PImage[] textures = new PImage[]{ 
     Cobblestone, Cobblestone, Andesite, Andesite, Andesite, CrackedStoneBricks, Gravel, Gravel, Stone, Stone, Stone, DeadFireCoral, DeadTubeCoral, Creeper, Zombie, Skeleton,
     DarkPrismarine, DarkPrismarine, OxidizedCopper, OxidizedCopper, OxidizedCopper, TubeCoral, SeaLantern, SeaLantern, PrimarineBrick, PrimarineBrick, PrimarineBrick, StrippedWarpedStem, OxidizedCutCopper, ElderGuardian, Drowned, Guardian,
     Basalt2, Basalt2, NetherBricks, NetherBricks, NetherBricks, ChisledPolishedBlackstone, Basalt, Basalt, SmoothBasalt, SmoothBasalt, SmoothBasalt, ChisledNetherBricks, PolishedBlackstone, PiglinBrute, WitherSkeleton, Blaze,
-    Beacon, PC
+    Beacon, PC, Obsidian, Portal
   };
   test2 = new BattleMap(newPerson, textures);
   size(1201,800);

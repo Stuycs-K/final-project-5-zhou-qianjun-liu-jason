@@ -89,6 +89,17 @@ class BattleMap{
         texturesMap[i][k] = textures[(int)(random)];
       }
     }
+    if(type.substring(0,2).equals("ex")){
+      texturesMap[7][9] = textures[50];
+      texturesMap[8][9] = textures[50];
+      texturesMap[9][9] = textures[50];
+      texturesMap[7][10] = textures[50];
+      texturesMap[8][10] = textures[51];
+      texturesMap[9][10] = textures[50];
+      texturesMap[7][11] = textures[50];
+      texturesMap[8][11] = textures[50];
+      texturesMap[9][11] = textures[50];
+    }
   }
   
   void enterenceRoom(){
