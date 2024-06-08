@@ -37,7 +37,7 @@ void setup(){
   PImage Guardian = loadImage("Guardian.png");
   PImage[] textures = new PImage[]{ 
     Cobblestone, Cobblestone, Andesite, Andesite, Andesite, CrackedStoneBricks, Gravel, Gravel, Stone, Stone, Stone, DeadFireCoral, DeadTubeCoral, Creeper, Zombie, Skeleton,
-    DarkPrismarine, DarkPrismarine, OxidizedCopper, OxidizedCopper, OxidizedCopper, TubeCoral, SeaLantern, SeaLantern, PrimarineBrick, PrimarineBrick, PrimarineBrick, StrippedWarpedStem, OxidizedCutCopper, ElderGuardian, Drowned, Guardian
+    DarkPrismarine, DarkPrismarine, OxidizedCopper, OxidizedCopper, OxidizedCopper, TubeCoral, SeaLantern, PrimarineBrick, PrimarineBrick, PrimarineBrick, PrimarineBrick, StrippedWarpedStem, OxidizedCutCopper, ElderGuardian, Drowned, Guardian
   };
   test2 = new BattleMap(newPerson, textures);
   size(1201,800);
@@ -49,53 +49,20 @@ void setup(){
 }
 
 void draw(){
-  if(phase == 0 && test2.CurrentMapType().equals("tr")){
-    test2.generateRoom(test2.getNextRoom(),2);
-    phaseStart = false;
-    phase = 0;
-    
-    test2.display();
-    test2.displayCombat();
-    phaseStart = true;
-    textSize(20);
-    text(returnPhaseString(phase), 5, 420); 
-  }
   if(test2.allEnemyDead() && test2.CurrentMapType().equals("co")){
     test2.generateRoom(test2.getNextRoom(),2);
     phase = 0;
     test2.display();
     test2.displayCombat();
-    textSize(20);
-    text(returnPhaseString(phase), 5, 420); 
   }
   if(test2.enterenceExitArrive()){
     test2.generateRoom(test2.getNextRoom(),2);
     phase = 0;
     test2.display();
     test2.displayCombat();
-    textSize(20);
-    text(returnPhaseString(phase), 5, 420); 
   }
-  if(test2.enounterRoomLeave()){
-    test2.generateRoom(test2.getNextRoom(),2);
+  if(test2.CurrentMapType().equals("et")){
     phase = 0;
-    test2.display();
-    test2.displayCombat();
-    textSize(20);
-    text(returnPhaseString(phase), 5, 420); 
-  }
-  if(!test2.CurrentMapType().equals("co") && !test2.CurrentMapType().equals("tr")){
-    phase = 0;
-    textSize(20);
-    text(returnPhaseString(phase), 5, 420); 
-  }
-  if(test2.CurrentMapType().equals("tr")){
-    phase = -1;
-    textSize(20);
-    text(returnPhaseString(phase), 5, 420); 
-  }
-  if(test2.CurrentMapType().equals("en")){
-    test2.getEnemy().get(0).useSkill(test2);
   }
   //textSize(200);
   //fill(255,255,255);
