@@ -60,6 +60,7 @@ class BattleMap{
   }
   
   public void generateRoom(String type, int floor){
+    enemies = new ArrayList<Enemy>();
     if(type.substring(0,2).equals("co")){
       combatEncounter(5, type.charAt(2), floor);
     }
@@ -596,9 +597,7 @@ class BattleMap{
                 image(textures[13], i + 5, j + 5);
               }
               if(a.equals("HealerTurrent")){
-                fill(255,255,255);
-                circle(i + 25, j + 25, 25);
-                noFill();
+                image(textures[13], i + 5, j + 5);
               }
               textSize(20);
               noFill();
