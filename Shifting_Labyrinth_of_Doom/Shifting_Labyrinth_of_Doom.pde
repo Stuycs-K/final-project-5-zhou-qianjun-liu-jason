@@ -13,6 +13,7 @@ int count;
 int prevX = 0;
 int prevY = 0;
 BattleMap test2;
+int floor = 1;
 
 void setup(){
   PImage Cobblestone = loadImage("Cobblestone.png");
