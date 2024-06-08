@@ -59,10 +59,10 @@ class BattleMap{
     return enemies;
   }
   
-  public void generateRoom(String type, int floor){
+  public void generateRoom(String type, int floor, int diff){
     enemies = new ArrayList<Enemy>();
     if(type.substring(0,2).equals("co")){
-      combatEncounter(5, type.charAt(2), floor);
+      combatEncounter(diff, type.charAt(2), floor);
     }
     if(type.substring(0,2).equals("en")){
       encounterRoom();
@@ -686,8 +686,9 @@ class BattleMap{
                 image(textures[48], i + 5, j + 5);
               }
               textSize(20);
+              fill(0,0,0);
+              text(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2,3))).getHP()+"", i+15, j+60);
               noFill();
-              text(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2,3))).getHP()+"", i+20, j+50);
             }
           }
         }

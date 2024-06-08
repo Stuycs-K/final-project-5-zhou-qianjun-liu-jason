@@ -13,11 +13,9 @@ int count;
 int prevX = 0;
 int prevY = 0;
 BattleMap test2;
-<<<<<<< HEAD
 int floor = 1;
-=======
-int floor = 4;
->>>>>>> e3faafedd5cfc9f5363aa444cc2f49cc9c9398a2
+PImage Death;
+int diff = 5;
 
 void setup(){
   PImage Cobblestone = loadImage("Cobblestone.png");
@@ -52,6 +50,7 @@ void setup(){
   PImage Blaze = loadImage("BlazeFace.png");
   PImage Beacon = loadImage("Beacon.png");
   PImage PC = loadImage("TechnoBlade.png");
+  Death = loadImage("Death.png");
   PImage[] textures = new PImage[]{ 
     Cobblestone, Cobblestone, Andesite, Andesite, Andesite, CrackedStoneBricks, Gravel, Gravel, Stone, Stone, Stone, DeadFireCoral, DeadTubeCoral, Creeper, Zombie, Skeleton,
     DarkPrismarine, DarkPrismarine, OxidizedCopper, OxidizedCopper, OxidizedCopper, TubeCoral, SeaLantern, SeaLantern, PrimarineBrick, PrimarineBrick, PrimarineBrick, StrippedWarpedStem, OxidizedCutCopper, ElderGuardian, Drowned, Guardian,
@@ -81,6 +80,7 @@ void draw(){
   }
   if(test2.CurrentMapType().equals("ex") && test2.leaveFloor()){
     floor++;
+    diff += 3;
     test2.generateFloor();
     test2.generateRoom(test2.CurrentMapType() + "l",floor);
     test2.display();
@@ -139,10 +139,8 @@ void draw(){
   //text(test2.getNextRoom(), 420, 69);
   //noFill();
   if(newPerson.getHP()<=0){
-    textSize(400);
-    fill(0,0,0);
-    text("lose", 600,400);
-    noFill();
+    phase = -200;
+    image(Death,0,0);
   }
   textSize(20);
   Skill[] SkillHave = newPerson.getSkills();
@@ -193,10 +191,10 @@ void draw(){
       phaseStart = false;
     }
   }
-  textSize(100);
-  fill(255,255,255);
-  text(phase, 10, 70);
-  noFill();
+  //textSize(100);
+  //fill(255,255,255);
+  //text(phase, 10, 70);
+  //noFill();
   
 } 
 
