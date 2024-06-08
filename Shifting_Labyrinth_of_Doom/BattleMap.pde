@@ -372,11 +372,20 @@ class BattleMap{
            }
          }
          if(select == 2){
-           if(diff - 2 >= 0){
-             combat[x][y] = "EC" + a;
-             enemys.add(new Bomber(a));
-             a++;
-             diff -= 2;
+           if(floor == 1){
+             if(diff - 2 >= 0){
+               combat[x][y] = "EC" + a;
+               enemys.add(new Bomber(a));
+               a++;
+               diff -= 2;
+             }
+           }else{
+             if(diff - 2 >= 0){
+               combat[x][y] = "EC" + a;
+               enemys.add(new Ogre(a));
+               a++;
+               diff -= 2;
+             }
            }
          }
       }
@@ -591,7 +600,7 @@ class BattleMap{
     return true;
   }
   
-  void displayCombat(){
+  void displayCombat(int floor){
     stroke(0,0,0);
     for(int i = 400; i < 1200; i += 50){
       for(int j = 0; j < 800; j += 50){
@@ -609,13 +618,36 @@ class BattleMap{
             }else{
               String a = enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2,3))).getName();
               if(a.equals("Goblin")){
-                image(textures[14], i + 5, j + 5);
+                if(floor == 1){
+                  image(textures[14], i + 5, j + 5);
+                }
+                if(floor == 2){
+                  image(textures[14+16], i + 5, j + 5);
+                }
+                if(floor == 3){
+                  image(textures[14+32], i + 5, j + 5);
+                }
               }
               if(a.equals("Dartgoblin")){
-                image(textures[15], i + 5, j + 5);
+                if(floor == 1){
+                  image(textures[15], i + 5, j + 5);
+                }
+                if(floor == 2){
+                  image(textures[15+16], i + 5, j + 5);
+                }
+                if(floor == 3){
+                  image(textures[15+32], i + 5, j + 5);
+                }
               }
               if(a.equals("Bomber")){
                 image(textures[13], i + 5, j + 5);
+              }
+              if(a.equals("Ogre")){
+                if(floor == 2){
+                  image(textures[13+16], i + 5, j + 5);
+                }else{
+                  image(textures[13+32], i + 5, j + 5);
+                }
               }
               if(a.equals("HealerTurrent")){
                 image(textures[13], i + 5, j + 5);

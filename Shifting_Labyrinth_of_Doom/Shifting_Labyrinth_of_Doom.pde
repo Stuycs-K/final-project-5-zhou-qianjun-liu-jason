@@ -13,7 +13,7 @@ int count;
 int prevX = 0;
 int prevY = 0;
 BattleMap test2;
-int floor = 1;
+int floor = 2;
 
 void setup(){
   PImage Cobblestone = loadImage("Cobblestone.png");
@@ -54,45 +54,45 @@ void setup(){
   test2 = new BattleMap(newPerson, textures);
   size(1201,800);
   test2.generateFloor();
-  test2.generateRoom(test2.CurrentMapType() + "l",2);
+  test2.generateRoom(test2.CurrentMapType() + "l",floor);
   test2.display();
   //test2.combatEncounter(1);
-  test2.displayCombat();
+  test2.displayCombat(floor);
 }
 
 void draw(){
   if(phase == 0 && test2.CurrentMapType().equals("tr")){
-    test2.generateRoom(test2.getNextRoom(),2);
+    test2.generateRoom(test2.getNextRoom(),floor);
     phaseStart = false;
     phase = 0;
     
     test2.display();
-    test2.displayCombat();
+    test2.displayCombat(floor);
     phaseStart = true;
     textSize(20);
     text(returnPhaseString(phase), 5, 420); 
   }
   if(test2.allEnemyDead() && test2.CurrentMapType().equals("co")){
-    test2.generateRoom(test2.getNextRoom(),2);
+    test2.generateRoom(test2.getNextRoom(),floor);
     phase = 0;
     test2.display();
-    test2.displayCombat();
+    test2.displayCombat(floor);
     textSize(20);
     text(returnPhaseString(phase), 5, 420); 
   }
   if(test2.enterenceExitArrive()){
-    test2.generateRoom(test2.getNextRoom(),2);
+    test2.generateRoom(test2.getNextRoom(),floor);
     phase = 0;
     test2.display();
-    test2.displayCombat();
+    test2.displayCombat(floor);
     textSize(20);
     text(returnPhaseString(phase), 5, 420); 
   }
   if(test2.enounterRoomLeave()){
-    test2.generateRoom(test2.getNextRoom(),2);
+    test2.generateRoom(test2.getNextRoom(),floor);
     phase = 0;
     test2.display();
-    test2.displayCombat();
+    test2.displayCombat(floor);
     textSize(20);
     text(returnPhaseString(phase), 5, 420); 
   }
@@ -136,7 +136,7 @@ void draw(){
       prevY = 0;
       newPerson.clearSkill();
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       for(int i = 0; i < possibleSkill.size(); i++){
         text(possibleSkill.get(i).getName(), 5, 420 + i * (20));
@@ -162,7 +162,7 @@ void draw(){
     if(phaseStart){
       test2.display();
       newPerson.displayMovement(test2);
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
       phaseStart = false;
@@ -184,7 +184,7 @@ void mouseClicked(){
     if(newPerson.movement(test2, x, y)){
       phase = 1;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
       phaseStart = true;
@@ -200,7 +200,7 @@ void keyPressed(){
     if(key == ENTER){
       phase=0;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -212,7 +212,7 @@ void keyPressed(){
     if(key == ENTER){
       phase=5;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -222,7 +222,7 @@ void keyPressed(){
       newPerson.setOrientation("up");
       phase = 2;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -230,7 +230,7 @@ void keyPressed(){
       newPerson.setOrientation("down");
       phase = 2;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -238,7 +238,7 @@ void keyPressed(){
       newPerson.setOrientation("left");
       phase = 2;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -246,7 +246,7 @@ void keyPressed(){
       newPerson.setOrientation("right");
       phase = 2;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -258,7 +258,7 @@ void keyPressed(){
       phase = 3;
       test2.display();
       newPerson.displaySkill(test2,newPerson.getSkill(0));
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -268,7 +268,7 @@ void keyPressed(){
       phase = 3;
       test2.display();
       newPerson.displaySkill(test2,newPerson.getSkill(1));
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -278,21 +278,21 @@ void keyPressed(){
       phase = 3;
       test2.display();
       newPerson.displaySkill(test2,newPerson.getSkill(2));
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
     if(keyCode == ENTER){
       phase = 4;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
     if(key == 'x'){
       phase = 1;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -300,10 +300,10 @@ void keyPressed(){
   if(phase == 3){
     if(key == 'x'){
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       phase = 2;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -311,7 +311,7 @@ void keyPressed(){
       newPerson.useSkill(test2,newPerson.getSkill(selection));
       phase = 4;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
     }
@@ -319,7 +319,7 @@ void keyPressed(){
   if(key == 'p'){
       phase++;
       test2.display();
-      test2.displayCombat();
+      test2.displayCombat(floor);
       textSize(20);
       text(returnPhaseString(phase), 5, 420); 
   }
