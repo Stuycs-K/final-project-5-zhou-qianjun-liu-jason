@@ -40,10 +40,9 @@ class BattleMap{
     //  {null,null,null,null,"EC2",null,null,null,null,null,null,null,null,null,null,null},
     //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
     //};
-    enemies.add(new Goblin(0));
-    enemies.add(new Goblin(1));
-    enemies.add(new Goblin(2));
-    enemies.add(new Goblin(3));
+    ////enemies.add(new Goblin(0));
+    //enemies.add(new Dartgoblin(0));
+    ////enemies.add(new Bomber(2));
     
     this.textures = textures;
   }
@@ -79,7 +78,7 @@ class BattleMap{
     texturesMap = new PImage[16][16];
     for(int i = 0; i < texturesMap.length; i++){
       for(int k = 0; k < texturesMap[i].length; k++){
-        texturesMap[i][k] = textures[(int)(Math.random()*7)];
+        texturesMap[i][k] = textures[(int)(Math.random()*13)];
       }
     }
   }
@@ -261,7 +260,7 @@ class BattleMap{
          if(select == 2){
            if(diff - 2 >= 0){
              combat[x][y] = "EC" + a;
-             enemys.add(new Ogre(a));
+             enemys.add(new Bomber(a));
              a++;
              diff -= 2;
            }
@@ -485,11 +484,17 @@ class BattleMap{
             if(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2))).getHP() <= 0){
               Combat[(i-400)/50][j/50] = null;
             }else{
-              fill(255,127,127);
-              circle(i+25,j+25,25);
-              fill(0,0,0);
+              String a = enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2,3))).getName();
+              if(a.equals("Goblin")){
+                image(textures[14], i + 5, j + 5);
+              }
+              if(a.equals("Dartgoblin")){
+                image(textures[15], i + 5, j + 5);
+              }
+              if(a.equals("Bomber")){
+                image(textures[13], i + 5, j + 5);
+              }
               textSize(20);
-              text(Combat[(i-400)/50][j/50].substring(2,3),i+20,j+30);
               noFill();
               text(enemies.get(Integer.parseInt(Combat[(i-400)/50][j/50].substring(2,3))).getHP()+"", i+20, j+50);
             }

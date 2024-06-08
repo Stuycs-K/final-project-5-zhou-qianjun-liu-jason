@@ -33,17 +33,21 @@ class Bomber extends Enemy{
           break;
       }
     }
-    if(map.getCombat()[y + 1][x] != null && map.getCombat()[y + 1][x].equals("PC")){
+    if(y != 16 && map.getCombat()[y + 1][x] != null && map.getCombat()[y + 1][x].equals("PC")){
       Skills.useSkill(map, x, y, "right");
+      HP = 0;
     }
-    if(map.getCombat()[y - 1][x] != null && map.getCombat()[y - 1][x].equals("PC")){
+    if(y != 0 && map.getCombat()[y - 1][x] != null && map.getCombat()[y - 1][x].equals("PC")){
       Skills.useSkill(map, x, y, "right");
+      HP = 0;
     }
-    if(map.getCombat()[y][x + 1] != null && map.getCombat()[y][x + 1].equals("PC")){
+    if(x != 16 && map.getCombat()[y][x + 1] != null && map.getCombat()[y][x + 1].equals("PC")){
       Skills.useSkill(map, x, y, "right");
+      HP = 0;
     }
-    if(map.getCombat()[y][x - 1] != null && map.getCombat()[y][x - 1].equals("PC")){
+    if(x != 0 && map.getCombat()[y][x - 1] != null && map.getCombat()[y][x - 1].equals("PC")){
       Skills.useSkill(map, x, y, "right");
+      HP = 0;
     }
   }
   void hpChange(int Extent){

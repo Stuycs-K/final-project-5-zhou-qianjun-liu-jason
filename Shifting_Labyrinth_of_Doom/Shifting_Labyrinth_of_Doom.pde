@@ -22,7 +22,10 @@ void setup(){
   PImage Stone = loadImage("Stone.png");
   PImage DeadFireCoral = loadImage("Dead Fire Coral.png");
   PImage DeadTubeCoral = loadImage("Dead Tube Coral.png");
-  PImage[] textures = new PImage[]{ Cobblestone, Andesite, CrackedStoneBricks, Gravel, Stone, DeadFireCoral, DeadTubeCoral };
+  PImage Creeper = loadImage("Creeper.png");
+  PImage Zombie = loadImage("Zombie.png");
+  PImage Skeleton = loadImage("Skeleton.png");
+  PImage[] textures = new PImage[]{ Cobblestone, Cobblestone, Andesite, Andesite, Andesite, CrackedStoneBricks, Gravel, Gravel, Stone, Stone, Stone, DeadFireCoral, DeadTubeCoral, Creeper, Zombie, Skeleton};
   test2 = new BattleMap(newPerson, textures);
   size(1201,800);
   test2.generateFloor();
