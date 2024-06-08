@@ -36,20 +36,50 @@ void setup(){
 }
 
 void draw(){
+  if(phase == 0 && test2.CurrentMapType().equals("tr")){
+    test2.generateRoom(test2.getNextRoom());
+    phase = 0;
+    test2.display();
+    test2.displayCombat();
+    textSize(20);
+    text(returnPhaseString(phase), 5, 420); 
+  }
   if(test2.allEnemyDead() && test2.CurrentMapType().equals("co")){
     test2.generateRoom(test2.getNextRoom());
     phase = 0;
     test2.display();
     test2.displayCombat();
+    textSize(20);
+    text(returnPhaseString(phase), 5, 420); 
   }
   if(test2.enterenceExitArrive()){
     test2.generateRoom(test2.getNextRoom());
     phase = 0;
     test2.display();
     test2.displayCombat();
+    textSize(20);
+    text(returnPhaseString(phase), 5, 420); 
   }
-  if(test2.CurrentMapType().equals("et")){
+  if(test2.enounterRoomLeave()){
+    test2.generateRoom(test2.getNextRoom());
     phase = 0;
+    test2.display();
+    test2.displayCombat();
+    textSize(20);
+    text(returnPhaseString(phase), 5, 420); 
+  }
+  if(!test2.CurrentMapType().equals("co") && !test2.CurrentMapType().equals("tr")){
+    phase = 0;
+    textSize(20);
+    text(returnPhaseString(phase), 5, 420); 
+  }
+  if(test2.CurrentMapType().equals("tr")){
+    phase = -1;
+    textSize(20);
+    text(returnPhaseString(phase), 5, 420); 
+  }
+  if(test2.CurrentMapType().equals("en")){
+    test2.getEnemy().get(0).useSkill(test2);
   }
   //textSize(200);
   //fill(255,255,255);

@@ -64,10 +64,10 @@ class BattleMap{
       combatEncounter(5, type.charAt(2));
     }
     if(type.substring(0,2).equals("en")){
-      Combat = new String[16][16];
+      encounterRoom();
     }
     if(type.substring(0,2).equals("tr")){
-      Combat = new String[16][16];
+      trainingRoom();
     }
     if(type.substring(0,2).equals("et")){
       enterenceRoom();
@@ -115,9 +115,57 @@ class BattleMap{
     return false;
   }
   void trainingRoom(){
+    Combat = new String[][]{
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, "PC", null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+    };
   }
   
   void encounterRoom(){
+    Combat = new String[][]{
+      {null, null, null, null, null, null, null, "PC", null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, "EC0", null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+      {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+    };
+    enemies.add(new HealerTurrent(0));
+  }
+  
+  boolean enounterRoomLeave(){
+    if(CurrentMapType().equals("en")){
+      for(int i = 0; i < 15; i++){
+        if(Combat[15][i] != null && Combat[15][i].equals("PC")){
+          return true;
+        }
+      }
+    }
+    return false;
   }
   
   void exitRoom(){
@@ -542,6 +590,11 @@ class BattleMap{
               }
               if(a.equals("Bomber")){
                 image(textures[13], i + 5, j + 5);
+              }
+              if(a.equals("HealerTurrent")){
+                fill(255,255,255);
+                circle(i + 25, j + 25, 25);
+                noFill();
               }
               textSize(20);
               noFill();
