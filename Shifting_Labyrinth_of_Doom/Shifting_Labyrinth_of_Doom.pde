@@ -39,6 +39,15 @@ void draw(){
     test2.display();
     test2.displayCombat();
   }
+  if(test2.enterenceExitArrive()){
+    test2.generateRoom(test2.getNextRoom());
+    phase = 0;
+    test2.display();
+    test2.displayCombat();
+  }
+  if(test2.CurrentMapType().equals("et")){
+    phase = 0;
+  }
   //textSize(200);
   //fill(255,255,255);
   //text(test2.getNextRoom(), 420, 69);
