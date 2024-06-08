@@ -27,13 +27,14 @@ void setup(){
   test2 = new BattleMap(newPerson, textures);
   size(1201,800);
   test2.generateFloor();
+  test2.generateRoom(test2.CurrentMapType() + "l");
   test2.display();
   //test2.combatEncounter(1);
   test2.displayCombat();
 }
 
 void draw(){
-  if(test2.allEnemyDead()){
+  if(test2.allEnemyDead() && test2.CurrentMapType().equals("co")){
     test2.generateRoom(test2.getNextRoom());
     phase = 0;
     test2.display();

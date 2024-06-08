@@ -11,35 +11,34 @@ class BattleMap{
   public BattleMap(PlayerCharacter a, PImage[] textures){
     store = a;
     Appearance = new PImage[16][16];
-    MiniMap = new String[][]{
-      {null,null,"tru",null,null},
-      {"etl","col","enu","cor",null},
-      {null,"end","cou",null,null},
-      {null,null,"cou",null,null},
-      {null,null,"exnp",null,null}
+    //MiniMap = new String[][]{
+    //  {null,null,"tru",null,null},
+    //  {"etl","col","enu","cor",null},
+    //  {null,"end","cou",null,null},
+    //  {null,null,"cou",null,null},
+    //  {null,null,"exnp",null,null}
       
-      // need to add identifier likely based in string of ,Two-Letter Acronym + Direction, in order to map map more functional
-      // direction is set to which way to enter so u is go up to get in room
-    };
-    Combat = new String[][]{
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,"EC3",null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,"PC",null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,"EC0",null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,"EC1",null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,"EC2",null,null,null,null,null,null,null,null,null,null,null},
-      {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-    };
-    
+    //  // need to add identifier likely based in string of ,Two-Letter Acronym + Direction, in order to map map more functional
+    //  // direction is set to which way to enter so u is go up to get in room
+    //};
+    //Combat = new String[][]{
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,"EC3",null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,"PC",null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,"EC0",null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,"EC1",null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,"EC2",null,null,null,null,null,null,null,null,null,null,null},
+    //  {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+    //};
     enemies.add(new Goblin(0));
     enemies.add(new Goblin(1));
     enemies.add(new Goblin(2));
@@ -666,5 +665,16 @@ class BattleMap{
       }
     }
     return "dzn";
+  }
+  
+  String CurrentMapType(){
+    for(int i = 0; i < MiniMap.length; i++){
+      for(int k = 0; k < MiniMap[0].length; k++){
+        if(MiniMap[i][k] != null && MiniMap[i][k].substring(3).equals("p")){
+          return MiniMap[i][k].substring(0, 2);
+        }
+      }
+    }
+    return "";
   }
 }
