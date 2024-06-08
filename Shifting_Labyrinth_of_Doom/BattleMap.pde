@@ -59,9 +59,9 @@ class BattleMap{
     return enemies;
   }
   
-  public void generateRoom(String type){
+  public void generateRoom(String type, int floor){
     if(type.substring(0,2).equals("co")){
-      combatEncounter(5, type.charAt(2));
+      combatEncounter(5, type.charAt(2), floor);
     }
     if(type.substring(0,2).equals("en")){
       Combat = new String[16][16];
@@ -78,7 +78,11 @@ class BattleMap{
     texturesMap = new PImage[16][16];
     for(int i = 0; i < texturesMap.length; i++){
       for(int k = 0; k < texturesMap[i].length; k++){
-        texturesMap[i][k] = textures[(int)(Math.random()*13)];
+        int random = (int)(Math.random()*13);
+        if(floor == 2){
+          random += 16;
+        }
+        texturesMap[i][k] = textures[(int)(random)];
       }
     }
   }
@@ -266,7 +270,7 @@ class BattleMap{
     MiniMap[end][4] = "ex" + addition;
   }
   
-  void combatEncounter(int diff, char b){
+  void combatEncounter(int diff, char b, int floor){
     String[][] combat = new String[16][16];
     for(int i = 0; i < combat.length; i++){
       for(int k = 0; k < combat[i].length; k++){

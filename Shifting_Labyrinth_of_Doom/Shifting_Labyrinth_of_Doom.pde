@@ -25,11 +25,24 @@ void setup(){
   PImage Creeper = loadImage("Creeper.png");
   PImage Zombie = loadImage("Zombie.png");
   PImage Skeleton = loadImage("Skeleton.png");
-  PImage[] textures = new PImage[]{ Cobblestone, Cobblestone, Andesite, Andesite, Andesite, CrackedStoneBricks, Gravel, Gravel, Stone, Stone, Stone, DeadFireCoral, DeadTubeCoral, Creeper, Zombie, Skeleton};
+  PImage DarkPrismarine = loadImage("Dark Prismarine.png");
+  PImage OxidizedCopper = loadImage("Oxidized Copper.png");
+  PImage OxidizedCutCopper = loadImage("Oxidized Cut Copper.png");
+  PImage PrimarineBrick = loadImage("Prismarine Brick.png");
+  PImage SeaLantern = loadImage("Sea Lantern.png");
+  PImage StrippedWarpedStem = loadImage("Stripped Warped Stem.png");
+  PImage TubeCoral = loadImage("Tube Coral.png");
+  PImage ElderGuardian = loadImage("ElderGuardian.png");
+  PImage Drowned = loadImage("Drowned.png");
+  PImage Guardian = loadImage("Guardian.png");
+  PImage[] textures = new PImage[]{ 
+    Cobblestone, Cobblestone, Andesite, Andesite, Andesite, CrackedStoneBricks, Gravel, Gravel, Stone, Stone, Stone, DeadFireCoral, DeadTubeCoral, Creeper, Zombie, Skeleton,
+    DarkPrismarine, DarkPrismarine, OxidizedCopper, OxidizedCopper, OxidizedCopper, TubeCoral, SeaLantern, SeaLantern, PrimarineBrick, PrimarineBrick, PrimarineBrick, StrippedWarpedStem, OxidizedCutCopper, ElderGuardian, Drowned, Guardian
+  };
   test2 = new BattleMap(newPerson, textures);
   size(1201,800);
   test2.generateFloor();
-  test2.generateRoom(test2.CurrentMapType() + "l");
+  test2.generateRoom(test2.CurrentMapType() + "l",2);
   test2.display();
   //test2.combatEncounter(1);
   test2.displayCombat();
@@ -37,13 +50,13 @@ void setup(){
 
 void draw(){
   if(test2.allEnemyDead() && test2.CurrentMapType().equals("co")){
-    test2.generateRoom(test2.getNextRoom());
+    test2.generateRoom(test2.getNextRoom(),2);
     phase = 0;
     test2.display();
     test2.displayCombat();
   }
   if(test2.enterenceExitArrive()){
-    test2.generateRoom(test2.getNextRoom());
+    test2.generateRoom(test2.getNextRoom(),2);
     phase = 0;
     test2.display();
     test2.displayCombat();
