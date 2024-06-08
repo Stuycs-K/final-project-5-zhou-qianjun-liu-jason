@@ -61,6 +61,13 @@ void setup(){
 }
 
 void draw(){
+  if(test2.CurrentMapType().equals("ex") && test2.leaveFloor()){
+    floor++;
+    test2.generateFloor();
+    test2.generateRoom(test2.CurrentMapType() + "l",floor);
+    test2.display();
+    test2.displayCombat();
+  }
   if(phase == 0 && test2.CurrentMapType().equals("tr")){
     test2.generateRoom(test2.getNextRoom(),floor);
     phaseStart = false;
