@@ -54,6 +54,14 @@ Fixed map generation.
 
 Coded skill usage for players and enemies with Ryan.
 
+### June 7, 2024
+
+Fixed Bug.
+
+### June 9, 2024
+
+Finished Project.
+
 ## Qianjun Zhou
 
 ### May 22, 2024
