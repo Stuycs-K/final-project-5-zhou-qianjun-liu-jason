@@ -71,16 +71,24 @@ void setup(){
 void draw(){
   if(floor == 4){
     phase = -10;
-    fill(255,255,255);
+    //fill(255,255,255);
+    fill(0, 0, 0);
     rect(0, 0, 1201, 800);
     noFill();
-    fill(0, 0, 0);
-    textSize(20);
-    String end = "You. You. You are alive. \n and sometimes the player believed the universe had spoken to it through the sunlight that came through the shuffling leaves of the summer trees \n and sometimes the player believed the universe had spoken to it through the light that fell from the crisp night sky of winter, where a fleck of light in the corner of the player's eye might be a star a million times as massive as the sun, boiling its planets to plasma in order to be visible for a moment to the player, walking home at the far side of the universe, suddenly smelling food, almost at the familiar door, about to dream again \n and sometimes the player believed the universe had spoken to it through the zeros and ones, through the electricity of the world, through the scrolling words on a screen at the end of a dream \n And the game was over and the player woke up from the dream. And the player began a new dream. And the player dreamed again, dreamed better. And the player was the universe. And the player was love. \n You are the player. \n Wake up.";
-    text(end, 0, 20);
+    //fill(0, 0, 0);
+    fill(255,255,255);
+    textSize(25);
+    String end = "You. You. You are alive. \n and sometimes the player believed the universe had spoken to it through the \n sunlight that came through the shuffling leaves of the summer trees \n and sometimes the player believed the universe had spoken to it through the \n light that fell from the crisp night sky of winter \n where a fleck of light in the corner of the player's eye might be a star a million times as massive as the sun \n boiling its planets to plasma in order to be visible for a moment to the player \n walking home at the far side of the universe \n suddenly smelling food, almost at the familiar door, about to dream again \n and sometimes the player believed the universe had spoken to it through the \n zeros and ones, through the electricity of the world, through the scrolling words on a screen at the end of a dream \n And the game was over and the player woke up from the dream. \n And the player began a new dream. \n And the player dreamed again, dreamed better. \n And the player was the universe. \n And the player was love. \n You are the player. \n Wake up.";
+    text(end, 0, 25);
+    noFill();
+    //fill(0, 0, 0);
+    fill(255,255,255);
+    textSize(250);
+    text("The End...", 0, 25 * 30);
     noFill();
   }
-  if(test2.CurrentMapType().equals("ex") && test2.leaveFloor()){
+  
+  if(floor != 4 && test2.CurrentMapType().equals("ex") && test2.leaveFloor()){
     floor++;
     diff += 3;
     test2.generateFloor();
@@ -88,7 +96,7 @@ void draw(){
     test2.display();
     test2.displayCombat(floor);
   }
-  if(phase == 0 && test2.CurrentMapType().equals("tr")){
+  if(floor != 4 && phase == 0 && test2.CurrentMapType().equals("tr")){
     test2.generateRoom(test2.getNextRoom(),floor, diff);
     phaseStart = false;
     phase = 0;
@@ -99,7 +107,7 @@ void draw(){
     textSize(20);
     text(returnPhaseString(phase), 5, 420); 
   }
-  if(test2.allEnemyDead() && test2.CurrentMapType().equals("co")){
+  if(floor != 4 && test2.allEnemyDead() && test2.CurrentMapType().equals("co")){
     test2.generateRoom(test2.getNextRoom(),floor, diff);
     phase = 0;
     test2.display();
@@ -107,7 +115,7 @@ void draw(){
     textSize(20);
     text(returnPhaseString(phase), 5, 420); 
   }
-  if(test2.enterenceExitArrive()){
+  if(floor != 4 && test2.enterenceExitArrive()){
     test2.generateRoom(test2.getNextRoom(),floor, diff);
     phase = 0;
     test2.display();
@@ -115,7 +123,7 @@ void draw(){
     textSize(20);
     text(returnPhaseString(phase), 5, 420); 
   }
-  if(test2.enounterRoomLeave()){
+  if(floor != 4 && test2.enounterRoomLeave()){
     test2.generateRoom(test2.getNextRoom(),floor, diff);
     phase = 0;
     test2.display();
@@ -123,17 +131,17 @@ void draw(){
     textSize(20);
     text(returnPhaseString(phase), 5, 420); 
   }
-  if(!test2.CurrentMapType().equals("co") && !test2.CurrentMapType().equals("tr")){
+  if(floor != 4 && !test2.CurrentMapType().equals("co") && !test2.CurrentMapType().equals("tr")){
     phase = 0;
     textSize(20);
     text(returnPhaseString(phase), 5, 420); 
   }
-  if(test2.CurrentMapType().equals("tr")){
+  if(floor != 4 && test2.CurrentMapType().equals("tr")){
     phase = -1;
     textSize(20);
     text(returnPhaseString(phase), 5, 420); 
   }
-  if(test2.CurrentMapType().equals("en")){
+  if(floor != 4 && test2.CurrentMapType().equals("en")){
     test2.getEnemy().get(0).useSkill(test2);
   }
   //textSize(200);
@@ -144,6 +152,7 @@ void draw(){
     phase = -200;
     image(Death,0,0);
   }
+  if(floor != 4){
   textSize(20);
   Skill[] SkillHave = newPerson.getSkills();
   for(int i = 0; i < SkillHave.length; i++){
@@ -197,7 +206,7 @@ void draw(){
   //fill(255,255,255);
   //text(phase, 10, 70);
   //noFill();
-  
+  }
 } 
 
 void mouseClicked(){
