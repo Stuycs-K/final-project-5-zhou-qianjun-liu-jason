@@ -13,7 +13,7 @@ int count;
 int prevX = 0;
 int prevY = 0;
 BattleMap test2;
-int floor = 1;
+int floor = 4;
 PImage Death;
 int diff = 5;
 
@@ -76,8 +76,8 @@ void draw(){
     noFill();
     fill(0, 0, 0);
     textSize(20);
-    String end = "Once upon a time, there was a player. /n Sometimes the player dreamed it was lost in a story. \n The story was the game and he played it till the end. /n And the game was over and the player woke up from the dream. \n And the player began a new dream. \n And the player dreamed again, dreamed better. \n And the player was the universe. And the player was love.\n You are the player. \n Wake up.";
-    text(end, 20, 20);
+    String end = "You. You. You are alive. \n and sometimes the player believed the universe had spoken to it through the sunlight that came through the shuffling leaves of the summer trees \n and sometimes the player believed the universe had spoken to it through the light that fell from the crisp night sky of winter, where a fleck of light in the corner of the player's eye might be a star a million times as massive as the sun, boiling its planets to plasma in order to be visible for a moment to the player, walking home at the far side of the universe, suddenly smelling food, almost at the familiar door, about to dream again \n and sometimes the player believed the universe had spoken to it through the zeros and ones, through the electricity of the world, through the scrolling words on a screen at the end of a dream \n And the game was over and the player woke up from the dream. And the player began a new dream. And the player dreamed again, dreamed better. And the player was the universe. And the player was love. \n You are the player. \n Wake up.";
+    text(end, 0, 20);
     noFill();
   }
   if(test2.CurrentMapType().equals("ex") && test2.leaveFloor()){
