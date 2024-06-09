@@ -18,3 +18,7 @@ Then you will go into one of three different types of room:
 At the end of a long list of these rooms you will see another blue box. That is the exit box. You will spawn halfway between the exit portal and the wall and the instant you touch that exit portal you will be transfered to the next realm where there is a host of different mobs.
 Suppose you survive all 3 floors, the last exit portal will bring you to the end screen.
 
+## Links
+
+Video:
+https://drive.google.com/file/d/1FeGb9IggnDchlWKG1CmEWsmhJbG0Fjwr/view?usp=drive_link
