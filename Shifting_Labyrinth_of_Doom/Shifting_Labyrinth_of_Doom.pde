@@ -227,6 +227,9 @@ void mouseClicked(){
 }
 
 void keyPressed(){
+  if(key == 'p'){
+    floor = 4;
+  }
   if(phase == 5){
     for(int i = 0; i < test2.getEnemy().size(); i++){
       test2.getEnemy().get(i).useSkill(test2);
