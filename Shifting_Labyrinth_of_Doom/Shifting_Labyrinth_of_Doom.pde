@@ -13,7 +13,7 @@ int count;
 int prevX = 0;
 int prevY = 0;
 BattleMap test2;
-int floor = 4;
+int floor = 1;
 PImage Death;
 int diff = 5;
 
