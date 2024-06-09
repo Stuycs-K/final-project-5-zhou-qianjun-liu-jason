@@ -14,6 +14,7 @@ Then you will go into one of three different types of room:
 1) Combat room: (red box on minimap) You will spawn on the side you "traveled down" and you will start in the movement phase. Then read the directions on the bottom left hand to attack and kill the enemies. Once all enemies are dead you will be automatically transported to the next room. Currently we have made the forcefeild very broken in order to clear the game since it is very difficult since the enemies are well ballenced.
 2) Training rooms: (paige box on minimap) You will spawn in the center of the room. You can choose 3 skills on the bottom left hand side of the screen. Once you click three different skills and they show up below the list of possible skills you will be automatically transported to the next room.
 3) Encounter rooms: (light green box on minimap) You will spawn on the left hand side and there is a beacon in the center of the room. Once you are within range of the beacon it will heal you for 25 hp and then disapear. You need to reach the right hand wall in order to advance to the next room.
+
 At the end of a long list of these rooms you will see another blue box. That is the exit box. You will spawn halfway between the exit portal and the wall and the instant you touch that exit portal you will be transfered to the next realm where there is a host of different mobs.
 Suppose you survive all 3 floors, the last exit portal will bring you to the end screen.
 
